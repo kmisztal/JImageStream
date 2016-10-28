@@ -18,6 +18,7 @@ public class ImageStream {
     private Predicate<Point> predicate;
 
     public ImageStream apply(Filter filter) {
+        // [kamil] todo support for ParallelBoundedImageTransform
         filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter));
         predicate = null;
         return this;
@@ -36,10 +37,13 @@ public class ImageStream {
     }
 
     public StreamableImage collect() {
+        // [martyna] todo Collector interface
         if (!filters.isEmpty()) {
             filters.forEach(ImageTransform::apply);
         }
         return new StreamableImage(imageCopy);
     }
+
+    // [pawel] todo channel() operation
 
 }

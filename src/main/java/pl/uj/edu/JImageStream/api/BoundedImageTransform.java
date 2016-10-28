@@ -25,7 +25,7 @@ public class BoundedImageTransform implements ImageTransform {
         filter.setSource(image);
         for (int i = 0; i < width; ++i) {
             for (int j = 0; j < height; ++j) {
-                //todo create class pixel with height and width instead of x y for clarity
+                //todo create class pixel with height and width instead of x y for clarity, can wait
                 if (predicate.test(new Point(i, j))) {
                     filter.apply(i, j);
                 }
