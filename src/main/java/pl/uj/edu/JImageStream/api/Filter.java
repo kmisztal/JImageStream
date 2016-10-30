@@ -9,7 +9,7 @@ public abstract class Filter {
     
     private WritableRaster source;
     private WritableRaster output;
-    private ColorChannel[] colorChannels;
+    private ColorChannel[] colorRestrictions;
 
     void setSource(BufferedImage bufferedImage) {
         this.source = bufferedImage.copyData(null);
@@ -17,7 +17,7 @@ public abstract class Filter {
     }
 
     void setRestrictions(ColorChannel[] colorChannels) {
-        this.colorChannels = colorChannels;
+        this.colorRestrictions = colorChannels;
     }
 
     void saveToImage(BufferedImage bufferedImage) {
@@ -30,9 +30,9 @@ public abstract class Filter {
         int[] sourceColors = new int[4];
         source.getPixel(x, y, sourceColors);
         int[] outputColors = pixel.getColors();
-        if(colorChannels != null) {
-            for (ColorChannel colorChannel : colorChannels) {
-                colorChannel.process(sourceColors, outputColors);
+        if(colorRestrictions != null) {
+            for (ColorChannel colorRestriction : colorRestrictions) {
+                colorRestriction.process(sourceColors, outputColors);
             }
         } else {
             sourceColors = outputColors;
