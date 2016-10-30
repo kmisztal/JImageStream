@@ -21,6 +21,7 @@ public class ImageStream {
     public ImageStream apply(Filter filter) {
         filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter, colorChannels));
         predicate = null;
+        colorChannels = null;
         return this;
     }
 
