@@ -2,7 +2,7 @@ package pl.uj.edu.JImageStream.api;
 
 import pl.uj.edu.JImageStream.model.StreamableImage;
 
-import java.awt.Point;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.util.LinkedList;
@@ -42,6 +42,13 @@ public class ImageStream {
             filters.forEach(ImageTransform::apply);
         }
         return new StreamableImage(imageCopy);
+    }
+
+    public <T> T collect(Collector<T> collector) {
+        if (!filters.isEmpty()) {
+            filters.forEach(ImageTransform::apply);
+        }
+        return collector.collect(imageCopy);
     }
 
     // [pawel] todo channel() operation
