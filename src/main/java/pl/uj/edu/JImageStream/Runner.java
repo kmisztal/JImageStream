@@ -21,7 +21,7 @@ public class Runner {
         streamableImage.stream().bounds(point -> true).apply(new GreenFilter()).collect().save("jpg", "green.jpg");
 
         //edit only Blue channel:
-        streamableImage.stream().channel(ColorChannel.B).apply(new GreenFilter()).collect().save("jpg", "green1.jpg"); //
+        streamableImage.stream().channel(ColorChannel.BLUE).apply(new GreenFilter()).collect().save("jpg", "green1.jpg"); //
 
 
         long millis = System.currentTimeMillis();
