@@ -16,8 +16,8 @@ public abstract class Filter {
         this.output= bufferedImage.copyData(null);
     }
 
-    void setRestrictions(ColorChannel[] cc) {
-        this.colorChannels = cc;
+    void setRestrictions(ColorChannel[] colorChannels) {
+        this.colorChannels = colorChannels;
     }
 
     void saveToImage(BufferedImage bufferedImage) {
@@ -31,14 +31,13 @@ public abstract class Filter {
         source.getPixel(x, y, sourceColors);
         int[] outputColors = pixel.getColors();
         if(colorChannels != null) {
-            for (ColorChannel cc : colorChannels) {
-                cc.process(sourceColors, outputColors);
+            for (ColorChannel colorChannel : colorChannels) {
+                colorChannel.process(sourceColors, outputColors);
             }
         } else {
             sourceColors = outputColors;
         }
 
-        //output.setPixel(x, y, pixel.getColors());
         output.setPixel(x, y, sourceColors);
     }
 

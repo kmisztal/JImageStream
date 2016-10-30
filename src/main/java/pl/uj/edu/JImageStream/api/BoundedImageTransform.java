@@ -13,13 +13,13 @@ public class BoundedImageTransform implements ImageTransform {
     private Filter filter;
     private ColorChannel[] colorChannels;
 
-    public BoundedImageTransform(BufferedImage bufferedImage, Predicate<Point> predicate, Filter filter, ColorChannel[] cr){
+    public BoundedImageTransform(BufferedImage bufferedImage, Predicate<Point> predicate, Filter filter, ColorChannel[] colorChannels){
         this.height = bufferedImage.getHeight();
         this.width = bufferedImage.getWidth();
         this.predicate = predicate;
         this.filter = filter;
         this.image = bufferedImage;
-        this.colorChannels = cr;
+        this.colorChannels = colorChannels;
     }
 
     @Override

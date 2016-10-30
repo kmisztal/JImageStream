@@ -36,8 +36,8 @@ public class ImageStream {
         return this;
     }
 
-    public ImageStream channel(ColorChannel... cr) {
-        this.colorChannels = cr;
+    public ImageStream channel(ColorChannel... colorChannels) {
+        this.colorChannels = colorChannels;
         return this;
     }
 
