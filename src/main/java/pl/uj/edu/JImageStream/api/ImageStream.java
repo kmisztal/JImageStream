@@ -16,10 +16,10 @@ public class ImageStream {
     private BufferedImage imageCopy;
     private List<ImageTransform> filters;
     private Predicate<Point> predicate;
+    private ColorChannel[] colorChannels;
 
     public ImageStream apply(Filter filter) {
-        // [kamil] todo support for ParallelBoundedImageTransform
-        filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter));
+        filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter, colorChannels));
         predicate = null;
         return this;
     }
@@ -36,14 +36,17 @@ public class ImageStream {
         return this;
     }
 
+    public ImageStream channel(ColorChannel... cr) {
+        this.colorChannels = cr;
+        return this;
+    }
+
+
     public StreamableImage collect() {
-        // [martyna] todo Collector interface
         if (!filters.isEmpty()) {
             filters.forEach(ImageTransform::apply);
         }
         return new StreamableImage(imageCopy);
     }
-
-    // [pawel] todo channel() operation
 
 }

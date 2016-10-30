@@ -9,10 +9,15 @@ public abstract class Filter {
     
     private WritableRaster source;
     private WritableRaster output;
+    private ColorChannel[] colorChannels;
 
     void setSource(BufferedImage bufferedImage) {
         this.source = bufferedImage.copyData(null);
         this.output= bufferedImage.copyData(null);
+    }
+
+    void setRestrictions(ColorChannel[] cc) {
+        this.colorChannels = cc;
     }
 
     void saveToImage(BufferedImage bufferedImage) {
@@ -22,7 +27,19 @@ public abstract class Filter {
     public abstract void apply(int x, int y);
 
     protected void setPixel(int x, int y, Pixel pixel) {
-        output.setPixel(x, y, pixel.getColors());
+        int[] sourceColors = new int[4];
+        source.getPixel(x, y, sourceColors);
+        int[] outputColors = pixel.getColors();
+        if(colorChannels != null) {
+            for (ColorChannel cc : colorChannels) {
+                cc.process(sourceColors, outputColors);
+            }
+        } else {
+            sourceColors = outputColors;
+        }
+
+        //output.setPixel(x, y, pixel.getColors());
+        output.setPixel(x, y, sourceColors);
     }
 
     protected Pixel getPixel(int x, int y) {
