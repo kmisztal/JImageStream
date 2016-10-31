@@ -1,4 +1,4 @@
-package pl.uj.edu.JImageStream.api;
+package pl.uj.edu.JImageStream.api.collectors;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

@@ -1,8 +1,8 @@
 package pl.uj.edu.JImageStream.api;
 
-import pl.uj.edu.JImageStream.model.StreamableImage;
+import pl.uj.edu.JImageStream.api.collectors.Collector;
 
-import java.awt.*;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.util.LinkedList;
@@ -34,14 +34,6 @@ public class ImageStream {
     public ImageStream bounds(Predicate<Point> predicate) {
         this.predicate = predicate;
         return this;
-    }
-
-    public StreamableImage collect() {
-        // [martyna] todo Collector interface
-        if (!filters.isEmpty()) {
-            filters.forEach(ImageTransform::apply);
-        }
-        return new StreamableImage(imageCopy);
     }
 
     public <T> T collect(Collector<T> collector) {

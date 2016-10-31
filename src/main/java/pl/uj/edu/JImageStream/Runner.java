@@ -1,6 +1,7 @@
 package pl.uj.edu.JImageStream;
 
 import pl.uj.edu.JImageStream.api.Filter;
+import pl.uj.edu.JImageStream.api.collectors.StreamableImageCollector;
 import pl.uj.edu.JImageStream.api.filters.BlueFilter;
 import pl.uj.edu.JImageStream.api.filters.GreenFilter;
 import pl.uj.edu.JImageStream.api.filters.RedFilter;
@@ -19,12 +20,12 @@ public class Runner {
 
         streamableImage.stream().bounds(point -> true)
                 .apply(new SaltAndPepperFilter(0.1)).bounds(point -> true).apply(new SepiaFilter())
-                .collect().save("png", "saltAndPepperWithSepia.png");
+                .collect(new StreamableImageCollector()).save("png", "saltAndPepperWithSepia.png");
 
-        streamableImage.stream().bounds(point -> true).apply(new RedFilter()).collect().save("jpg", "red.jpg");
-        streamableImage.stream().bounds(point -> true).apply(new BlueFilter()).collect().save("jpg", "blue.jpg");
-        streamableImage.stream().bounds(point -> true).apply(new GreenFilter()).collect().save("jpg", "green.jpg");
-        streamableImage.stream().apply(new GreenFilter()).collect().save("jpg", "green.jpg");
+        streamableImage.stream().bounds(point -> true).apply(new RedFilter()).collect(new StreamableImageCollector()).save("jpg", "red.jpg");
+        streamableImage.stream().bounds(point -> true).apply(new BlueFilter()).collect(new StreamableImageCollector()).save("jpg", "blue.jpg");
+        streamableImage.stream().bounds(point -> true).apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
+        streamableImage.stream().apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
 
         long millis = System.currentTimeMillis();
         try {
@@ -39,7 +40,7 @@ public class Runner {
                             }
                         }
                     })
-                    .collect();
+                    .collect(new StreamableImageCollector());
         } catch (Exception e) {
             System.out.println("kamil, if you see this, parallelStream doesn't work");
         }

@@ -1,4 +1,4 @@
-package pl.uj.edu.JImageStream.api;
+package pl.uj.edu.JImageStream.api.collectors;
 
 import pl.uj.edu.JImageStream.model.StreamableImage;
 
