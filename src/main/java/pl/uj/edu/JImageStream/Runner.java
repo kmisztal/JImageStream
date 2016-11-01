@@ -8,6 +8,7 @@ import pl.uj.edu.JImageStream.api.filters.RedFilter;
 import pl.uj.edu.JImageStream.api.filters.SaltAndPepperFilter;
 import pl.uj.edu.JImageStream.api.filters.SepiaFilter;
 import pl.uj.edu.JImageStream.model.StreamableImage;
+import pl.uj.edu.JImageStream.api.ColorChannel;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,10 @@ public class Runner {
         streamableImage.stream().bounds(point -> true).apply(new BlueFilter()).collect(new StreamableImageCollector()).save("jpg", "blue.jpg");
         streamableImage.stream().bounds(point -> true).apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
         streamableImage.stream().apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
+
+//        channel() test
+//        streamableImage.stream().channel(ColorChannel.BLUE).apply(new GreenFilter()).collect().save("jpg", "green.jpg");
+
 
         long millis = System.currentTimeMillis();
         try {

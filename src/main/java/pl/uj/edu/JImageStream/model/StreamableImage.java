@@ -44,4 +44,9 @@ public class StreamableImage {
 //        return new ImageStream(bufferedImage, true);
     }
 
+
+//    public ParallelImageStream parallelIStream() {
+//        return new ParallelImageStream(bufferedImage);
+//    }
+
 }
