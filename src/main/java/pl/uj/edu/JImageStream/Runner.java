@@ -29,7 +29,9 @@ public class Runner {
         streamableImage.stream().apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
 
 //        channel() test
-//        streamableImage.stream().channel(ColorChannel.BLUE).apply(new GreenFilter()).collect().save("jpg", "green.jpg");
+        streamableImage.stream().bounds(point -> true)
+                .channel(ColorChannel.BLUE, ColorChannel.RED).apply(new SepiaFilter())
+                .collect(new StreamableImageCollector()).save("jpg", "sepiaBlueRedChannel.jpg");
 
 
         long millis = System.currentTimeMillis();

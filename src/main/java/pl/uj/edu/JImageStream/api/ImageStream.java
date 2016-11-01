@@ -43,6 +43,11 @@ public class ImageStream {
         return this;
     }
 
+    public ImageStream channel(ColorChannel... colorChannels) {
+        this.colorChannels = colorChannels;
+        return this;
+    }
+
     public <T> T collect(Collector<T> collector) {
         if (!filters.isEmpty()) {
             filters.forEach(ImageTransform::apply);
