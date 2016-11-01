@@ -1,6 +1,6 @@
 package pl.uj.edu.JImageStream.api;
 
-import pl.uj.edu.JImageStream.model.StreamableImage;
+import pl.uj.edu.JImageStream.api.collectors.Collector;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -36,12 +36,11 @@ public class ImageStream {
         return this;
     }
 
-    public StreamableImage collect() {
-        // [martyna] todo Collector interface
+    public <T> T collect(Collector<T> collector) {
         if (!filters.isEmpty()) {
             filters.forEach(ImageTransform::apply);
         }
-        return new StreamableImage(imageCopy);
+        return collector.collect(imageCopy);
     }
 
     // [pawel] todo channel() operation
