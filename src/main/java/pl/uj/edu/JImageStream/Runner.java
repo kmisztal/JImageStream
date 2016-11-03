@@ -2,11 +2,7 @@ package pl.uj.edu.JImageStream;
 
 import pl.uj.edu.JImageStream.api.Filter;
 import pl.uj.edu.JImageStream.api.collectors.StreamableImageCollector;
-import pl.uj.edu.JImageStream.api.filters.BlueFilter;
-import pl.uj.edu.JImageStream.api.filters.GreenFilter;
-import pl.uj.edu.JImageStream.api.filters.RedFilter;
-import pl.uj.edu.JImageStream.api.filters.SaltAndPepperFilter;
-import pl.uj.edu.JImageStream.api.filters.SepiaFilter;
+import pl.uj.edu.JImageStream.api.filters.*;
 import pl.uj.edu.JImageStream.model.StreamableImage;
 import pl.uj.edu.JImageStream.api.ColorChannel;
 
@@ -28,31 +24,36 @@ public class Runner {
         streamableImage.stream().bounds(point -> true).apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
         streamableImage.stream().apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
 
-//        channel() test
+//      channel() test
         streamableImage.stream().bounds(point -> true)
                 .channel(ColorChannel.BLUE, ColorChannel.RED).apply(new SepiaFilter())
                 .collect(new StreamableImageCollector()).save("jpg", "sepiaBlueRedChannel.jpg");
 
 
-        long millis = System.currentTimeMillis();
-        try {
+
+//      parallelStream() test
             streamableImage.parallelStream().bounds(point -> true)
+                    .apply(new GreenFilter())
+                    .collect(new StreamableImageCollector()).save("jpg", "parallelStream-green.jpg");
+
+
+        try {
+            streamableImage.parallelStream()
+                    .setThreads(50)
                     .apply(new Filter() {
                         @Override
                         public void apply(int x, int y) {
-                            try {
-                                Thread.sleep(1);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+
                         }
                     })
-                    .collect(new StreamableImageCollector());
-        } catch (Exception e) {
-            System.out.println("kamil, if you see this, parallelStream doesn't work");
-        }
-        System.out.println(System.currentTimeMillis() - millis);
+                    .setThreads(1)
+                    .apply(new SaltAndPepperFilter())
+                    .collect(new StreamableImageCollector())
+                    .save("jpg", "parallelTest.jpg");
 
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 
     }
 
