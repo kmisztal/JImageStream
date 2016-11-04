@@ -4,12 +4,58 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>JImageStream</artifactId>
-        <groupId>pl.uj.edu</groupId>
+        <groupId>pl.edu.uj</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jis-documentation</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.2</version>
+                <executions>
+                    <execution>
+                        <id>output-html</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceDirectory>src</sourceDirectory>
+                    <outputDirectory>target/docs</outputDirectory>
+                    <imagesDir>images</imagesDir>
+                    <backend>html5</backend>
+                    <sourceHighlighter>highlightjs</sourceHighlighter>
+                    <doctype>book</doctype>
+                    <attributes>
+                        <highlightjs-theme>hybrid</highlightjs-theme>
+                        <toc>left</toc>
+                        <toclevels>3</toclevels>
+                    </attributes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>pl.edu.uj</groupId>
+            <artifactId>jis-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>

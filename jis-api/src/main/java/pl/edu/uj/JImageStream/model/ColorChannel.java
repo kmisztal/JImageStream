@@ -1,8 +1,5 @@
 package pl.edu.uj.JImageStream.model;
 
-/**
- * Created by pPanek on 2016-10-28.
- */
 public enum ColorChannel {
     RED {
         @Override

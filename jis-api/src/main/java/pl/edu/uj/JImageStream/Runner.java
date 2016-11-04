@@ -1,7 +1,7 @@
 package pl.edu.uj.JImageStream;
 
 import pl.edu.uj.JImageStream.model.ColorChannel;
-import pl.edu.uj.JImageStream.api.Filter;
+import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.api.collectors.StreamableImageCollector;
 import pl.edu.uj.JImageStream.api.filters.BlueFilter;
 import pl.edu.uj.JImageStream.api.filters.GreenFilter;

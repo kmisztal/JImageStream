@@ -1,7 +1,7 @@
 package pl.edu.uj.JImageStream.api.transforms;
 
-import pl.edu.uj.JImageStream.api.Filter;
-import pl.edu.uj.JImageStream.api.ImageTransform;
+import pl.edu.uj.JImageStream.api.core.Filter;
+import pl.edu.uj.JImageStream.api.core.ImageTransform;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 
 import java.awt.Point;

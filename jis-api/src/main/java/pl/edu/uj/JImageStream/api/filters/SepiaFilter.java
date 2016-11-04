@@ -1,6 +1,6 @@
 package pl.edu.uj.JImageStream.api.filters;
 
-import pl.edu.uj.JImageStream.api.Filter;
+import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
 public class SepiaFilter extends Filter {

@@ -1,0 +1,28 @@
+:sourcedir: test/java
+
+
+= Filter documentation
+
+== Context
+
+
+== Context-less
+
+=== Color filters
+
+=== Noise filters
+
+==== Salt and pepper filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
+----
+
+.result
+[.clearfix]
+--
+image:lena.png[width="300", height="200"]
+image:SaltAndPepperFilter.png[width="300", height="200"]
+--

@@ -1,6 +1,6 @@
 package pl.edu.uj.JImageStream.api.collectors;
 
-import pl.edu.uj.JImageStream.api.Collector;
+import pl.edu.uj.JImageStream.api.core.Collector;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;

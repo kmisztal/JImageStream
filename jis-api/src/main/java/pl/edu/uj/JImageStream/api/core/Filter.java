@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.api;
+package pl.edu.uj.JImageStream.api.core;
 
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
