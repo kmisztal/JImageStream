@@ -21,22 +21,40 @@ public class ImageStream {
     private List<ImageTransform> filters;
     private Predicate<Point> predicate;
     private ColorChannel[] colorChannels;
+    private int numberOfThreads;
+    private final int defaultNumberOfThreads;
+    private final boolean isParallel;
+
 
     public ImageStream apply(Filter filter) {
-        // [kamil] todo support for ParallelBoundedImageTransform
-        filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
-                                                colorChannels != null ? colorChannels : ALL_CHANNELS));
+        if(isParallel){
+            filters.add(new ParallelBoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
+                    colorChannels != null ? colorChannels : ALL_CHANNELS, numberOfThreads));
+        }else {
+            filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
+                    colorChannels != null ? colorChannels : ALL_CHANNELS));
+        }
         predicate = null;
         colorChannels = null;
+        numberOfThreads = defaultNumberOfThreads;
         return this;
     }
 
-    public ImageStream(BufferedImage bufferedImage) {
+
+    public ImageStream(BufferedImage bufferedImage, boolean isParallel) {
         ColorModel cm = bufferedImage.getColorModel();
         boolean isAlpha = cm.isAlphaPremultiplied();
-        this.imageCopy = new BufferedImage(cm, bufferedImage.copyData(null), isAlpha, null);
+        imageCopy = new BufferedImage(cm, bufferedImage.copyData(null), isAlpha, null);
         filters = new LinkedList<>();
+        this.isParallel = isParallel;
+        if(isParallel){
+            defaultNumberOfThreads = Runtime.getRuntime().availableProcessors();
+        }else{
+            defaultNumberOfThreads = 1;
+        }
+        numberOfThreads = defaultNumberOfThreads;
     }
+
 
     public ImageStream bounds(Predicate<Point> predicate) {
         this.predicate = predicate;
@@ -45,6 +63,19 @@ public class ImageStream {
 
     public ImageStream channel(ColorChannel... colorChannels) {
         this.colorChannels = colorChannels;
+        return this;
+    }
+
+    public ImageStream setThreads(int numberOfThreads) {
+        if(!isParallel){
+            throw new UnsupportedOperationException("Only parallel streams can use multiple threads");
+        }
+        if(numberOfThreads < 1){
+            // TODO: 04.11.2016 log warning , after implement logging mechanism
+            this.numberOfThreads = this.defaultNumberOfThreads;
+        }else {
+            this.numberOfThreads = numberOfThreads;
+        }
         return this;
     }
 

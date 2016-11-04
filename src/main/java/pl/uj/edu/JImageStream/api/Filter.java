@@ -13,7 +13,7 @@ public abstract class Filter {
 
     void setSource(BufferedImage bufferedImage) {
         this.source = bufferedImage.copyData(null);
-        this.output= bufferedImage.copyData(null);
+        this.output = bufferedImage.copyData(null);
     }
 
     void setRestrictions(ColorChannel[] colorChannels) {

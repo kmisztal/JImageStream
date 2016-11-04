@@ -36,17 +36,11 @@ public class StreamableImage {
 
 
     public ImageStream stream() {
-        return new ImageStream(bufferedImage);
+        return new ImageStream(bufferedImage, false);
     }
 
     public ImageStream parallelStream() {
-        throw new UnsupportedOperationException();
-//        return new ImageStream(bufferedImage, true);
+        return new ImageStream(bufferedImage, true);
     }
-
-
-//    public ParallelImageStream parallelIStream() {
-//        return new ParallelImageStream(bufferedImage);
-//    }
 
 }

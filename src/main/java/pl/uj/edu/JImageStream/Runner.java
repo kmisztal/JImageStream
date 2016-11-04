@@ -28,31 +28,35 @@ public class Runner {
         streamableImage.stream().bounds(point -> true).apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
         streamableImage.stream().apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
 
-//        channel() test
-        streamableImage.stream().bounds(point -> true)
-                .channel(ColorChannel.BLUE, ColorChannel.RED).apply(new SepiaFilter())
-                .collect(new StreamableImageCollector()).save("jpg", "sepiaBlueRedChannel.jpg");
+//      channel() test
+        streamableImage.stream()
+                .bounds(point -> true)
+                .channel(ColorChannel.BLUE, ColorChannel.RED)
+                .apply(new SepiaFilter())
+                .collect(new StreamableImageCollector())
+                .save("jpg", "sepiaBlueRedChannel.jpg");
 
 
-        long millis = System.currentTimeMillis();
-        try {
-            streamableImage.parallelStream().bounds(point -> true)
-                    .apply(new Filter() {
-                        @Override
-                        public void apply(int x, int y) {
-                            try {
-                                Thread.sleep(1);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    })
-                    .collect(new StreamableImageCollector());
-        } catch (Exception e) {
-            System.out.println("kamil, if you see this, parallelStream doesn't work");
-        }
-        System.out.println(System.currentTimeMillis() - millis);
 
+//      parallelStream() test
+        streamableImage.parallelStream()
+                .bounds(point -> true)
+                .apply(new GreenFilter())
+                .collect(new StreamableImageCollector())
+                .save("jpg", "parallelStream-green.jpg");
+
+
+        streamableImage.parallelStream()
+                .setThreads(50)
+                .apply(new Filter() {
+                    @Override
+                    public void apply(int x, int y) {
+                    }
+                })
+                .setThreads(1)
+                .apply(new SaltAndPepperFilter())
+                .collect(new StreamableImageCollector())
+                .save("jpg", "parallelTest.jpg");
 
     }
 
