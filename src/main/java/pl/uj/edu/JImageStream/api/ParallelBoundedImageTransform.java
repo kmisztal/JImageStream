@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
@@ -34,7 +33,7 @@ public class ParallelBoundedImageTransform implements ImageTransform {
     @Override
     public void apply() {
         //todo set executors from stream
-        ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);
+        ExecutorService executor = Executors.newFixedThreadPool(Math.min(numberOfThreads, width));
         filter.setSource(image);
         filter.setRestrictions(colorChannels);
 
@@ -52,7 +51,6 @@ public class ParallelBoundedImageTransform implements ImageTransform {
             executor.shutdownNow();
             filter.saveToImage(image);
         }
-
     }
 
     class PixelExecutor implements Runnable {

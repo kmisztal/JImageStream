@@ -5,7 +5,6 @@ import pl.uj.edu.JImageStream.api.collectors.Collector;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
-import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -23,12 +22,12 @@ public class ImageStream {
     private Predicate<Point> predicate;
     private ColorChannel[] colorChannels;
     private int numberOfThreads;
-    private int defaultNumberOfThreads;
-    private boolean parallel;
+    private final int defaultNumberOfThreads;
+    private final boolean isParallel;
 
 
     public ImageStream apply(Filter filter) {
-        if(parallel){
+        if(isParallel){
             filters.add(new ParallelBoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
                     colorChannels != null ? colorChannels : ALL_CHANNELS, numberOfThreads));
         }else {
@@ -42,13 +41,13 @@ public class ImageStream {
     }
 
 
-    public ImageStream(BufferedImage bufferedImage, boolean parallel) {
+    public ImageStream(BufferedImage bufferedImage, boolean isParallel) {
         ColorModel cm = bufferedImage.getColorModel();
         boolean isAlpha = cm.isAlphaPremultiplied();
         imageCopy = new BufferedImage(cm, bufferedImage.copyData(null), isAlpha, null);
         filters = new LinkedList<>();
-        this.parallel = parallel;
-        if(parallel){
+        this.isParallel = isParallel;
+        if(isParallel){
             defaultNumberOfThreads = Runtime.getRuntime().availableProcessors();
         }else{
             defaultNumberOfThreads = 1;
@@ -67,14 +66,16 @@ public class ImageStream {
         return this;
     }
 
-    public ImageStream setThreads(int numberOfThreads) throws Exception{
-        if(!parallel){
+    public ImageStream setThreads(int numberOfThreads) {
+        if(!isParallel){
             throw new UnsupportedOperationException("Only parallel streams can use multiple threads");
         }
         if(numberOfThreads < 1){
-            throw new Exception("Number of threads must be at least 1");
+            // TODO: 04.11.2016 log warning , after implement logging mechanism
+            this.numberOfThreads = this.defaultNumberOfThreads;
+        }else {
+            this.numberOfThreads = numberOfThreads;
         }
-        this.numberOfThreads = numberOfThreads;
         return this;
     }
 
