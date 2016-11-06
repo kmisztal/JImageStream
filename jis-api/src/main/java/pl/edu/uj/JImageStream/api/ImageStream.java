@@ -48,6 +48,7 @@ public class ImageStream {
         predicate = null;
         colorChannels = null;
         numberOfThreads = defaultNumberOfThreads;
+        numberOfFilterApplying = 1;
         return this;
     }
 
