@@ -18,9 +18,9 @@ public class ImageStream {
 
     private static final Predicate<Point> TRUE_PREDICATE = point -> true;
     private static final ColorChannel[] ALL_CHANNELS = {ColorChannel.RED,
-                                                        ColorChannel.GREEN,
-                                                        ColorChannel.BLUE,
-                                                        ColorChannel.ALPHA};
+            ColorChannel.GREEN,
+            ColorChannel.BLUE,
+            ColorChannel.ALPHA};
 
     private BufferedImage imageCopy;
     private List<ImageTransform> filters;
@@ -29,19 +29,31 @@ public class ImageStream {
     private int numberOfThreads;
     private final int defaultNumberOfThreads;
     private final boolean isParallel;
+    private int numberOfFilterApplying;
 
 
     public ImageStream apply(Filter filter) {
-        if(isParallel){
-            filters.add(new ParallelBoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
-                    colorChannels != null ? colorChannels : ALL_CHANNELS, numberOfThreads));
-        }else {
-            filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
-                    colorChannels != null ? colorChannels : ALL_CHANNELS));
+        if (isParallel) {
+            for (int i = 0; i < numberOfFilterApplying; i++) {
+                filters.add(new ParallelBoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
+                        colorChannels != null ? colorChannels : ALL_CHANNELS, numberOfThreads));
+            }
+        } else {
+            for (int i = 0; i < numberOfFilterApplying; i++) {
+                filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
+                        colorChannels != null ? colorChannels : ALL_CHANNELS));
+            }
+
         }
         predicate = null;
         colorChannels = null;
         numberOfThreads = defaultNumberOfThreads;
+        numberOfFilterApplying = 1;
+        return this;
+    }
+
+    public ImageStream times(int numberOfFilterApplying) {
+        this.numberOfFilterApplying = numberOfFilterApplying;
         return this;
     }
 
@@ -52,12 +64,13 @@ public class ImageStream {
         imageCopy = new BufferedImage(cm, bufferedImage.copyData(null), isAlpha, null);
         filters = new LinkedList<>();
         this.isParallel = isParallel;
-        if(isParallel){
+        if (isParallel) {
             defaultNumberOfThreads = Runtime.getRuntime().availableProcessors();
-        }else{
+        } else {
             defaultNumberOfThreads = 1;
         }
         numberOfThreads = defaultNumberOfThreads;
+        numberOfFilterApplying = 1;
     }
 
 
@@ -72,13 +85,13 @@ public class ImageStream {
     }
 
     public ImageStream setThreads(int numberOfThreads) {
-        if(!isParallel){
+        if (!isParallel) {
             throw new UnsupportedOperationException("Only parallel streams can use multiple threads");
         }
-        if(numberOfThreads < 1){
+        if (numberOfThreads < 1) {
             // TODO: 04.11.2016 log warning , after implement logging mechanism
             this.numberOfThreads = this.defaultNumberOfThreads;
-        }else {
+        } else {
             this.numberOfThreads = numberOfThreads;
         }
         return this;
