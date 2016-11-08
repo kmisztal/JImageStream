@@ -45,6 +45,12 @@ public abstract class Filter {
         return new Pixel(pixel[0], pixel[1], pixel[2], 255);
     }
 
+    protected int getSourceHeight(){
+        return source.getHeight();
+    }
+    protected int getSourceWidth(){
+        return source.getWidth();
+    }
 
 
 }
