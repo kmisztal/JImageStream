@@ -36,6 +36,16 @@ public abstract class Filter {
             colorRestriction.process(sourceColors, outputColors);
         }
 
+        //todo needs refactoring
+        for(int i = 0; i < sourceColors.length; ++i){
+            if(sourceColors[i] > 255){
+                sourceColors[i] = 255;
+            }
+            if(sourceColors[i] < 0){
+                sourceColors[i] = 0;
+            }
+        }
+
         output.setPixel(x, y, sourceColors);
     }
 

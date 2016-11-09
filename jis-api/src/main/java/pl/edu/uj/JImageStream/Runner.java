@@ -1,14 +1,11 @@
 package pl.edu.uj.JImageStream;
 
-import pl.edu.uj.JImageStream.api.filters.BlueFilter;
-import pl.edu.uj.JImageStream.api.filters.GreenFilter;
-import pl.edu.uj.JImageStream.api.filters.RedFilter;
-import pl.edu.uj.JImageStream.api.filters.SaltAndPepperFilter;
-import pl.edu.uj.JImageStream.api.filters.SepiaFilter;
-import pl.edu.uj.JImageStream.api.filters.BlurFilter;
-import pl.edu.uj.JImageStream.model.ColorChannel;
-import pl.edu.uj.JImageStream.api.core.Filter;
-import pl.edu.uj.JImageStream.api.collectors.StreamableImageCollector;
+import pl.edu.uj.JImageStream.api.collectors.FileCollector;
+import pl.edu.uj.JImageStream.api.filters.BoxBlurFilter;
+import pl.edu.uj.JImageStream.api.filters.EmbossFilter;
+import pl.edu.uj.JImageStream.api.filters.GaussFilter;
+import pl.edu.uj.JImageStream.api.filters.GrayScaleFilter;
+import pl.edu.uj.JImageStream.api.filters.SharpenFilter;
 import pl.edu.uj.JImageStream.model.StreamableImage;
 
 import java.io.File;
@@ -20,46 +17,10 @@ public class Runner {
 
         StreamableImage streamableImage = new StreamableImage(new File("lena.png"));
 
-        streamableImage.stream().bounds(point -> true)
-                .apply(new SaltAndPepperFilter(0.1)).bounds(point -> true).apply(new SepiaFilter())
-                .collect(new StreamableImageCollector()).save("png", "saltAndPepperWithSepia.png");
-
-        streamableImage.stream().bounds(point -> true).apply(new RedFilter()).collect(new StreamableImageCollector()).save("jpg", "red.jpg");
-        streamableImage.stream().bounds(point -> true).apply(new BlueFilter()).collect(new StreamableImageCollector()).save("jpg", "blue.jpg");
-        streamableImage.stream().bounds(point -> true).apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
-        streamableImage.stream().apply(new GreenFilter()).collect(new StreamableImageCollector()).save("jpg", "green.jpg");
-        streamableImage.stream().apply(new BlurFilter()).collect(new StreamableImageCollector()).save("jpg", "blur.jpg");
-
-//      channel() test
-        streamableImage.stream()
-                .bounds(point -> true)
-                .channel(ColorChannel.BLUE, ColorChannel.RED)
-                .apply(new SepiaFilter())
-                .collect(new StreamableImageCollector())
-                .save("jpg", "sepiaBlueRedChannel.jpg");
-
-
-
-//      parallelStream() test
-        streamableImage.parallelStream()
-                .bounds(point -> true)
-                .apply(new GreenFilter())
-                .collect(new StreamableImageCollector())
-                .save("jpg", "parallelStream-green.jpg");
-
-
-        streamableImage.parallelStream()
-                .setThreads(50)
-                .apply(new Filter() {
-                    @Override
-                    public void apply(int x, int y) {
-                    }
-                })
-                .setThreads(1)
-                .apply(new SaltAndPepperFilter())
-                .collect(new StreamableImageCollector())
-                .save("jpg", "parallelTest.jpg");
+        streamableImage.parallelStream().apply(new BoxBlurFilter(5)).collect(new FileCollector("png", "boxBlur.png"));
+        streamableImage.parallelStream().apply(new GrayScaleFilter()).times(2).apply(new EmbossFilter()).collect(new FileCollector("png", "emboss.png"));
+        streamableImage.parallelStream().apply(new SharpenFilter()).collect(new FileCollector("png", "sharpen.png"));
+        streamableImage.parallelStream().times(5).apply(new GaussFilter(3, 1)).collect(new FileCollector("png", "gauss.png"));
 
     }
-
 }
