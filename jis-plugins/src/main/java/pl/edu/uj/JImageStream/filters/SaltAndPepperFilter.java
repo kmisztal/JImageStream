@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.api.filters;
+package pl.edu.uj.JImageStream.filters;
 
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;

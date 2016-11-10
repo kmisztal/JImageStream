@@ -1,5 +1,6 @@
 package pl.edu.uj.JImageStream.api;
 
+
 import pl.edu.uj.JImageStream.api.core.Collector;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.api.core.ImageTransform;

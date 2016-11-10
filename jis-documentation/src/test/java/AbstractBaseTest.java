@@ -1,5 +1,5 @@
 import org.junit.Before;
-import pl.edu.uj.JImageStream.api.collectors.StreamableImageCollector;
+import pl.edu.uj.JImageStream.collectors.StreamableImageCollector;
 import pl.edu.uj.JImageStream.model.StreamableImage;
 
 import java.io.File;

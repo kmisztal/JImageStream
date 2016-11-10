@@ -5,7 +5,6 @@
 
 == Context
 
-
 == Context-less
 
 === Color filters
