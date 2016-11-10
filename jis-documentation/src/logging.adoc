@@ -1,0 +1,20 @@
+
+== Where is the logger
+
+There is a protected field in `Filter` class called `logger` which lets us collect information
+about what is happening in Filter subclasses. Currently it is configured to print out logs
+straight into the console, so it can be used instead of usual print methods.
+
+== How to use it
+The result of this line looks as follows (if it is put in `SaltAndPepperFilter` class): +
+
+I hope the pattern is self-explanatory.
+
+== Levels of logs
+In the previous example, the log level used is called _INFO_. Currently the logger is set to display levels: +
+_DEBUG, INFO, WARN, ERROR_ and _FATAL_. +
+You can still use logs of level _TRACE_ yet those will not be shown in the output at the moment.
+
+
+More about logging levels and architecure:
+link:https://logging.apache.org/log4j/2.0/manual/architecture.html[log4j2 manual]

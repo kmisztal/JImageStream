@@ -2,6 +2,8 @@ package pl.edu.uj.JImageStream.api.core;
 
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
@@ -11,6 +13,7 @@ public abstract class Filter {
     private WritableRaster source;
     private WritableRaster output;
     private ColorChannel[] colorRestrictions;
+    protected Logger logger = LogManager.getLogger(this.getClass());
 
     public void setSource(BufferedImage bufferedImage) {
         this.source = bufferedImage.copyData(null);
