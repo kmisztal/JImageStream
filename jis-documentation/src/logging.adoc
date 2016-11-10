@@ -1,3 +1,4 @@
+= Logging mechanism
 
 == Where is the logger
 
@@ -6,7 +7,9 @@ about what is happening in Filter subclasses. Currently it is configured to prin
 straight into the console, so it can be used instead of usual print methods.
 
 == How to use it
+Simply put the information you want to investigate like `logger.info("Your message")`. +
 The result of this line looks as follows (if it is put in `SaltAndPepperFilter` class): +
+_20:00:22.423 [main] INFO  SaltAndPepperFilter - Your message_ +
 
 I hope the pattern is self-explanatory.
 
