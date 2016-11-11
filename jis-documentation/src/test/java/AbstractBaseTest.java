@@ -1,4 +1,5 @@
 import org.junit.Before;
+
 import pl.edu.uj.JImageStream.collectors.StreamableImageCollector;
 import pl.edu.uj.JImageStream.model.StreamableImage;
 
@@ -17,7 +18,12 @@ public abstract class AbstractBaseTest {
             Files.createDirectories(Paths.get("target/docs/images"));
         }
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("lena.png").getFile());
+        File file = new File("");
+        try {
+            file = new File(classLoader.getResource("lena.png").toURI());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
         streamableImage = new StreamableImage(file);
         streamableImage.stream().collect(new StreamableImageCollector())
