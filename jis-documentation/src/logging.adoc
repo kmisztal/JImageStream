@@ -1,0 +1,43 @@
+= Logging mechanism
+
+== Where is the logger
+
+There is a protected field in `Filter` class called
+`logger` which lets us collect information
+about what is happening in Filter subclasses.
+
+== How to use it
+Simply put the information you want to investigate
+like `logger.info("Your message")`. +
+To make the logs visible, a configuration file
+`log4j2.xml` needs to be set up. Example configuration: +
+
+.Print out logs to the standard output.
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>
+----
+Using the presented configuration, the result of this line looks as follows (if it is put in `SaltAndPepperFilter` class): +
+_20:00:22.423 [main] INFO  SaltAndPepperFilter - Your message_ +
+
+
+
+== Levels of logs
+In the previous example, the log level used is called _INFO_. Currently the logger is set to display levels: +
+_DEBUG, INFO, WARN, ERROR_ and _FATAL_. +
+You can still use logs of level _TRACE_ yet those will not be shown in the output at the moment.
+
+
+More about logging levels and architecure:
+link:https://logging.apache.org/log4j/2.0/manual/architecture.html[log4j2 manual]
