@@ -6,7 +6,7 @@
 == Usage
 [.lead]
 --
-The way of applaying filters is (on example of salt and pepper filter):
+The way of applying filters is (on `SaltAndPepperFilter` example):
 
 [source,java]
 .code
@@ -25,8 +25,8 @@ image::BoxBlurFilter7.png[title="mask 7x7", width="300", height="200"]
 === Gauss filter
 --
 image::lena.png[title="original", width="300", height="200"]
-image::GaussFilter5.png[title="mask 5x5 &#963=1.0", width="300", height="200"]
-image::GaussFilter7.png[title="mask  &#963=4.0", width="300", height="200"]
+image::GaussFilter5.png[title="mask 5x5 &#963;=1.0", width="300", height="200"]
+image::GaussFilter7.png[title="mask 7x7 &#963;=4.0", width="300", height="200"]
 --
 === Emboss filter
 --
@@ -64,7 +64,7 @@ image:BlueFilter.png[width="300", height="200"]
 image:lena.png[width="300", height="200"]
 image:GrayScaleFilter.png[width="300", height="200"]
 --
-=== Sepia filter
+==== Sepia filter
 --
 image:lena.png[width="300", height="200"]
 image:SepiaFilter.png[width="300", height="200"]
