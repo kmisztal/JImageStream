@@ -62,5 +62,10 @@ public abstract class Filter {
         return source.getWidth();
     }
 
+    public void setUp() {
+    }
+
+    public void tearDown() {
+    }
 
 }
