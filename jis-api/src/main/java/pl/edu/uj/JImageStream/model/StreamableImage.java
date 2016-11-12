@@ -15,7 +15,7 @@ public class StreamableImage {
 
     //todo extract to IOImageUtilsClass, maybe
     public StreamableImage(File file) throws IOException {
-        bufferedImage = Util.convert(ImageIO.read(file), BufferedImage.TYPE_INT_ARGB_PRE);
+        bufferedImage = Util.convert(ImageIO.read(file), BufferedImage.TYPE_INT_ARGB);
     }
 
     public StreamableImage(BufferedImage bufferedImage) {
