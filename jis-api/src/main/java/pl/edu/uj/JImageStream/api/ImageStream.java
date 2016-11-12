@@ -40,8 +40,8 @@ public class ImageStream {
             }
         } else {
             for (int i = 0; i < numberOfFilterApplying; i++) {
-                filters.add(new BoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
-                        colorChannels != null ? colorChannels : ALL_CHANNELS));
+                filters.add(new BoundedImageTransform(imageCopy, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
+                        predicate != null ? predicate : TRUE_PREDICATE));
             }
 
         }
