@@ -1,27 +1,25 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.SaltAndPepperFilter;
+import pl.edu.uj.JImageStream.filters.GrayScaleFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SaltAndPepperFilterTest extends AbstractBaseTest {
-
+public class GrayScaleFilterTest extends AbstractBaseTest {
     @Test
-    public void saltAndPepperFilterTest() {
-        // tag::saltAndPepperFilter[]
+    public void greyScaleFilterTest(){
+
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new SaltAndPepperFilter(0.1))
+                .apply(new GrayScaleFilter())
                 .collect(new BufferedImageCollector());
-        // end::saltAndPepperFilter[]
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/SaltAndPepperFilter.png"));
+            ImageIO.write(bufferedImage, "png", new File("target/docs/images/GrayScaleFilter.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
 
+}

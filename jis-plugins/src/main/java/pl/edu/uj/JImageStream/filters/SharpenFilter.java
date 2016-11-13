@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.api.filters;
+package pl.edu.uj.JImageStream.filters;
 
 /**
  * Created by kuba on 09.11.16.

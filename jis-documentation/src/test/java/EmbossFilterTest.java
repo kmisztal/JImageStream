@@ -1,27 +1,25 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.SaltAndPepperFilter;
+import pl.edu.uj.JImageStream.filters.EmbossFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SaltAndPepperFilterTest extends AbstractBaseTest {
-
+public class EmbossFilterTest extends AbstractBaseTest {
     @Test
-    public void saltAndPepperFilterTest() {
-        // tag::saltAndPepperFilter[]
+    public void embossFilterTest(){
+
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new SaltAndPepperFilter(0.1))
+                .apply(new EmbossFilter())
                 .collect(new BufferedImageCollector());
-        // end::saltAndPepperFilter[]
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/SaltAndPepperFilter.png"));
+            ImageIO.write(bufferedImage, "png", new File("target/docs/images/EmbossFilter.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
 
+}

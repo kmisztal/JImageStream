@@ -3,25 +3,75 @@
 
 = Filter documentation
 
-== Context
-
-
-== Context-less
-
-=== Color filters
-
-=== Noise filters
-
-==== Salt and pepper filter
+== Usage
+[.lead]
+--
+The way of applying filters is (on `SaltAndPepperFilter` example):
 
 [source,java]
 .code
 ----
 include::{sourcedir}/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
 ----
+--
+== Filters
 
-.result
-[.clearfix]
+=== Blurring filters
+==== Box blur filter
+--
+image::lena.png[title="original", width="300", height="200"]
+image::BoxBlurFilter5.png[title="mask 5x5", width="300", height="200"]
+image::BoxBlurFilter7.png[title="mask 7x7", width="300", height="200"]
+--
+==== Gauss filter
+--
+image::lena.png[title="original", width="300", height="200"]
+image::GaussFilter5.png[title="mask 5x5 &#963;=1.0", width="300", height="200"]
+image::GaussFilter7.png[title="mask 7x7 &#963;=4.0", width="300", height="200"]
+--
+=== Emboss filter
+--
+image:lena.png[width="300", height="200"]
+image:EmbossFilter.png[width="300", height="200"]
+--
+=== Sharpen filter
+--
+image:lena.png[width="300", height="200"]
+image:SharpenFilter.png[width="300", height="200"]
+--
+
+=== Color filters
+
+==== Red filter
+
+--
+image:lena.png[width="300", height="200"]
+image:RedFilter.png[width="300", height="200"]
+--
+==== Green filter
+--
+image:lena.png[width="300", height="200"]
+image:GreenFilter.png[width="300", height="200"]
+--
+==== Blue filter
+--
+image:lena.png[width="300", height="200"]
+image:BlueFilter.png[width="300", height="200"]
+--
+==== Gray scale filter
+--
+image:lena.png[width="300", height="200"]
+image:GrayScaleFilter.png[width="300", height="200"]
+--
+==== Sepia filter
+--
+image:lena.png[width="300", height="200"]
+image:SepiaFilter.png[width="300", height="200"]
+--
+=== Noise filters
+
+==== Salt and pepper filter
+
 --
 image:lena.png[width="300", height="200"]
 image:SaltAndPepperFilter.png[width="300", height="200"]
