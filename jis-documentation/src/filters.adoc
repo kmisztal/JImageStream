@@ -14,15 +14,16 @@ The way of applying filters is (on `SaltAndPepperFilter` example):
 include::{sourcedir}/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
 ----
 --
+== Filters
 
-== Context
+=== Blurring filters
 ==== Box blur filter
 --
 image::lena.png[title="original", width="300", height="200"]
 image::BoxBlurFilter5.png[title="mask 5x5", width="300", height="200"]
 image::BoxBlurFilter7.png[title="mask 7x7", width="300", height="200"]
 --
-=== Gauss filter
+==== Gauss filter
 --
 image::lena.png[title="original", width="300", height="200"]
 image::GaussFilter5.png[title="mask 5x5 &#963;=1.0", width="300", height="200"]
@@ -38,8 +39,6 @@ image:EmbossFilter.png[width="300", height="200"]
 image:lena.png[width="300", height="200"]
 image:SharpenFilter.png[width="300", height="200"]
 --
-
-== Context-less
 
 === Color filters
 
