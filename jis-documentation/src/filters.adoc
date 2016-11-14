@@ -76,3 +76,34 @@ image:SepiaFilter.png[width="300", height="200"]
 image:lena.png[width="300", height="200"]
 image:SaltAndPepperFilter.png[width="300", height="200"]
 --
+
+=== Statistical filters
+
+==== Mean filter
+
+--
+image:lena.png[width="300", height="200"]
+image:MeanFilter.png[width="300", height="200"]
+--
+
+==== Median filter
+
+--
+image:lena.png[width="300", height="200"]
+image:MedianFilter.png[width="300", height="200"]
+--
+
+==== Max filter
+
+--
+image:lena.png[width="300", height="200"]
+image:MaxFilter.png[width="300", height="200"]
+--
+
+==== Min filter
+
+--
+image:lena.png[width="300", height="200"]
+image:MinFilter.png[width="300", height="200"]
+--
+
