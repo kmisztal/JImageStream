@@ -107,3 +107,42 @@ image:lena.png[width="300", height="200"]
 image:MinFilter.png[width="300", height="200"]
 --
 
+=== Edge detection filters
+
+==== Roberts filter
+
+===== X axis
+--
+image:GrayScaleFilter.png[width="300", height="200"]
+image:RobertsX.png[width="300", height="200"]
+--
+
+===== Y Axis
+--
+image:GrayScaleFilter.png[width="300", height="200"]
+image:RobertsY.png[width="300", height="200"]
+--
+
+===== Edge detection filter
+--
+image:Roberts.png[width="300", height="200"]
+--
+
+==== Sobel filter
+
+===== X axis
+--
+image:GrayScaleFilter.png[width="300", height="200"]
+image:SobelX.png[width="300", height="200"]
+--
+
+===== Y Axis
+--
+image:GrayScaleFilter.png[width="300", height="200"]
+image:SobelY.png[width="300", height="200"]
+--
+
+===== Edge detection filter
+--
+image:Sobel.png[width="300", height="200"]
+--
