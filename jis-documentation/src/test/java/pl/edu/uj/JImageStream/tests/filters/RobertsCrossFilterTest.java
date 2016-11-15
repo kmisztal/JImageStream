@@ -1,36 +1,40 @@
+package pl.edu.uj.JImageStream.tests.filters;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
 import pl.edu.uj.JImageStream.filters.edge.EdgeDetectionFilter;
 import pl.edu.uj.JImageStream.filters.color.GrayScaleFilter;
-import pl.edu.uj.JImageStream.filters.edge.SobelXFilter;
-import pl.edu.uj.JImageStream.filters.edge.SobelYFilter;
+import pl.edu.uj.JImageStream.filters.edge.RobertsCrossXFilter;
+import pl.edu.uj.JImageStream.filters.edge.RobertsCrossYFilter;
 
-public class SobelFilterTest extends AbstractBaseTest {
+
+public class RobertsCrossFilterTest extends AbstractBaseTest {
 
     @Test
     public void medianTest() {
         BufferedImage bufferedImageX = streamableImage.parallelStream()
                 .apply(new GrayScaleFilter())
-                .apply(new SobelXFilter())
+                .apply(new RobertsCrossXFilter())
                 .collect(new BufferedImageCollector());
 
         try {
-            ImageIO.write(bufferedImageX, "png", new File("target/docs/images/SobelX.png"));
+            ImageIO.write(bufferedImageX, "png", new File("target/docs/images/RobertsX.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         BufferedImage bufferedImageY = streamableImage.parallelStream()
                 .apply(new GrayScaleFilter())
-                .apply(new SobelYFilter())
+                .apply(new RobertsCrossYFilter())
                 .collect(new BufferedImageCollector());
 
         try {
-            ImageIO.write(bufferedImageY, "png", new File("target/docs/images/SobelY.png"));
+            ImageIO.write(bufferedImageY, "png", new File("target/docs/images/RobertsY.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,7 +45,7 @@ public class SobelFilterTest extends AbstractBaseTest {
                 .collect(new BufferedImageCollector());
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/Sobel.png"));
+            ImageIO.write(bufferedImage, "png", new File("target/docs/images/Roberts.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

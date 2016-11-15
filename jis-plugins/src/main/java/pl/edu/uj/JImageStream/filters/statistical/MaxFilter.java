@@ -1,12 +1,12 @@
 package pl.edu.uj.JImageStream.filters.statistical;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import pl.edu.uj.JImageStream.api.core.Filter;
+
+import pl.edu.uj.JImageStream.filters.StatisticalFilter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
-public class MaxFilter extends Filter {
+public class MaxFilter extends StatisticalFilter {
 
     public MaxFilter() {
         maskSize = 3;
@@ -16,21 +16,9 @@ public class MaxFilter extends Filter {
         this.maskSize = maskSize;
     }
 
-    private int maskSize;
-
     @Override
     public void apply(int x, int y) {
-        List<Pixel> pixelList = new ArrayList<>();
-
-        for (int i = -maskSize / 2; i <= maskSize / 2; ++i) {
-            for (int j = -maskSize / 2; j <= maskSize / 2; ++j) {
-                try {
-                    pixelList.add(getPixel(x + i, y + j));
-                } catch (Exception e) {
-                    //corner case, no need to handle
-                }
-            }
-        }
+        List<Pixel> pixelList = getPixelList(x, y);
 
         Integer red = pixelList.stream().map(Pixel::getRed).sorted().max(Comparator.naturalOrder()).get();
         Integer green = pixelList.stream().map(Pixel::getGreen).sorted().max(Comparator.naturalOrder()).get();

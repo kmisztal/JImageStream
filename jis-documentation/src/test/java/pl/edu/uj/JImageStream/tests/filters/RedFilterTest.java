@@ -1,26 +1,26 @@
+package pl.edu.uj.JImageStream.tests.filters;
+
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.color.BlueFilter;
+import pl.edu.uj.JImageStream.filters.color.RedFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class BlueFilterTest extends AbstractBaseTest {
+public class RedFilterTest extends AbstractBaseTest {
     @Test
-    public void blueFilterTest() {
-        // tag::blueFilter[]
+    public void redFilterTest() {
+
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new BlueFilter())
+                .apply(new RedFilter())
                 .collect(new BufferedImageCollector());
-        // end::blueFilter[]
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/BlueFilter.png"));
+            ImageIO.write(bufferedImage, "png", new File("target/docs/images/RedFilter.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

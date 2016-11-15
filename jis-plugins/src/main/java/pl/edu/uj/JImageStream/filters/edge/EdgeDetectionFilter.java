@@ -2,6 +2,7 @@ package pl.edu.uj.JImageStream.filters.edge;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
+
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 

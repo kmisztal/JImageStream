@@ -1,3 +1,5 @@
+package pl.edu.uj.JImageStream.tests.filters;
+
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
 import pl.edu.uj.JImageStream.filters.color.SepiaFilter;
@@ -9,7 +11,7 @@ import java.io.IOException;
 
 public class SepiaFilterTest extends AbstractBaseTest {
     @Test
-    public void sepiaFilterTest(){
+    public void sepiaFilterTest() {
 
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new SepiaFilter())

@@ -1,22 +1,24 @@
+package pl.edu.uj.JImageStream.tests.filters;
+
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.convolve.SharpenFilter;
+import pl.edu.uj.JImageStream.filters.color.GrayScaleFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SharpenFilterTest extends AbstractBaseTest {
+public class GrayScaleFilterTest extends AbstractBaseTest {
     @Test
-    public void sharpenFilterTest(){
+    public void greyScaleFilterTest() {
 
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new SharpenFilter())
+                .apply(new GrayScaleFilter())
                 .collect(new BufferedImageCollector());
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/SharpenFilter.png"));
+            ImageIO.write(bufferedImage, "png", new File("target/docs/images/GrayScaleFilter.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

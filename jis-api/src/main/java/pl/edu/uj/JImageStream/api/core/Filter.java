@@ -7,9 +7,13 @@ import org.apache.logging.log4j.LogManager;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class Filter {
-    
+
     private WritableRaster source;
     private WritableRaster output;
     private ColorChannel[] colorRestrictions;
@@ -39,7 +43,7 @@ public abstract class Filter {
             colorRestriction.process(sourceColors, outputColors);
         }
 
-        for(int i = 0; i < sourceColors.length; ++i){
+        for (int i = 0; i < sourceColors.length; ++i) {
             sourceColors[i] = Math.min(Math.max(sourceColors[i], 0), 255);
         }
 
@@ -47,15 +51,15 @@ public abstract class Filter {
     }
 
     protected Pixel getPixel(int x, int y) {
-        //todo alpha support, investigate when and where alpha chanel is present
         int[] pixel = source.getPixel(x, y, (int[]) null);
         return new Pixel(pixel[0], pixel[1], pixel[2], pixel[3]);
     }
 
-    protected int getSourceHeight(){
+    protected int getSourceHeight() {
         return source.getHeight();
     }
-    protected int getSourceWidth(){
+
+    protected int getSourceWidth() {
         return source.getWidth();
     }
 

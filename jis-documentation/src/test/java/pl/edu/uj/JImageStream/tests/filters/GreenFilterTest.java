@@ -1,27 +1,27 @@
+package pl.edu.uj.JImageStream.tests.filters;
+
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.noise.SaltAndPepperFilter;
+import pl.edu.uj.JImageStream.filters.color.GreenFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SaltAndPepperFilterTest extends AbstractBaseTest {
-
+public class GreenFilterTest extends AbstractBaseTest {
     @Test
-    public void saltAndPepperFilterTest() {
-        // tag::saltAndPepperFilter[]
+    public void greenFilterTest() {
+
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new SaltAndPepperFilter(0.1))
+                .apply(new GreenFilter())
                 .collect(new BufferedImageCollector());
-        // end::saltAndPepperFilter[]
 
         try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/SaltAndPepperFilter.png"));
+            ImageIO.write(bufferedImage, "png", new File("target/docs/images/GreenFilter.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
 
+}

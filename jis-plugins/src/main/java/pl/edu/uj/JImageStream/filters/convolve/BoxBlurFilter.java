@@ -4,13 +4,18 @@ import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
 
 public class BoxBlurFilter extends ConvolutionFilter {
 
+    public BoxBlurFilter() {
+        setKernelSize(5);
+        createKernel();
+    }
+
     public BoxBlurFilter(int kernelSize) {
         setKernelSize(kernelSize);
-        createKernel(kernelSize);
+        createKernel();
     }
 
     @Override
-    protected void createKernel(int s) {
+    protected void createKernel() {
         this.kernel = new float[kernelSize * kernelSize];
         final float v = 1.f / kernel.length;
         for (int i = 0; i < kernel.length; ++i) {

@@ -1,3 +1,5 @@
+package pl.edu.uj.JImageStream.tests.filters;
+
 import org.junit.Before;
 
 import pl.edu.uj.JImageStream.collectors.StreamableImageCollector;
@@ -21,7 +23,7 @@ public abstract class AbstractBaseTest {
         File file = new File("");
         try {
             file = new File(classLoader.getResource("lena.png").toURI());
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

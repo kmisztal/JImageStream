@@ -22,21 +22,22 @@ public abstract class ConvolutionFilter extends Filter {
             int outputRed = 0;
             int outputGreen = 0;
             int outputBlue = 0;
+            int outputAlpha = getPixel(x, y).getAlpha();
 
             for (int i = 0; i < kernel.length; ++i) {
                 outputRed += (int) ((neighbours.get(i).getRed()) * kernel[i]);
                 outputGreen += (int) ((neighbours.get(i).getGreen()) * kernel[i]);
                 outputBlue += (int) ((neighbours.get(i).getBlue()) * kernel[i]);
+//                outputAlpha += (int) ((neighbours.get(i).getAlpha()) * kernel[i]);
             }
-            int alpha = getPixel(x, y).getAlpha();
-            setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, alpha));
+            setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, outputAlpha));
         } else {
             /* pixels on edges - no changes */
             setPixel(x, y, getPixel(x, y));
         }
     }
 
-    protected abstract void createKernel(int s);
+    protected abstract void createKernel();
 
     protected abstract void setKernelSize(int s);
 

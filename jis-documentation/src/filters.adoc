@@ -11,7 +11,7 @@ The way of applying filters is (on `SaltAndPepperFilter` example):
 [source,java]
 .code
 ----
-include::{sourcedir}/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
+include::{sourcedir}/pl.edu.uj.JImageStream.tests.filters.SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
 ----
 --
 == Filters

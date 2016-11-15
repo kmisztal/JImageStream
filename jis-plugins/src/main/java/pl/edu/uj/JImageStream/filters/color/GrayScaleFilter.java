@@ -8,7 +8,6 @@ public class GrayScaleFilter extends Filter {
     public void apply(int x, int y) {
         Pixel input = getPixel(x, y);
         int gray = (input.getRed() + input.getBlue() + input.getGreen()) / 3;
-        int alpha = getPixel(x, y).getAlpha();
-        setPixel(x, y, new Pixel(gray, gray, gray, alpha));
+        setPixel(x, y, new Pixel(gray, gray, gray, input.getAlpha()));
     }
 }
