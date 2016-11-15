@@ -1,6 +1,6 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.RedFilter;
+import pl.edu.uj.JImageStream.filters.color.RedFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

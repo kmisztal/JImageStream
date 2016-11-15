@@ -4,11 +4,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.MaxFilter;
+import pl.edu.uj.JImageStream.filters.statistical.MaxFilter;
 
-/**
- * Created by kuba on 2016-11-13.
- */
 public class MaxFilterTest extends AbstractBaseTest {
 
     @Test

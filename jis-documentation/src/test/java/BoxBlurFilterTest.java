@@ -1,6 +1,6 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.BoxBlurFilter;
+import pl.edu.uj.JImageStream.filters.convolve.BoxBlurFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

@@ -1,8 +1,7 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.convolve;
 
-/**
- * Created by kuba on 09.11.16.
- */
+import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+
 public class SharpenFilter extends ConvolutionFilter {
 
     public SharpenFilter() {
@@ -12,7 +11,7 @@ public class SharpenFilter extends ConvolutionFilter {
 
     @Override
     protected void createKernel(int s) {
-        kernel = new float[]{
+        this.kernel = new float[]{
                 -1.0f, -1.0f, -1.0f,
                 -1.0f,  9.0f, -1.0f,
                 -1.0f, -1.0f, -1.0f
@@ -21,6 +20,6 @@ public class SharpenFilter extends ConvolutionFilter {
 
     @Override
     protected void setKernelSize(int s) {
-        kernelSize = 3;
+        this.kernelSize = s;
     }
 }

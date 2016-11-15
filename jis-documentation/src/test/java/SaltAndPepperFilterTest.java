@@ -1,6 +1,6 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.SaltAndPepperFilter;
+import pl.edu.uj.JImageStream.filters.noise.SaltAndPepperFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

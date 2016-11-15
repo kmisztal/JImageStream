@@ -1,8 +1,7 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.convolve;
 
-/**
- * Created by kuba on 09.11.16.
- */
+import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+
 public class BoxBlurFilter extends ConvolutionFilter {
 
     public BoxBlurFilter(int kernelSize) {

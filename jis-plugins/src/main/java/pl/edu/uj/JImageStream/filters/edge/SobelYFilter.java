@@ -1,8 +1,7 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.edge;
 
-/**
- * Created by kuba on 14.11.16.
- */
+import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+
 public class SobelYFilter extends ConvolutionFilter {
 
     public SobelYFilter() {
@@ -13,11 +12,9 @@ public class SobelYFilter extends ConvolutionFilter {
     @Override
     protected void createKernel(int s) {
         kernel = new float[]
-                {
-                        -1, -2, -1,
-                        0, 0, 0,
-                        1, 2, 1
-                };
+                { -1, -2, -1,
+                  0, 0, 0,
+                  1, 2, 1 };
     }
 
     @Override

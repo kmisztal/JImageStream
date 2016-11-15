@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.statistical;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,6 @@ import java.util.stream.Collectors;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
-/**
- * Created by kuba on 2016-11-13.
- */
 public class MedianFilter extends Filter {
 
     public MedianFilter() {

@@ -1,9 +1,9 @@
-package pl.edu.uj.JImageStream.util;
+package pl.edu.uj.JImageStream.utils;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-public class Util {
+public class ImageUtils {
 
     public static BufferedImage convert(BufferedImage src, int bufImgType) {
         BufferedImage img = new BufferedImage(src.getWidth(), src.getHeight(), bufImgType);

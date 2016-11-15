@@ -1,8 +1,7 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.noise;
 
-/**
- * Created by kuba on 09.11.16.
- */
+import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+
 public class GaussFilter extends ConvolutionFilter {
 
     private final double theta;

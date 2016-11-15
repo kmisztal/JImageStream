@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.noise;
 
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
@@ -24,8 +24,8 @@ public class SaltAndPepperFilter extends Filter {
             } else {
                 r = 0;
             }
-            setPixel(x, y, new Pixel(r, r, r, 255));
-
+            int alpha = getPixel(x, y).getAlpha();
+            setPixel(x, y, new Pixel(r, r, r, alpha));
         }
     }
 }

@@ -28,8 +28,8 @@ public abstract class ConvolutionFilter extends Filter {
                 outputGreen += (int) ((neighbours.get(i).getGreen()) * kernel[i]);
                 outputBlue += (int) ((neighbours.get(i).getBlue()) * kernel[i]);
             }
-            setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, 255));
-
+            int alpha = getPixel(x, y).getAlpha();
+            setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, alpha));
         } else {
             /* pixels on edges - no changes */
             setPixel(x, y, getPixel(x, y));

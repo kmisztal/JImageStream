@@ -1,6 +1,6 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.GaussFilter;
+import pl.edu.uj.JImageStream.filters.noise.GaussFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

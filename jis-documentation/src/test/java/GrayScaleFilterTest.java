@@ -1,6 +1,6 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.GrayScaleFilter;
+import pl.edu.uj.JImageStream.filters.color.GrayScaleFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

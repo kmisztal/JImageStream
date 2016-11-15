@@ -1,6 +1,6 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.BlueFilter;
+import pl.edu.uj.JImageStream.filters.color.BlueFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class BlueFilterTest extends AbstractBaseTest {
     @Test
-    public void blueFilterTest(){
+    public void blueFilterTest() {
         // tag::blueFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new BlueFilter())

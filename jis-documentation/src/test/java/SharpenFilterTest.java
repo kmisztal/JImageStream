@@ -1,6 +1,6 @@
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.SharpenFilter;
+import pl.edu.uj.JImageStream.filters.convolve.SharpenFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

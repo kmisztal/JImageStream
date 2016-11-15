@@ -1,8 +1,7 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.edge;
 
-/**
- * Created by kuba on 14.11.16.
- */
+import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+
 public class RobertsCrossXFilter extends ConvolutionFilter {
 
     public RobertsCrossXFilter() {
