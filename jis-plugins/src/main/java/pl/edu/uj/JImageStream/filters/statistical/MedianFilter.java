@@ -29,7 +29,7 @@ public class MedianFilter extends StatisticalFilter {
     private int getMedian(List<Integer> list) {
         int output;
         if (list.size() % 2 == 0) {
-            output = (list.get(list.size() / 2 - 1) + list.get(list.size()) / 2) / 2;
+            output = (list.get(list.size() / 2 - 1) + list.get(list.size() / 2)) / 2;
         } else {
             output = list.get(list.size() / 2);
         }
