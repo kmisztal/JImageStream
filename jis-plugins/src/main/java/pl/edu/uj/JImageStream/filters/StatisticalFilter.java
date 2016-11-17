@@ -22,4 +22,12 @@ public abstract class StatisticalFilter extends Filter {
         }
         return pixelList;
     }
+
+    protected abstract Pixel getPixelResult(List<Pixel> list);
+
+    public void apply(int x, int y) {
+        Pixel p = getPixelResult(getPixelList(x,y));
+
+        setPixel(x, y, p);
+    }
 }

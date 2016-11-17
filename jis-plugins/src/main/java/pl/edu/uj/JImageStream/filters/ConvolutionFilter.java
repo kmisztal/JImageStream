@@ -28,6 +28,7 @@ public abstract class ConvolutionFilter extends Filter {
                 outputRed += (int) ((neighbours.get(i).getRed()) * kernel[i]);
                 outputGreen += (int) ((neighbours.get(i).getGreen()) * kernel[i]);
                 outputBlue += (int) ((neighbours.get(i).getBlue()) * kernel[i]);
+                //todo check if this picture produce whole white picture
 //                outputAlpha += (int) ((neighbours.get(i).getAlpha()) * kernel[i]);
             }
             setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, outputAlpha));

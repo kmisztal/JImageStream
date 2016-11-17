@@ -1,7 +1,6 @@
 package pl.edu.uj.JImageStream.tests.filters;
 
 import org.junit.Before;
-
 import pl.edu.uj.JImageStream.collectors.StreamableImageCollector;
 import pl.edu.uj.JImageStream.model.StreamableImage;
 

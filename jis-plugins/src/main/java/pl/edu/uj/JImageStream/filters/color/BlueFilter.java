@@ -7,8 +7,7 @@ public class BlueFilter extends Filter {
     @Override
     public void apply(int x, int y) {
         Pixel pixel = getPixel(x, y);
-        pixel.setRed(0);
-        pixel.setGreen(0);
+        pixel.setBlue(0);
         setPixel(x, y, pixel);
     }
 }

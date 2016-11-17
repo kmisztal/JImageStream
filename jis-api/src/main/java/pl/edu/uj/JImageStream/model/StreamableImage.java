@@ -8,11 +8,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-//todo needs some added functionality, etc
+//todo needs some added functionality, return bufferedImage, etc
 public class StreamableImage {
 
     private BufferedImage bufferedImage;
 
+    //todo extract to IOImageUtilsClass, maybe
     public StreamableImage(File file) throws IOException {
         bufferedImage = ImageUtils.convert(ImageIO.read(file), BufferedImage.TYPE_INT_ARGB);
     }
@@ -21,14 +22,19 @@ public class StreamableImage {
         this.bufferedImage = bufferedImage;
     }
 
-    //todo refactor, move to another class
+    //todo same, maybe
     public void save(String format, String file) throws IOException {
         ImageIO.write(bufferedImage, format, new File(file));
     }
 
-    public BufferedImage getBufferedImage() {
-        return bufferedImage;
+    public int getHeight() {
+        return bufferedImage.getHeight();
     }
+
+    public int getWidth() {
+        return bufferedImage.getWidth();
+    }
+
 
     public ImageStream stream() {
         return new ImageStream(bufferedImage, false);
