@@ -23,10 +23,17 @@ public class MedianFilter extends StatisticalFilter {
         List<Integer> blue = list.stream().map(Pixel::getBlue).sorted().collect(Collectors.toList());
         List<Integer> alpha = list.stream().map(Pixel::getAlpha).sorted().collect(Collectors.toList());
 
-        return new Pixel(red.get(red.size() / 2),
-                green.get(green.size() / 2),
-                blue.get(blue.size() / 2),
-                alpha.get(alpha.size() / 2));
+        return new Pixel(getMedian(red), getMedian(green), getMedian(blue), getMedian(alpha));
+    }
+
+    private int getMedian(List<Integer> list) {
+        int output;
+        if (list.size() % 2 == 0) {
+            output = (list.get(list.size() / 2 - 1) + list.get(list.size()) / 2) / 2;
+        } else {
+            output = list.get(list.size() / 2);
+        }
+        return output;
     }
 
 }
