@@ -1,7 +1,7 @@
 package pl.edu.uj.JImageStream.model;
 
 import pl.edu.uj.JImageStream.api.ImageStream;
-import pl.edu.uj.JImageStream.util.Util;
+import pl.edu.uj.JImageStream.utils.ImageUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -15,7 +15,7 @@ public class StreamableImage {
 
     //todo extract to IOImageUtilsClass, maybe
     public StreamableImage(File file) throws IOException {
-        bufferedImage = Util.convert(ImageIO.read(file), BufferedImage.TYPE_INT_ARGB);
+        bufferedImage = ImageUtils.convert(ImageIO.read(file), BufferedImage.TYPE_INT_ARGB);
     }
 
     public StreamableImage(BufferedImage bufferedImage) {

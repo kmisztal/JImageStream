@@ -3,6 +3,7 @@ package pl.edu.uj.JImageStream.api.transforms;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.function.Predicate;
+
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 

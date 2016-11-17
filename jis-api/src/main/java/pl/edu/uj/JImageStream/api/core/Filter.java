@@ -1,15 +1,15 @@
 package pl.edu.uj.JImageStream.api.core;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
 public abstract class Filter {
-    
+
     private WritableRaster source;
     private WritableRaster output;
     private ColorChannel[] colorRestrictions;
@@ -39,29 +39,23 @@ public abstract class Filter {
             colorRestriction.process(sourceColors, outputColors);
         }
 
-        //todo needs refactoring
-        for(int i = 0; i < sourceColors.length; ++i){
-            if(sourceColors[i] > 255){
-                sourceColors[i] = 255;
-            }
-            if(sourceColors[i] < 0){
-                sourceColors[i] = 0;
-            }
+        for (int i = 0; i < sourceColors.length; ++i) {
+            sourceColors[i] = Math.min(Math.max(sourceColors[i], 0), 255);
         }
 
         output.setPixel(x, y, sourceColors);
     }
 
     protected Pixel getPixel(int x, int y) {
-        //todo alpha support, investigate when and where alpha chanel is present
         int[] pixel = source.getPixel(x, y, (int[]) null);
         return new Pixel(pixel[0], pixel[1], pixel[2], pixel[3]);
     }
 
-    protected int getSourceHeight(){
+    protected int getSourceHeight() {
         return source.getHeight();
     }
-    protected int getSourceWidth(){
+
+    protected int getSourceWidth() {
         return source.getWidth();
     }
 
