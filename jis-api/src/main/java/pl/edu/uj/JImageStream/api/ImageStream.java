@@ -33,32 +33,6 @@ public class ImageStream {
     private int numberOfFilterApplying;
 
 
-    public ImageStream apply(Filter filter) {
-        if (isParallel) {
-            for (int i = 0; i < numberOfFilterApplying; i++) {
-                filters.add(new ParallelBoundedImageTransform(imageCopy, predicate != null ? predicate : TRUE_PREDICATE, filter,
-                        colorChannels != null ? colorChannels : ALL_CHANNELS, numberOfThreads));
-            }
-        } else {
-            for (int i = 0; i < numberOfFilterApplying; i++) {
-                filters.add(new BoundedImageTransform(imageCopy, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
-                        predicate != null ? predicate : TRUE_PREDICATE));
-            }
-
-        }
-        predicate = null;
-        colorChannels = null;
-        numberOfThreads = defaultNumberOfThreads;
-        numberOfFilterApplying = 1;
-        return this;
-    }
-
-    public ImageStream times(int numberOfFilterApplying) {
-        this.numberOfFilterApplying = numberOfFilterApplying;
-        return this;
-    }
-
-
     public ImageStream(BufferedImage bufferedImage, boolean isParallel) {
         ColorModel cm = bufferedImage.getColorModel();
         boolean isAlpha = cm.isAlphaPremultiplied();
@@ -74,12 +48,35 @@ public class ImageStream {
         numberOfFilterApplying = 1;
     }
 
+    public ImageStream apply(Filter filter) {
+        if (isParallel) {
+            for (int i = 0; i < numberOfFilterApplying; i++) {
+                filters.add(new ParallelBoundedImageTransform(imageCopy, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
+                        predicate != null ? predicate : TRUE_PREDICATE, numberOfThreads));
+            }
+        } else {
+            for (int i = 0; i < numberOfFilterApplying; i++) {
+                filters.add(new BoundedImageTransform(imageCopy, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
+                        predicate != null ? predicate : TRUE_PREDICATE));
+            }
+        }
+
+        predicate = null;
+        colorChannels = null;
+        numberOfThreads = defaultNumberOfThreads;
+        numberOfFilterApplying = 1;
+        return this;
+    }
 
     public ImageStream bounds(Predicate<Point> predicate) {
         this.predicate = predicate;
         return this;
     }
 
+    public ImageStream times(int numberOfFilterApplying) {
+        this.numberOfFilterApplying = numberOfFilterApplying;
+        return this;
+    }
     public ImageStream channel(ColorChannel... colorChannels) {
         this.colorChannels = colorChannels;
         return this;
