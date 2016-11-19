@@ -18,10 +18,10 @@ public abstract class AbstractImageTransform implements ImageTransform {
     protected ColorChannel[] colorChannels;
 
     public AbstractImageTransform(BufferedImage bufferedImage, Filter filter, ColorChannel[] colorChannels) {
+        this.image = bufferedImage;
         this.height = bufferedImage.getHeight();
         this.width = bufferedImage.getWidth();
         this.filter = filter;
-        this.image = bufferedImage;
         this.colorChannels = colorChannels;
     }
 

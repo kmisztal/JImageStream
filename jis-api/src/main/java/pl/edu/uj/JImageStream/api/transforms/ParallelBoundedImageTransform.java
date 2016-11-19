@@ -14,7 +14,7 @@ public class ParallelBoundedImageTransform extends BoundedImageTransform {
 
     private int numberOfThreads;
 
-    public ParallelBoundedImageTransform(BufferedImage bufferedImage, Predicate<Point> predicate, Filter filter, ColorChannel[] colorChannels, int numberOfThreads) {
+    public ParallelBoundedImageTransform(BufferedImage bufferedImage, Filter filter, ColorChannel[] colorChannels, Predicate<Point> predicate, int numberOfThreads) {
         super(bufferedImage, filter, colorChannels, predicate);
         this.numberOfThreads = numberOfThreads;
     }
