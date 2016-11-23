@@ -1,9 +1,8 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.api.core;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import pl.edu.uj.JImageStream.api.core.Filter;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
@@ -51,5 +50,10 @@ public class FilterTest {
         //then
         testFilter.saveToImage(bufferedImageMock);
         verify(bufferedImageMock, times(1)).setData(writableRasterMockSecondary);
+    }
+
+    @Test
+    public void shouldSetPixelWithChannelRestriction() {
+
     }
 }
