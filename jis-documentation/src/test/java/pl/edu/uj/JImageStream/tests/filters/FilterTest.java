@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 
@@ -49,9 +50,6 @@ public class FilterTest {
 
         //then
         testFilter.saveToImage(bufferedImageMock);
-        verify(bufferedImageMock).setData(bufferedImageMockSecondary.copyData(null));
-
+        verify(bufferedImageMock, times(1)).setData(writableRasterMockSecondary);
     }
-
-
 }
