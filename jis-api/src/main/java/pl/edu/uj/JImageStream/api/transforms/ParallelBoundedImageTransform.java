@@ -1,6 +1,5 @@
 package pl.edu.uj.JImageStream.api.transforms;
 
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,12 +8,13 @@ import java.util.function.Predicate;
 
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.ColorChannel;
+import pl.edu.uj.JImageStream.model.Pixel;
 
 public class ParallelBoundedImageTransform extends BoundedImageTransform {
 
     private int numberOfThreads;
 
-    public ParallelBoundedImageTransform(BufferedImage bufferedImage, Filter filter, ColorChannel[] colorChannels, Predicate<Point> predicate, int numberOfThreads) {
+    public ParallelBoundedImageTransform(BufferedImage bufferedImage, Filter filter, ColorChannel[] colorChannels, Predicate<Pixel> predicate, int numberOfThreads) {
         super(bufferedImage, filter, colorChannels, predicate);
         this.numberOfThreads = numberOfThreads;
     }
@@ -37,12 +37,12 @@ public class ParallelBoundedImageTransform extends BoundedImageTransform {
 
     private class PixelExecutor implements Runnable {
 
-        private Predicate<Point> predicate;
+        private Predicate<Pixel> predicate;
         private Filter filter;
         private int i;
         private int height;
 
-        PixelExecutor(Predicate<Point> predicate, Filter filter, int i, int height) {
+        PixelExecutor(Predicate<Pixel> predicate, Filter filter, int i, int height) {
             this.predicate = predicate;
             this.filter = filter;
             this.i = i;
@@ -52,7 +52,7 @@ public class ParallelBoundedImageTransform extends BoundedImageTransform {
         @Override
         public void run() {
             for (int j = 0; j < height; ++j) {
-                if (predicate.test(new Point(i, j))) {
+                if (predicate.test(getPixel(i, j))) {
                     filter.apply(i, j);
                 }
             }

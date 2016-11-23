@@ -1,15 +1,27 @@
 package pl.edu.uj.JImageStream.model;
 
-public class Pixel {
+import java.awt.Point;
 
-    //todo add x y, integrate into predicate
+public class Pixel extends Point{
 
     private int red;
     private int green;
     private int blue;
     private int alpha;
 
+    public Pixel(int x, int y) {
+        super(x, y);
+    }
+
     public Pixel(int red, int green, int blue, int alpha) {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.alpha = alpha;
+    }
+
+    public Pixel(int x, int y, int red, int green, int blue, int alpha) {
+        super(x,y);
         this.red = red;
         this.green = green;
         this.blue = blue;

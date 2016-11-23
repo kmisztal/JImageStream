@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.api.core.ImageTransform;
 import pl.edu.uj.JImageStream.model.ColorChannel;
+import pl.edu.uj.JImageStream.model.Pixel;
 
 import java.awt.image.BufferedImage;
 
@@ -26,6 +27,11 @@ public abstract class AbstractImageTransform implements ImageTransform {
     }
 
     abstract protected void applyToPixels();
+
+    protected Pixel getPixel(int x, int y) {
+        int[] pixel = image.getRaster().getPixel(x, y, (int[]) null);
+        return new Pixel(x, y, pixel[0], pixel[1], pixel[2], pixel[3]);
+    }
 
     @Override
     final public void apply() {
