@@ -60,9 +60,11 @@ public abstract class Filter {
     }
 
     public void setUp() {
+        logger.info("starting filter");
     }
 
     public void tearDown() {
+        logger.info("ending filter");
     }
 
 }
