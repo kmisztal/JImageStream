@@ -19,7 +19,6 @@ public class MinFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/MinFilter.png"));
-            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

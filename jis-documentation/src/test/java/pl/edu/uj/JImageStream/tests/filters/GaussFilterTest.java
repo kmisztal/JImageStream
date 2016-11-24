@@ -24,7 +24,6 @@ public class GaussFilterTest extends AbstractBaseTest {
         try {
             ImageIO.write(bufferedImageGauss5, "png", new File("target/docs/images/GaussFilter5.png"));
             ImageIO.write(bufferedImageGauss15, "png", new File("target/docs/images/GaussFilter7.png"));
-            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

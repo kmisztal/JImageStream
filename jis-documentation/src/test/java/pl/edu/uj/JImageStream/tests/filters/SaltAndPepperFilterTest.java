@@ -21,7 +21,6 @@ public class SaltAndPepperFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/SaltAndPepperFilter.png"));
-            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

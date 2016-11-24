@@ -37,8 +37,4 @@ public abstract class AbstractBaseTest {
        streamableImage.stream().collect(new FileCollector("png", "target/docs/images/lena.png"));
     }
 
-    protected void savingLogMessage(){
-        logger.info("image successfully saved into file");
-    }
-
 }
