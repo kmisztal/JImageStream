@@ -19,6 +19,7 @@ public class MeanFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/MeanFilter.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -19,6 +19,7 @@ public class EmbossFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/EmbossFilter.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

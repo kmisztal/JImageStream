@@ -23,6 +23,7 @@ public class SobelFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImageX, "png", new File("target/docs/images/SobelX.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,6 +35,7 @@ public class SobelFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImageY, "png", new File("target/docs/images/SobelY.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,6 +47,7 @@ public class SobelFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/Sobel.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

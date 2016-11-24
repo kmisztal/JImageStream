@@ -19,6 +19,7 @@ public class RedFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/RedFilter.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

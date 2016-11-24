@@ -20,6 +20,7 @@ public class BlueFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/BlueFilter.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

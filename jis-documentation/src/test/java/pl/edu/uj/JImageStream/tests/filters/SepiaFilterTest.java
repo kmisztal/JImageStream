@@ -19,6 +19,7 @@ public class SepiaFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/SepiaFilter.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

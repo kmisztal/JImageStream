@@ -24,6 +24,7 @@ public class RobertsCrossFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImageX, "png", new File("target/docs/images/RobertsX.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,6 +36,7 @@ public class RobertsCrossFilterTest extends AbstractBaseTest {
 
         try {
             ImageIO.write(bufferedImageY, "png", new File("target/docs/images/RobertsY.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 public abstract class AbstractBaseTest {
 
     protected StreamableImage streamableImage;
+    protected Logger logger = LogManager.getLogger("Test");
 
     @Before
     public void setUp() throws IOException {
@@ -25,13 +26,19 @@ public abstract class AbstractBaseTest {
         File file = new File("");
         try {
             file = new File(classLoader.getResource("lena.png").toURI());
+            logger.info("loading image");
         } catch (Exception e) {
             e.printStackTrace();
+            logger.error("cannot load file from source");
         }
 
         streamableImage = new StreamableImage(file);
 
        streamableImage.stream().collect(new FileCollector("png", "target/docs/images/lena.png"));
+    }
+
+    protected void savingLogMessage(){
+        logger.info("image successfully saved into file");
     }
 
 }

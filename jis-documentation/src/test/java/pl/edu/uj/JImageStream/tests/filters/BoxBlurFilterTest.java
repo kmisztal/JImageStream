@@ -24,6 +24,7 @@ public class BoxBlurFilterTest extends AbstractBaseTest {
         try {
             ImageIO.write(bufferedImageBlur5, "png", new File("target/docs/images/BoxBlurFilter5.png"));
             ImageIO.write(bufferedImageBlur7, "png", new File("target/docs/images/BoxBlurFilter7.png"));
+            savingLogMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }
