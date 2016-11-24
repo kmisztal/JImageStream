@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 public class BufferedImageCollector implements Collector<BufferedImage> {
     @Override
     public BufferedImage collect(BufferedImage bufferedImage) {
+        logger.info("collecting image into BufferedImage");
         return bufferedImage;
     }
 }

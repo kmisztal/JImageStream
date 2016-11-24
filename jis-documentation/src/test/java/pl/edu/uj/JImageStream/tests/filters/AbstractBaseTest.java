@@ -1,5 +1,7 @@
 package pl.edu.uj.JImageStream.tests.filters;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import pl.edu.uj.JImageStream.collectors.FileCollector;
 import pl.edu.uj.JImageStream.collectors.StreamableImageCollector;
@@ -29,7 +31,7 @@ public abstract class AbstractBaseTest {
 
         streamableImage = new StreamableImage(file);
 
-        streamableImage.stream().collect(new FileCollector("png", "target/docs/images/lena.png"));
+       streamableImage.stream().collect(new FileCollector("png", "target/docs/images/lena.png"));
     }
 
 }
