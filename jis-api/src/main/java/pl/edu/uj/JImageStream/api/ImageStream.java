@@ -1,6 +1,8 @@
 package pl.edu.uj.JImageStream.api;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import pl.edu.uj.JImageStream.api.core.Collector;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.api.core.ImageTransform;
@@ -31,6 +33,7 @@ public class ImageStream {
     private final int defaultNumberOfThreads;
     private final boolean isParallel;
     private int numberOfFilterApplying;
+    protected Logger logger = LogManager.getLogger(this.getClass());
 
 
     public ImageStream(BufferedImage bufferedImage, boolean isParallel) {
@@ -65,6 +68,7 @@ public class ImageStream {
         colorChannels = null;
         numberOfThreads = defaultNumberOfThreads;
         numberOfFilterApplying = 1;
+        logger.info(filter.getClass().getSimpleName() + " has been applied");
         return this;
     }
 
@@ -87,7 +91,7 @@ public class ImageStream {
             throw new UnsupportedOperationException("Only parallel streams can use multiple threads");
         }
         if (numberOfThreads < 1) {
-            // TODO: 04.11.2016 log warning , after implement logging mechanism
+            logger.warn("Wrong number of threads, one thread set instead");
             this.numberOfThreads = this.defaultNumberOfThreads;
         } else {
             this.numberOfThreads = numberOfThreads;
