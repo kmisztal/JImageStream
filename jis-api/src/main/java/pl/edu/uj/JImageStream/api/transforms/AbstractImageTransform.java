@@ -28,9 +28,9 @@ public abstract class AbstractImageTransform implements ImageTransform {
 
     abstract protected void applyToPixels();
 
-    protected Pixel getPixel(int x, int y) {
-        int[] pixel = image.getRaster().getPixel(x, y, (int[]) null);
-        return new Pixel(x, y, pixel[0], pixel[1], pixel[2], pixel[3]);
+    protected final Pixel getPixel(int x, int y) {
+        int[] colors = image.getRaster().getPixel(x, y, (int[]) null);
+        return new Pixel(x, y, colors[0], colors[1], colors[2], colors[3]);
     }
 
     @Override
