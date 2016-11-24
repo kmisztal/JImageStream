@@ -4,63 +4,54 @@ import java.awt.Point;
 
 public class Pixel extends Point{
 
-    private int red;
-    private int green;
-    private int blue;
-    private int alpha;
+    private int colors[]; // 0 = RED, 1 = GREEN, 2 = BLUE, 3 = ALPHA
 
     public Pixel(int x, int y) {
         super(x, y);
     }
 
     public Pixel(int red, int green, int blue, int alpha) {
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-        this.alpha = alpha;
+        colors = new int[] {red, green, blue, alpha};
     }
 
     public Pixel(int x, int y, int red, int green, int blue, int alpha) {
         super(x,y);
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-        this.alpha = alpha;
+        colors = new int[] {red, green, blue, alpha};
     }
 
     public int[] getColors() {
-        return new int[]{red, green, blue, alpha};
+        return colors;
     }
 
     public int getRed() {
-        return red;
+        return colors[0];
     }
 
     public void setRed(int red) {
-        this.red = red;
+        colors[0] = red;
     }
 
     public int getGreen() {
-        return green;
+        return colors[1];
     }
 
     public void setGreen(int green) {
-        this.green = green;
+        colors[1] = green;
     }
 
     public int getBlue() {
-        return blue;
+        return colors[2];
     }
 
     public void setBlue(int blue) {
-        this.blue = blue;
+        colors[2] = blue;
     }
 
     public int getAlpha() {
-        return alpha;
+        return colors[3];
     }
 
     public void setAlpha(int alpha) {
-        this.alpha = alpha;
+        colors[3] = alpha;
     }
 }
