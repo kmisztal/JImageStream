@@ -1,10 +1,7 @@
 package pl.edu.uj.JImageStream.tests.filters;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import pl.edu.uj.JImageStream.collectors.FileCollector;
-import pl.edu.uj.JImageStream.collectors.StreamableImageCollector;
 import pl.edu.uj.JImageStream.model.StreamableImage;
 
 import java.io.File;
@@ -15,7 +12,6 @@ import java.nio.file.Paths;
 public abstract class AbstractBaseTest {
 
     protected StreamableImage streamableImage;
-    protected Logger logger = LogManager.getLogger("Test");
 
     @Before
     public void setUp() throws IOException {
@@ -26,10 +22,8 @@ public abstract class AbstractBaseTest {
         File file = new File("");
         try {
             file = new File(classLoader.getResource("lena.png").toURI());
-            logger.info("loading image");
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("cannot load file from source");
         }
 
         streamableImage = new StreamableImage(file);
