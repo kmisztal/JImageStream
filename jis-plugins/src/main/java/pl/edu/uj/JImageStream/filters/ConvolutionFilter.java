@@ -16,26 +16,23 @@ public abstract class ConvolutionFilter extends Filter {
     public void apply(int x, int y) {
         setSourceDimension();
 
-        if (!isEdgePixel(x, y)) {
-            List<Pixel> neighbours = getNeighboursArray(x, y);
 
             int outputRed = 0;
             int outputGreen = 0;
             int outputBlue = 0;
             int outputAlpha = getPixel(x, y).getAlpha();
 
-            for (int i = 0; i < kernel.length; ++i) {
-                outputRed += (int) ((neighbours.get(i).getRed()) * kernel[i]);
-                outputGreen += (int) ((neighbours.get(i).getGreen()) * kernel[i]);
-                outputBlue += (int) ((neighbours.get(i).getBlue()) * kernel[i]);
-                //todo check if this picture produce whole white picture
-//                outputAlpha += (int) ((neighbours.get(i).getAlpha()) * kernel[i]);
+            int halfSize = kernelSize / 2;
+
+            for (int i = -halfSize; i <= halfSize; ++i) {
+                for (int j = -halfSize; j <= halfSize; ++j) {
+                  //  int indX =
             }
-            setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, outputAlpha));
-        } else {
-            /* pixels on edges - no changes */
-            setPixel(x, y, getPixel(x, y));
         }
+
+
+
+            //setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, outputAlpha));
     }
 
     protected abstract void createKernel();
