@@ -13,7 +13,7 @@ public abstract class Filter {
     private WritableRaster source;
     private WritableRaster output;
     private ColorChannel[] colorRestrictions;
-    protected Logger logger = LogManager.getLogger(this.getClass());
+    protected final Logger logger = LogManager.getLogger(this.getClass());
 
     public void setSource(BufferedImage bufferedImage) {
         this.source = bufferedImage.copyData(null);

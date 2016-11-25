@@ -33,7 +33,7 @@ public class ImageStream {
     private final int defaultNumberOfThreads;
     private final boolean isParallel;
     private int numberOfFilterApplying;
-    protected Logger logger = LogManager.getLogger(this.getClass());
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
 
     public ImageStream(BufferedImage bufferedImage, boolean isParallel) {
