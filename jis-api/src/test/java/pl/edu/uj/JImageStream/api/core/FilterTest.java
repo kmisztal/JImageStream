@@ -15,6 +15,7 @@ import static org.mockito.Mockito.verify;
 import static pl.edu.uj.JImageStream.model.ColorChannel.ALPHA;
 import static pl.edu.uj.JImageStream.model.ColorChannel.BLUE;
 import static pl.edu.uj.JImageStream.model.ColorChannel.GREEN;
+import static pl.edu.uj.JImageStream.model.ColorChannel.RED;
 
 
 public class FilterTest {
@@ -68,7 +69,6 @@ public class FilterTest {
             }
         };
 
-
         //when
         testFilter.setRestrictions(new ColorChannel[]{GREEN, BLUE, ALPHA});
         testFilter.setSource(bufferedImageMock);
@@ -76,5 +76,26 @@ public class FilterTest {
 
         //then
         verify(writableRasterMock, times(1)).setPixel(0, 0, new int[]{1, 0, 0, 0});
+    }
+
+    @Test
+    public void shouldCorrectValueOfOutOfRangePixel() {
+        //given
+        given(writableRasterMock.getPixel(0, 0, (int[]) null)).willReturn(new int[]{1, 1, 1, 1});
+
+        testFilter = new Filter() {
+            @Override
+            public void apply(int x, int y) {
+                setPixel(x, y, new Pixel(-100, 1, 300, 2));
+            }
+        };
+
+        //when
+        testFilter.setRestrictions(new ColorChannel[]{RED, GREEN, BLUE, ALPHA});
+        testFilter.setSource(bufferedImageMock);
+        testFilter.apply(0, 0);
+
+        //then
+        verify(writableRasterMock, times(1)).setPixel(0, 0, new int[]{0, 1, 255, 2});
     }
 }
