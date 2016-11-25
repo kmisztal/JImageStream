@@ -9,7 +9,4 @@ import java.awt.image.BufferedImage;
 public interface Collector<T> {
     Logger logger = LogManager.getLogger("Collector");
     T collect(BufferedImage bufferedImage);
-    default void logMessage(){
-        logger.info(this.getClass().getSimpleName() + " collected image");
-    }
 }

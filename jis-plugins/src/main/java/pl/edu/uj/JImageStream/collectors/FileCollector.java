@@ -23,7 +23,7 @@ public class FileCollector implements Collector<File> {
         File file = new File(name);
         try {
             ImageIO.write(bufferedImage, format, file);
-            logMessage();
+            logger.info(this.getClass().getSimpleName() + " successfully collected image");
         } catch (IOException e) {
             e.printStackTrace();
         }
