@@ -3,6 +3,8 @@ package pl.edu.uj.JImageStream.api.core;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import pl.edu.uj.JImageStream.model.ColorChannel;
+import pl.edu.uj.JImageStream.model.Pixel;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
@@ -10,6 +12,9 @@ import java.awt.image.WritableRaster;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static pl.edu.uj.JImageStream.model.ColorChannel.ALPHA;
+import static pl.edu.uj.JImageStream.model.ColorChannel.BLUE;
+import static pl.edu.uj.JImageStream.model.ColorChannel.GREEN;
 
 
 public class FilterTest {
@@ -34,7 +39,6 @@ public class FilterTest {
         testFilter = new Filter() {
             @Override
             public void apply(int x, int y) {
-
             }
         };
     }
@@ -54,6 +58,23 @@ public class FilterTest {
 
     @Test
     public void shouldSetPixelWithChannelRestriction() {
+        //given
+        given(writableRasterMock.getPixel(0, 0, (int[]) null)).willReturn(new int[]{1, 1, 1, 1});
 
+        testFilter = new Filter() {
+            @Override
+            public void apply(int x, int y) {
+                setPixel(x, y, new Pixel(0, 0, 0, 0));
+            }
+        };
+
+
+        //when
+        testFilter.setRestrictions(new ColorChannel[]{GREEN, BLUE, ALPHA});
+        testFilter.setSource(bufferedImageMock);
+        testFilter.apply(0, 0);
+
+        //then
+        verify(writableRasterMock, times(1)).setPixel(0, 0, new int[]{1, 0, 0, 0});
     }
 }
