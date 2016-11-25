@@ -14,6 +14,7 @@ public abstract class Filter {
     private WritableRaster output;
     private ColorChannel[] colorRestrictions;
     protected final Logger logger = LogManager.getLogger(this.getClass());
+    protected long startTime;
 
     public void setSource(BufferedImage bufferedImage) {
         this.source = bufferedImage.copyData(null);
@@ -60,11 +61,14 @@ public abstract class Filter {
     }
 
     public void setUp() {
+        startTime = System.currentTimeMillis();
         logger.info("starting filter");
     }
 
     public void tearDown() {
+
         logger.info("ending filter");
+        logger.info(String.valueOf(System.currentTimeMillis() - startTime) + " milliseconds - total filtering time");
     }
 
 }
