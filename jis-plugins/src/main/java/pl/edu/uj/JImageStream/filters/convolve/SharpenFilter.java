@@ -11,10 +11,10 @@ public class SharpenFilter extends ConvolutionFilter {
 
     @Override
     protected void createKernel() {
-        this.kernel = new float[]{
-                -1.0f, -1.0f, -1.0f,
-                -1.0f, 9.0f, -1.0f,
-                -1.0f, -1.0f, -1.0f
+        this.kernel = new float[][]{
+                { -1.0f, -1.0f, -1.0f },
+                { -1.0f, 9.0f, -1.0f },
+                { -1.0f, -1.0f, -1.0f }
         };
     }
 

@@ -11,12 +11,12 @@ public class SobelXFilter extends ConvolutionFilter {
 
     @Override
     protected void createKernel() {
-        kernel = new float[]
-                {-1, 0, 1,
-                        -2, 0, 2,
-                        -1, 0, 1};
+        kernel = new float[][]{
+                {-1, 0, 1},
+                {-2, 0, 2},
+                {-1, 0, 1}
+        };
     }
-
     @Override
     protected void setKernelSize(int s) {
         kernelSize = s;

@@ -11,7 +11,10 @@ public class RobertsCrossXFilter extends ConvolutionFilter {
 
     @Override
     protected void createKernel() {
-        kernel = new float[]{1, 0, 0, -1};
+        kernel = new float[][]{
+                {1, 0},
+                {0, -1}
+        };
     }
 
     @Override

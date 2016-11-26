@@ -11,10 +11,10 @@ public class EmbossFilter extends ConvolutionFilter {
 
     @Override
     protected void createKernel() {
-        this.kernel = new float[]{
-                -2.0f, 0.0f, 0.0f,
-                0.0f, 1.0f, 0.0f,
-                0.0f, 0.0f, 2.0f
+        this.kernel = new float[][]{
+                { -2.0f, 0.0f, 0.0f },
+                { 0.0f, 1.0f, 0.0f },
+                { 0.0f, 0.0f, 2.0f }
         };
     }
 

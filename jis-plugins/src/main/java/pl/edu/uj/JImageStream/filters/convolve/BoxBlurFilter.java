@@ -16,11 +16,14 @@ public class BoxBlurFilter extends ConvolutionFilter {
 
     @Override
     protected void createKernel() {
-        this.kernel = new float[kernelSize * kernelSize];
-        final float v = 1.f / kernel.length;
-        for (int i = 0; i < kernel.length; ++i) {
-            kernel[i] = v;
+        this.kernel = new float[kernelSize][kernelSize];
+        final float v = 1.f / (kernelSize*kernelSize);
+        for (int i = 0; i < kernelSize; ++i) {
+            for(int j = 0; j < kernelSize; ++j) {
+                kernel[i][j] = v;
+            }
         }
+
     }
 
     @Override

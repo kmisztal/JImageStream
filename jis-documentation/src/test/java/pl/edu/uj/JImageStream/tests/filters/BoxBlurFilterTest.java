@@ -18,7 +18,7 @@ public class BoxBlurFilterTest extends AbstractBaseTest {
                 .apply(new BoxBlurFilter(5))
                 .collect(new BufferedImageCollector());
         BufferedImage bufferedImageBlur7 = streamableImage.stream()
-                .apply(new BoxBlurFilter(7))
+                .apply(new BoxBlurFilter(11))
                 .collect(new BufferedImageCollector());
 
         try {

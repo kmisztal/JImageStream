@@ -14,7 +14,7 @@ public class GaussFilter extends ConvolutionFilter {
 
     @Override
     protected void createKernel() {
-        this.kernel = new float[kernelSize * kernelSize];
+        this.kernel = new float[kernelSize][kernelSize];
         double[][] gaussian2D = gaussian2D(theta, kernelSize);
 
         double sum = 0;
@@ -28,7 +28,7 @@ public class GaussFilter extends ConvolutionFilter {
         for (int i = 0; i < kernelSize; ++i) {
             for (int j = 0; j < kernelSize; ++j) {
                 gaussian2D[i][j] = gaussian2D[i][j] / sum;
-                this.kernel[i * kernelSize + j] = (float) gaussian2D[i][j];
+                this.kernel[i][j] = (float) gaussian2D[i][j];
             }
 
         }
