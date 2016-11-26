@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static pl.edu.uj.JImageStream.model.ColorChannel.ALPHA;
@@ -54,6 +55,7 @@ public class FilterTest {
         testFilter.saveToImage(bufferedImageMock);
 
         //then
+        verify(bufferedImageMock, never()).setData(writableRasterMock);
         verify(bufferedImageMock, times(1)).setData(writableRasterMockSecondary);
     }
 
