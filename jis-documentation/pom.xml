@@ -49,6 +49,7 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>pl.edu.uj</groupId>
             <artifactId>jis-api</artifactId>
