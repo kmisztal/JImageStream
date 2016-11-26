@@ -8,12 +8,11 @@ public class GaussFilter extends ConvolutionFilter {
 
     public GaussFilter(int kernelSize, double theta) {
         this.theta = theta;
-        setKernelSize(kernelSize);
-        createKernel();
+        createKernel(kernelSize);
     }
 
     @Override
-    protected void createKernel() {
+    protected void createKernel(int kernelSize) {
         this.kernel = new float[kernelSize][kernelSize];
         double[][] gaussian2D = gaussian2D(theta, kernelSize);
 
@@ -32,11 +31,6 @@ public class GaussFilter extends ConvolutionFilter {
             }
 
         }
-    }
-
-    @Override
-    protected void setKernelSize(int s) {
-        this.kernelSize = s;
     }
 
     private double gaussianDiscrete2D(double theta, int x, int y) {

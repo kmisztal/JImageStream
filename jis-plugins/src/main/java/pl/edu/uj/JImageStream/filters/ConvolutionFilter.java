@@ -10,7 +10,6 @@ public abstract class ConvolutionFilter extends Filter {
     protected float[][] kernel;
     private int height;
     private int width;
-    protected int kernelSize;
 
     @Override
     public void apply(int x, int y) {
@@ -22,7 +21,7 @@ public abstract class ConvolutionFilter extends Filter {
             int outputBlue = 0;
             int outputAlpha = getPixel(x, y).getAlpha();
 
-            int halfSize = kernelSize / 2;
+            int halfSize = kernel.length / 2;
 
             for (int cooy = -halfSize; cooy <= halfSize; ++cooy) {
                 int indY = y + cooy;
@@ -47,9 +46,7 @@ public abstract class ConvolutionFilter extends Filter {
             setPixel(x, y, new Pixel(outputRed, outputGreen, outputBlue, outputAlpha));
     }
 
-    protected abstract void createKernel();
-
-    protected abstract void setKernelSize(int s);
+    protected abstract void createKernel(int kernelSize);
 
     private void setSourceDimension() {
         height = getSourceHeight();
