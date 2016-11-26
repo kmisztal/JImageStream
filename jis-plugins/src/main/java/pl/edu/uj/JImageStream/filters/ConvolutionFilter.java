@@ -13,8 +13,6 @@ public abstract class ConvolutionFilter extends Filter {
 
     @Override
     public void apply(int x, int y) {
-        setSourceDimension();
-
 
             int outputRed = 0;
             int outputGreen = 0;
@@ -51,5 +49,8 @@ public abstract class ConvolutionFilter extends Filter {
     private void setSourceDimension() {
         height = getSourceHeight();
         width = getSourceWidth();
+    }
+    public void setUp(){
+        setSourceDimension();
     }
 }
