@@ -31,7 +31,7 @@ public abstract class Filter {
     public abstract void apply(int x, int y);
 
     protected void setPixel(int x, int y, Pixel pixel) {
-        int[] sourceColors = source.getPixel(x, y, (int[]) null);
+        int[] sourceColors = getPixel(x, y).getColors();
         int[] outputColors = pixel.getColors();
 
         for (ColorChannel colorRestriction : colorRestrictions) {

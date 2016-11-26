@@ -51,9 +51,9 @@ public class FilterTest {
         //when
         testFilter.setSource(bufferedImageMock);
         testFilter.setSource(bufferedImageMockSecondary);
+        testFilter.saveToImage(bufferedImageMock);
 
         //then
-        testFilter.saveToImage(bufferedImageMock);
         verify(bufferedImageMock, times(1)).setData(writableRasterMockSecondary);
     }
 
