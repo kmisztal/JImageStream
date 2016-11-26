@@ -7,8 +7,8 @@ import pl.edu.uj.JImageStream.api.core.ImageTransform;
 import pl.edu.uj.JImageStream.api.transforms.BoundedImageTransform;
 import pl.edu.uj.JImageStream.api.transforms.ParallelBoundedImageTransform;
 import pl.edu.uj.JImageStream.model.ColorChannel;
+import pl.edu.uj.JImageStream.model.Pixel;
 
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.util.LinkedList;
@@ -17,15 +17,13 @@ import java.util.function.Predicate;
 
 public class ImageStream {
 
-    private static final Predicate<Point> TRUE_PREDICATE = point -> true;
+    private static final Predicate<Pixel> TRUE_PREDICATE = pixel -> true;
     private static final ColorChannel[] ALL_CHANNELS = {ColorChannel.RED,
-            ColorChannel.GREEN,
-            ColorChannel.BLUE,
-            ColorChannel.ALPHA};
+            ColorChannel.GREEN, ColorChannel.BLUE, ColorChannel.ALPHA};
 
     private BufferedImage imageCopy;
     private List<ImageTransform> filters;
-    private Predicate<Point> predicate;
+    private Predicate<Pixel> predicate;
     private ColorChannel[] colorChannels;
     private int numberOfThreads;
     private final int defaultNumberOfThreads;
@@ -68,7 +66,7 @@ public class ImageStream {
         return this;
     }
 
-    public ImageStream bounds(Predicate<Point> predicate) {
+    public ImageStream bounds(Predicate<Pixel> predicate) {
         this.predicate = predicate;
         return this;
     }
@@ -101,5 +99,6 @@ public class ImageStream {
         }
         return collector.collect(imageCopy);
     }
+
 
 }

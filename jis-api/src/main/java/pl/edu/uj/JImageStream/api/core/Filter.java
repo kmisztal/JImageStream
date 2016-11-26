@@ -47,7 +47,7 @@ public abstract class Filter {
 
     protected Pixel getPixel(int x, int y) {
         int[] pixel = source.getPixel(x, y, (int[]) null);
-        return new Pixel(pixel[0], pixel[1], pixel[2], pixel[3]);
+        return new Pixel(x, y, pixel[0], pixel[1], pixel[2], pixel[3]);
     }
 
     protected int getSourceHeight() {
