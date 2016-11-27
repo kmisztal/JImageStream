@@ -21,12 +21,12 @@ public abstract class ConvolutionFilter extends Filter {
 
             int halfSize = kernel.length / 2;
 
-            for (int cooy = -halfSize; cooy <= halfSize; ++cooy) {
+            for (int cooy = -halfSize; cooy < halfSize; ++cooy) {
                 int indY = y + cooy;
                 if (indY < 0 || indY >= height) {
                     indY = y;
                 }
-                for (int coox = -halfSize; coox <= halfSize; ++coox) {
+                for (int coox = -halfSize; coox < halfSize; ++coox) {
                     int indX = x + coox;
                     if (indX < 0 || indX >= width) {
                         indX = x;
