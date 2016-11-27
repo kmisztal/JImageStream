@@ -67,8 +67,7 @@ public abstract class Filter {
 
     public void tearDown() {
 
-        logger.info("ending filter");
-        logger.info(String.valueOf(System.currentTimeMillis() - startTime) + " milliseconds - total filtering time");
+        logger.info("filter {} has ended, time {} ms", this.getClass(), System.currentTimeMillis() - startTime);
     }
 
 }
