@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 public class StreamableImageCollector implements Collector<StreamableImage> {
     @Override
     public StreamableImage collect(BufferedImage bufferedImage) {
+        logger.info(this.getClass() + " successfully collected image");
         return new StreamableImage(bufferedImage);
     }
 }
