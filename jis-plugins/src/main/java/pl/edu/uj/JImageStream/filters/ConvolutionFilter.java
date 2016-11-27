@@ -3,8 +3,6 @@ package pl.edu.uj.JImageStream.filters;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class ConvolutionFilter extends Filter {
     protected float[][] kernel;
@@ -13,6 +11,7 @@ public abstract class ConvolutionFilter extends Filter {
 
     @Override
     public void apply(int x, int y) {
+        setSourceDimension();
 
             int outputRed = 0;
             int outputGreen = 0;
@@ -46,11 +45,8 @@ public abstract class ConvolutionFilter extends Filter {
 
     protected abstract void createKernel(int kernelSize);
 
-    private void setSourceDimension() {
+    protected void setSourceDimension() {
         height = getSourceHeight();
         width = getSourceWidth();
-    }
-    public void setUp(){
-        setSourceDimension();
     }
 }
