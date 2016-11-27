@@ -62,7 +62,7 @@ public abstract class Filter {
 
     public void setUp() {
         startTime = System.currentTimeMillis();
-        logger.info("starting filter");
+        logger.info(this.getClass() + " starting filter");
     }
 
     public void tearDown() {
