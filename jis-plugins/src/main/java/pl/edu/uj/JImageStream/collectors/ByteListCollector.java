@@ -11,7 +11,7 @@ import java.util.List;
 public class ByteListCollector implements Collector<List<Byte>> {
     @Override
     public List<Byte> collect(BufferedImage bufferedImage) {
-        logger.info(this.getClass().getSimpleName() + " successfully collected image");
+        logger.info(this.getClass() + " successfully collected image");
         byte[] data = ((DataBufferByte) bufferedImage.getRaster().getDataBuffer()).getData();
         List<Byte> list = new ArrayList<>();
         for (byte d : data) {

@@ -68,7 +68,7 @@ public class ImageStream {
         colorChannels = null;
         numberOfThreads = defaultNumberOfThreads;
         numberOfFilterApplying = 1;
-        logger.info(filter.getClass().getSimpleName() + " has been applied");
+        logger.info(filter.getClass() + " has been applied");
         return this;
     }
 
