@@ -1,10 +1,7 @@
 package pl.edu.uj.JImageStream.tests.filters;
 
 import org.junit.Before;
-import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.collectors.FileCollector;
-import pl.edu.uj.JImageStream.collectors.StreamableImageCollector;
-import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.StreamableImage;
 
 import java.io.File;
@@ -15,7 +12,6 @@ import java.nio.file.Paths;
 public abstract class AbstractBaseTest {
 
     protected StreamableImage streamableImage;
-
 
     @Before
     public void setUp() throws IOException {

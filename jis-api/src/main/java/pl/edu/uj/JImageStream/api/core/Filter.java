@@ -13,7 +13,8 @@ public abstract class Filter {
     private WritableRaster source;
     private WritableRaster output;
     private ColorChannel[] colorRestrictions;
-    protected Logger logger = LogManager.getLogger(this.getClass());
+    private final Logger logger = LogManager.getLogger(this.getClass());
+    private long startTime;
 
     public void setSource(BufferedImage bufferedImage) {
         this.source = bufferedImage.copyData(null);
@@ -59,9 +60,13 @@ public abstract class Filter {
     }
 
     public void setUp() {
+        startTime = System.currentTimeMillis();
+        logger.info(this.getClass() + " starting filter");
     }
 
     public void tearDown() {
+
+        logger.info("filter {} has ended, time {} ms", this.getClass(), System.currentTimeMillis() - startTime);
     }
 
 }
