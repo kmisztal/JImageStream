@@ -4,9 +4,6 @@ import pl.edu.uj.JImageStream.model.Pixel;
 
 import java.util.function.Predicate;
 
-/**
- * Created by pPanek on 2016-11-29.
- */
 public class ThresholdPredicate implements Predicate<Pixel> {
 
     private int threshold = 100;

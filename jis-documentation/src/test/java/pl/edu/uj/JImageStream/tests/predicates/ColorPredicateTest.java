@@ -1,11 +1,11 @@
 package pl.edu.uj.JImageStream.tests.predicates;
 
 import org.junit.Test;
+import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.edge.RobertsCrossXFilter;
-import pl.edu.uj.JImageStream.filters.noise.SaltAndPepperFilter;
+import pl.edu.uj.JImageStream.filters.color.RedFilter;
+import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.predicates.ColorPredicate;
-import pl.edu.uj.JImageStream.predicates.ThresholdPredicate;
 import pl.edu.uj.JImageStream.tests.filters.AbstractBaseTest;
 
 import javax.imageio.ImageIO;
@@ -14,19 +14,34 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by pPanek on 2016-11-29.
- */
 public class ColorPredicateTest extends AbstractBaseTest{
+
+    private Filter fullRedFilter = new Filter() {
+        @Override
+        public void apply(int x, int y) {
+            setPixel(x, y, new Pixel(255,0,0,255));
+        }
+    };
 
     @Test
     public void colorPredicateTest() {
-        BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(50)
-                .bounds(new ThresholdPredicate(155))
-                .apply(new RobertsCrossXFilter())
-                .bounds(new ColorPredicate(Color.black))
-                .apply(new SaltAndPepperFilter())
+
+        BufferedImage bufferedImage = streamableImage.stream()
+                .bounds(p -> p.x < 200)
+                .apply(fullRedFilter)
+                .collect(new BufferedImageCollector());
+
+        try {
+            ImageIO.write(bufferedImage, "png", new File("target/docs/images/HalfRedLena.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        bufferedImage = streamableImage.stream()
+                .bounds(p -> p.x < 200)
+                .apply(fullRedFilter)
+                .bounds(new ColorPredicate(Color.red))
+                .apply(new RedFilter())
                 .collect(new BufferedImageCollector());
 
 

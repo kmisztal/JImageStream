@@ -11,16 +11,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by pPanek on 2016-11-29.
- */
 public class CirclePredicateTest extends AbstractBaseTest {
 
 
     @Test
     public void circlePredicateTest() {
-        BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(50)
+        BufferedImage bufferedImage = streamableImage.stream()
                 .bounds(new CirclePredicate(220, 145, 100))
                 .apply(new RedFilter())
                 .collect(new BufferedImageCollector());

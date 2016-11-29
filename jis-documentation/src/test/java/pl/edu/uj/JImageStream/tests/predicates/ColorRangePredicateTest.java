@@ -19,11 +19,12 @@ public class ColorRangePredicateTest extends AbstractBaseTest {
 
     @Test
     public void rangePredicateTest() {
-        BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(50)
+        // tag::ColorRangePredicate[]
+        BufferedImage bufferedImage = streamableImage.stream()
                 .bounds(new ColorRangePredicate(10, 200, ColorChannel.RED))
                 .apply(new RedFilter())
                 .collect(new BufferedImageCollector());
+        // end::ColorRangePredicate[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/ColorRangePredicate.png"));

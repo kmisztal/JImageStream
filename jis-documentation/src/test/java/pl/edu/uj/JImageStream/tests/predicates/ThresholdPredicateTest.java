@@ -2,6 +2,7 @@ package pl.edu.uj.JImageStream.tests.predicates;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.filters.color.RedFilter;
 import pl.edu.uj.JImageStream.filters.edge.RobertsCrossXFilter;
 import pl.edu.uj.JImageStream.tests.filters.AbstractBaseTest;
 import pl.edu.uj.JImageStream.predicates.ThresholdPredicate;
@@ -18,10 +19,9 @@ public class ThresholdPredicateTest extends AbstractBaseTest{
 
     @Test
     public void thresholdTest() {
-        BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(50)
-                .bounds(new ThresholdPredicate(155))
-                .apply(new RobertsCrossXFilter())
+        BufferedImage bufferedImage = streamableImage.stream()
+                .bounds(new ThresholdPredicate(140))
+                .apply(new RedFilter())
                 .collect(new BufferedImageCollector());
 
 

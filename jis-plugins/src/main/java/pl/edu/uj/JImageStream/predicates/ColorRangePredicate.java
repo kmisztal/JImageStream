@@ -5,9 +5,6 @@ import pl.edu.uj.JImageStream.model.Pixel;
 
 import java.util.function.Predicate;
 
-/**
- * Created by pPanek on 2016-11-29.
- */
 public class ColorRangePredicate implements Predicate<Pixel> {
 
     private int min;
@@ -33,8 +30,11 @@ public class ColorRangePredicate implements Predicate<Pixel> {
             case BLUE:
                 color = pixel.getBlue();
                 break;
-            default:
+            case ALPHA:
                 color = pixel.getAlpha();
+                break;
+            default:
+                throw new IllegalArgumentException();
         }
 
         return color >= min && color <= max;

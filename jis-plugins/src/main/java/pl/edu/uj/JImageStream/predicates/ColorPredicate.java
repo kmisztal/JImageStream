@@ -5,9 +5,6 @@ import pl.edu.uj.JImageStream.model.Pixel;
 import java.awt.Color;
 import java.util.function.Predicate;
 
-/**
- * Created by pPanek on 2016-11-28.
- */
 public class ColorPredicate implements Predicate<Pixel> {
 
     Color color;
