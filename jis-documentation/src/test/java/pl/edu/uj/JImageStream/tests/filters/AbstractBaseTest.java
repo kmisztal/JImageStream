@@ -28,7 +28,7 @@ public abstract class AbstractBaseTest {
 
         streamableImage = new StreamableImage(file);
 
-       streamableImage.stream().collect(new FileCollector("png", "target/docs/images/lena.png"));
+        streamableImage.stream().collect(new FileCollector("png", "target/docs/images/lena.png"));
     }
 
 }
