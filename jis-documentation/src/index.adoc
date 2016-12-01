@@ -1,4 +1,6 @@
 = JImageStream API
 
+include::api-doc.adoc[]
+include::predicates.adoc[]
 include::filters.adoc[]
 include::logging.adoc[]

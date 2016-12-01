@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
 public class MinFilterTest extends AbstractBaseTest {
 

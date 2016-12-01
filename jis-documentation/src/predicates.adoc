@@ -1,6 +1,6 @@
 :sourcedir: test/java/pl/edu/uj/JImageStream/tests
 
-= Predicate
+= Predicates
 ---
 
 == Usage
@@ -9,7 +9,7 @@ image we want to work on further (f.e. apply a filter).
 They are executed by method +
 `ImageStream bounds(Predicate<Pixel> predicate)` +
 
-Examplary usage of a `RedFilter` applied to pixels,
+Exemplary usage of a `RedFilter` applied to pixels,
 which have their red value between 10 and 200,
 using the `ColorRangePredicate`:
 

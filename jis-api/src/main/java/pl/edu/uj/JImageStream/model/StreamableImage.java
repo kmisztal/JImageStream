@@ -1,12 +1,11 @@
 package pl.edu.uj.JImageStream.model;
 
-import pl.edu.uj.JImageStream.api.ImageStream;
-import pl.edu.uj.JImageStream.utils.ImageUtils;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import pl.edu.uj.JImageStream.api.ImageStream;
+import pl.edu.uj.JImageStream.utils.ImageUtils;
 
 public class StreamableImage {
 
@@ -17,7 +16,7 @@ public class StreamableImage {
     }
 
     public StreamableImage(BufferedImage bufferedImage) {
-        this.bufferedImage = bufferedImage;
+        this.bufferedImage = ImageUtils.convert(bufferedImage, BufferedImage.TYPE_INT_ARGB);
     }
 
     public ImageStream stream() {

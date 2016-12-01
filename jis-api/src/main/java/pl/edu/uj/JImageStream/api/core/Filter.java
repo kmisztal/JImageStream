@@ -1,12 +1,11 @@
 package pl.edu.uj.JImageStream.api.core;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
-
-import java.awt.image.BufferedImage;
-import java.awt.image.WritableRaster;
 
 public abstract class Filter {
 

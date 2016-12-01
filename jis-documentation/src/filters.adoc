@@ -1,7 +1,7 @@
 :sourcedir: test/java/pl/edu/uj/JImageStream/tests
 
 
-= Filter documentation
+= Filters
 
 == Usage
 [.lead]

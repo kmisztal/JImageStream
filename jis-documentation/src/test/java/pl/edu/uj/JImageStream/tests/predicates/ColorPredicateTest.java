@@ -1,25 +1,24 @@
 package pl.edu.uj.JImageStream.tests.predicates;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
 import pl.edu.uj.JImageStream.filters.color.RedFilter;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.predicates.ColorPredicate;
-import pl.edu.uj.JImageStream.tests.filters.AbstractBaseTest;
+import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
-import javax.imageio.ImageIO;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-public class ColorPredicateTest extends AbstractBaseTest{
+public class ColorPredicateTest extends AbstractBaseTest {
 
     private Filter fullRedFilter = new Filter() {
         @Override
         public void apply(int x, int y) {
-            setPixel(x, y, new Pixel(255,0,0,255));
+            setPixel(x, y, new Pixel(255, 0, 0, 255));
         }
     };
 

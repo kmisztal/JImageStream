@@ -1,6 +1,11 @@
 package pl.edu.uj.JImageStream.api;
 
 
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Predicate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.edu.uj.JImageStream.api.core.Collector;
@@ -10,12 +15,6 @@ import pl.edu.uj.JImageStream.api.transforms.BoundedImageTransform;
 import pl.edu.uj.JImageStream.api.transforms.ParallelBoundedImageTransform;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
-
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Predicate;
 
 public class ImageStream {
 
@@ -79,6 +78,7 @@ public class ImageStream {
         this.numberOfFilterApplying = numberOfFilterApplying;
         return this;
     }
+
     public ImageStream channel(ColorChannel... colorChannels) {
         this.colorChannels = colorChannels;
         return this;

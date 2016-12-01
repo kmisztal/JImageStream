@@ -2,7 +2,7 @@ package pl.edu.uj.JImageStream.model;
 
 import java.awt.Point;
 
-public class Pixel extends Point{
+public class Pixel extends Point {
 
     private int colors[]; // 0 = RED, 1 = GREEN, 2 = BLUE, 3 = ALPHA
 
@@ -11,12 +11,12 @@ public class Pixel extends Point{
     }
 
     public Pixel(int red, int green, int blue, int alpha) {
-        colors = new int[] {red, green, blue, alpha};
+        colors = new int[]{red, green, blue, alpha};
     }
 
     public Pixel(int x, int y, int red, int green, int blue, int alpha) {
-        super(x,y);
-        colors = new int[] {red, green, blue, alpha};
+        super(x, y);
+        colors = new int[]{red, green, blue, alpha};
     }
 
     public int[] getColors() {

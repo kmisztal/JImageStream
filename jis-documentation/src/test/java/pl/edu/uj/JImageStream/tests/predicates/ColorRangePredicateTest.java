@@ -1,20 +1,16 @@
 package pl.edu.uj.JImageStream.tests.predicates;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
 import pl.edu.uj.JImageStream.filters.color.RedFilter;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.predicates.ColorRangePredicate;
-import pl.edu.uj.JImageStream.tests.filters.AbstractBaseTest;
+import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-/**
- * Created by pPanek on 2016-11-29.
- */
 public class ColorRangePredicateTest extends AbstractBaseTest {
 
     @Test

@@ -1,13 +1,13 @@
 package pl.edu.uj.JImageStream.tests.filters;
 
-import org.junit.Test;
-import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.noise.GaussFilter;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import org.junit.Test;
+import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.filters.noise.GaussFilter;
+import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
 public class GaussFilterTest extends AbstractBaseTest {
 

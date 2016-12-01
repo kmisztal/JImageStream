@@ -1,11 +1,10 @@
 package pl.edu.uj.JImageStream.collectors;
 
-import pl.edu.uj.JImageStream.api.core.Collector;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import pl.edu.uj.JImageStream.api.core.Collector;
 
 
 public class FileCollector implements Collector<File> {

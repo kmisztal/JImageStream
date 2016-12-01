@@ -1,11 +1,10 @@
 package pl.edu.uj.JImageStream.collectors;
 
-import pl.edu.uj.JImageStream.api.core.Collector;
-
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.util.ArrayList;
 import java.util.List;
+import pl.edu.uj.JImageStream.api.core.Collector;
 
 
 public class ByteListCollector implements Collector<List<Byte>> {

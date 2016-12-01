@@ -1,16 +1,14 @@
 package pl.edu.uj.JImageStream.api.transforms;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
+import java.util.function.Predicate;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
-
-import java.awt.image.BufferedImage;
-import java.awt.image.WritableRaster;
-import java.util.function.Predicate;
-
 import static org.mockito.AdditionalMatchers.geq;
 import static org.mockito.AdditionalMatchers.lt;
 import static org.mockito.BDDMockito.given;

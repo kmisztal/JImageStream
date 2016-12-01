@@ -11,12 +11,13 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
 
 public class RobertsCrossFilterTest extends AbstractBaseTest {
 
     @Test
-    public void medianTest() {
+    public void robertsCrossFilterTest() {
         BufferedImage bufferedImageX = streamableImage.parallelStream()
                 .apply(new GrayScaleFilter())
                 .apply(new RobertsCrossXFilter())

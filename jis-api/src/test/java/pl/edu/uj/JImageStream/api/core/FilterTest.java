@@ -1,14 +1,12 @@
 package pl.edu.uj.JImageStream.api.core;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
-
-import java.awt.image.BufferedImage;
-import java.awt.image.WritableRaster;
-
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;

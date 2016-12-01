@@ -1,13 +1,12 @@
-package pl.edu.uj.JImageStream.tests.filters;
-
-import org.junit.Before;
-import pl.edu.uj.JImageStream.collectors.FileCollector;
-import pl.edu.uj.JImageStream.model.StreamableImage;
+package pl.edu.uj.JImageStream.tests;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import org.junit.Before;
+import pl.edu.uj.JImageStream.collectors.FileCollector;
+import pl.edu.uj.JImageStream.model.StreamableImage;
 
 public abstract class AbstractBaseTest {
 

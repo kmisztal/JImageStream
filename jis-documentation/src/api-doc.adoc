@@ -1,0 +1,45 @@
+:sourcedir: test/java/pl/edu/uj/JImageStream/tests
+
+= Basics
+
+== Create StreamableImage
+
+=== From file
+
+[source,java]
+.code
+----
+include::{sourcedir}/basic/CreateStreamableImageTest.java[tags=createFromFile]
+----
+
+=== From BufferedImage
+
+[source,java]
+.code
+----
+include::{sourcedir}/basic/CreateStreamableImageTest.java[tags=createFromImage]
+----
+
+== Create ImageStream
+
+[source,java]
+.code
+----
+include::{sourcedir}/basic/CreateImageStreamTest.java[tags=createImageStream]
+----
+
+== Create ParallelImageStream
+
+[source,java]
+.code
+----
+include::{sourcedir}/basic/CreateImageStreamTest.java[tags=createParallelImageStream]
+----
+
+== Collect ImageStream
+
+[source,java]
+.code
+----
+include::{sourcedir}/basic/CollectImageStream.java[tags=collectImageStream]
+----

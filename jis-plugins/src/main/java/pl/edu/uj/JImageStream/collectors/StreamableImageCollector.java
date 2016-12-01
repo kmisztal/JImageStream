@@ -1,9 +1,8 @@
 package pl.edu.uj.JImageStream.collectors;
 
+import java.awt.image.BufferedImage;
 import pl.edu.uj.JImageStream.api.core.Collector;
 import pl.edu.uj.JImageStream.model.StreamableImage;
-
-import java.awt.image.BufferedImage;
 
 
 public class StreamableImageCollector implements Collector<StreamableImage> {
