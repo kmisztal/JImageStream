@@ -14,12 +14,17 @@ public class BoxBlurFilterTest extends AbstractBaseTest {
     @Test
     public void boxBlurFilterTest() {
 
+        // tag::boxBlurFilter5[]
         BufferedImage bufferedImageBlur5 = streamableImage.stream()
                 .apply(new BoxBlurFilter(5))
                 .collect(new BufferedImageCollector());
+        // end::boxBlurFilter5[]
+
+        // tag::boxBlurFilter7[]
         BufferedImage bufferedImageBlur7 = streamableImage.stream()
                 .apply(new BoxBlurFilter(7))
                 .collect(new BufferedImageCollector());
+        // end::boxBlurFilter7[]
 
         try {
             ImageIO.write(bufferedImageBlur5, "png", new File("target/docs/images/BoxBlurFilter5.png"));

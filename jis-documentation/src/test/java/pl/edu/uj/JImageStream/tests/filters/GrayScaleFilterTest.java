@@ -11,11 +11,13 @@ import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
 public class GrayScaleFilterTest extends AbstractBaseTest {
     @Test
-    public void greyScaleFilterTest() {
+    public void grayScaleFilterTest() {
 
+        // tag::grayscaleFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .collect(new BufferedImageCollector());
+        // end::grayscaleFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/GrayScaleFilter.png"));

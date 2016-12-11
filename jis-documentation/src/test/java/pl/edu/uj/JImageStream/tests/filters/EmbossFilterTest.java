@@ -13,9 +13,11 @@ public class EmbossFilterTest extends AbstractBaseTest {
     @Test
     public void embossFilterTest() {
 
+        // tag::embossFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new EmbossFilter())
                 .collect(new BufferedImageCollector());
+        // end::embossFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/EmbossFilter.png"));

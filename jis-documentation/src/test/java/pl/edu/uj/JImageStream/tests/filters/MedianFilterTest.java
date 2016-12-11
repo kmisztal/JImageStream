@@ -14,9 +14,11 @@ public class MedianFilterTest extends AbstractBaseTest {
 
     @Test
     public void medianTest() {
+        // tag::medianFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(50).apply(new MedianFilter(21))
+                .setThreads(50).apply(new MedianFilter(9))
                 .collect(new BufferedImageCollector());
+        // end::medianFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/MedianFilter.png"));

@@ -13,9 +13,11 @@ public class MeanFilterTest extends AbstractBaseTest {
 
     @Test
     public void meanTest() {
+        // tag::meanFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(100).apply(new MeanFilter(15))
+                .setThreads(50).apply(new MeanFilter(9))
                 .collect(new BufferedImageCollector());
+        // end::meanFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/MeanFilter.png"));

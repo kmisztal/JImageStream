@@ -14,9 +14,11 @@ public class MaxFilterTest extends AbstractBaseTest {
 
     @Test
     public void maxTest() {
+        // tag::maxFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
                 .setThreads(50).apply(new MaxFilter(9))
                 .collect(new BufferedImageCollector());
+        // end::maxFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/MaxFilter.png"));
