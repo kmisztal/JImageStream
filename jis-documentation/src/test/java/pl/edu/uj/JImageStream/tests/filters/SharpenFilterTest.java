@@ -13,10 +13,11 @@ import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 public class SharpenFilterTest extends AbstractBaseTest {
     @Test
     public void sharpenFilterTest() {
-
+        // tag::sharpenFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new SharpenFilter())
                 .collect(new BufferedImageCollector());
+        // end::sharpenFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/SharpenFilter.png"));

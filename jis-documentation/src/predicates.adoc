@@ -23,26 +23,26 @@ include::{sourcedir}/predicates/ColorRangePredicateTest.java[tags=ColorRangePred
 
 === CirclePredicate
 --
-image:lena.png[width="300", height="200"]
-image:CirclePredicate.png[width="300", height="200"]
+image:lena.png[width="300", height="300"]
+image:CirclePredicate.png[width="300", height="300"]
 --
 
 === ColorPredicate
 --
-image:HalfRedLena.png[width="300", height="200"]
-image:ColorPredicate.png[width="300", height="200"]
+image:HalfRedLena.png[width="300", height="300"]
+image:ColorPredicate.png[width="300", height="300"]
 --
 
 === ColorRangePredicate
 --
-image:lena.png[width="300", height="200"]
-image:ColorRangePredicate.png[width="300", height="200"]
+image:lena.png[width="300", height="300"]
+image:ColorRangePredicate.png[width="300", height="300"]
 --
 
 === ThresholdPredicate
 --
-image:lena.png[width="300", height="200"]
-image:ThresholdPredicate.png[width="300", height="200"]
+image:lena.png[width="300", height="300"]
+image:ThresholdPredicate.png[width="300", height="300"]
 --
 
 

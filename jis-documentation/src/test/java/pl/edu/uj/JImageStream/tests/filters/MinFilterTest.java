@@ -14,9 +14,11 @@ public class MinFilterTest extends AbstractBaseTest {
 
     @Test
     public void minTest() {
+        // tag::minFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
                 .setThreads(50).apply(new MinFilter(9))
                 .collect(new BufferedImageCollector());
+        // end::minFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/MinFilter.png"));

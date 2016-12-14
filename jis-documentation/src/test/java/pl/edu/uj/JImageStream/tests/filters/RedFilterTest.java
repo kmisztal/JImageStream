@@ -14,9 +14,11 @@ public class RedFilterTest extends AbstractBaseTest {
     @Test
     public void redFilterTest() {
 
+        // tag::redFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new RedFilter())
                 .collect(new BufferedImageCollector());
+        // end::redFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/RedFilter.png"));

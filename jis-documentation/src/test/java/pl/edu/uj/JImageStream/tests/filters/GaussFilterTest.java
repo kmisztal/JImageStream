@@ -14,12 +14,17 @@ public class GaussFilterTest extends AbstractBaseTest {
     @Test
     public void gaussFilterTest() {
 
+        // tag::gaussFilter51[]
         BufferedImage bufferedImageGauss5 = streamableImage.stream()
                 .apply(new GaussFilter(5, 1.0))
                 .collect(new BufferedImageCollector());
+        // end::gaussFilter51[]
+
+        // tag::gaussFilter74[]
         BufferedImage bufferedImageGauss15 = streamableImage.stream()
                 .apply(new GaussFilter(7, 4.0))
                 .collect(new BufferedImageCollector());
+        // end::gaussFilter74[]
 
         try {
             ImageIO.write(bufferedImageGauss5, "png", new File("target/docs/images/GaussFilter5.png"));

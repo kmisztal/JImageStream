@@ -13,9 +13,11 @@ public class GreenFilterTest extends AbstractBaseTest {
     @Test
     public void greenFilterTest() {
 
+        // tag::greenFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GreenFilter())
                 .collect(new BufferedImageCollector());
+        // end::greenFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/GreenFilter.png"));
