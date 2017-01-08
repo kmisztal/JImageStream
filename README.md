@@ -35,6 +35,25 @@ Add these dependecies to your pom.xml
         <version>1.0</version>
     </dependency>
 
+OR
+
+Use jitpack to resolve JImageStream dependencies
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.kmisztal</groupId>
+            <artifactId>JImageStream</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
 ### Example use
    
 ```	
