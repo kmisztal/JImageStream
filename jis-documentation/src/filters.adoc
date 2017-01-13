@@ -118,6 +118,16 @@ include::{sourcedir}/filters/SepiaFilterTest.java[tags=sepiaFilter]
 ----
 image::SepiaFilter.png[title="Sepia Filter", width="300", height="300"]
 
+==== Invert filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/InvertFilterTest.java[tags=invertFilter]
+----
+image::InvertFilter.png[title="Invert Filter", width="300", height="300"]
+
+
 === Noise filters
 
 ==== Salt and pepper filter
