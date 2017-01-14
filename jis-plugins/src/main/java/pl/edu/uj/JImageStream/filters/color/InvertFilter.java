@@ -7,9 +7,9 @@ public class InvertFilter extends Filter {
     @Override
     public void apply(int x, int y) {
         Pixel pixel = getPixel(x, y);
-        int red = 255 - pixel.getRed();
-        int green = 255 - pixel.getGreen();
-        int blue = 255 - pixel.getBlue();
-        setPixel(x, y, new Pixel(red, green, blue, pixel.getAlpha()));
+        pixel.setRed(255 - pixel.getRed());
+        pixel.setGreen(255 - pixel.getGreen());
+        pixel.setBlue(255 - pixel.getBlue());
+        setPixel(x, y, pixel);
     }
 }
