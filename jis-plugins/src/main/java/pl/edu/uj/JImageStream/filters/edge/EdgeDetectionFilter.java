@@ -31,12 +31,6 @@ public class EdgeDetectionFilter extends Filter {
         int blue = (int) this.dotProduct(pixelX[2], pixelY[2]);
         int alpha = getPixel(x, y).getAlpha();
 
-
-//        int red = (int) Math.sqrt(pixelX[0] * pixelX[0] + pixelY[0] * pixelY[0]);
-//        int green = (int) Math.sqrt(pixelX[1] * pixelX[1] + pixelY[1] * pixelY[1]);
-//        int blue = (int) Math.sqrt(pixelX[2] * pixelX[2] + pixelY[2] * pixelY[2]);
-//        int alpha = getPixel(x, y).getAlpha();
-
         setPixel(x, y, new Pixel(red, green, blue, alpha));
     }
 }
