@@ -199,7 +199,7 @@ include::{sourcedir}/filters/RobertsCrossFilterTest.java[tags=robertsCrossXFilte
 image::RobertsX.png[title="RobertsX Filter", width="300", height="300"]
 
 
-===== Y Axis
+===== Y axis
 
 [source,java]
 .code
@@ -232,7 +232,7 @@ include::{sourcedir}/filters/SobelFilterTest.java[tags=sobelXFilter]
 image::SobelX.png[title="SobelX Filter", width="300", height="300"]
 
 
-===== Y Axis
+===== Y axis
 
 [source,java]
 .code
@@ -273,7 +273,7 @@ image::Sobel135.png[title="Sobel135 Filter", width="300", height="300"]
 
 
 
-===== Edge detection filter
+===== Edge detection filter using four angles
 
 [source,java]
 .code
