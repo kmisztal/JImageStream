@@ -252,3 +252,42 @@ include::{sourcedir}/filters/SobelFilterTest.java[tags=edgeDetectionSobelFilter]
 --
 image::Sobel.png[title="Sobel Filter", width="300", height="300"]
 --
+
+==== YCbCr filter
+
+===== Luminance Chanel Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/LuminanceChanelFilterTest.java[tags=luminanceChanelFilter]
+----
+image::LuminanceChanelFilter.png[title="Luminance Chanel Filter", width="300", height="300"]
+
+===== Blue Chrominance Chanel Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/BlueChrominanceChanelFilterTest.java[tags=blueChrominanceChanelFilter]
+----
+image::BlueChrominanceChanelFilter.png[title="Blue Chrominance Chanel Filter", width="300", height="300"]
+
+===== Red Chrominance Chanel Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/RedChrominanceChanelFilterTest.java[tags=redChrominanceChanelFilter]
+----
+image::RedChrominanceChanelFilter.png[title="Red Chrominance Chanel Filter", width="300", height="300"]
+
+===== Rotate Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/RotateFilterTest.java[tags=rotateFilter]
+----
+image::RotateFilter.png[title="Rotate Filter", width="300", height="300"]
+--
