@@ -14,11 +14,11 @@ public class LuminanceChanelFilterTest extends AbstractBaseTest {
     @Test
     public void LuminanceChanelFilterTest() {
 
-        // tag::LuminanceChanelFilterTest[]
+        // tag::luminanceChanelFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new LuminanceChanelFilter())
                 .collect(new BufferedImageCollector());
-        // end::LuminanceChanelFilterTest[]
+        // end::luminanceChanelFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/LuminanceChanelFilter.png"));

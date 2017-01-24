@@ -12,11 +12,11 @@ public class BlueChrominanceChanelFilterTest extends AbstractBaseTest {
     @Test
     public void BlueChrominanceChanelFilterTest() {
 
-        // tag::BlueChrominanceChanelFilter[]
+        // tag::blueChrominanceChanelFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new BlueChrominanceChanelFilter())
                 .collect(new BufferedImageCollector());
-        // end::BlueChrominanceChanelFilter[]
+        // end::blueChrominanceChanelFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/BlueChrominanceChanelFilter.png"));

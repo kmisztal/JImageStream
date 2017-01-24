@@ -14,11 +14,11 @@ public class RotateFilterTest extends AbstractBaseTest {
 
     @Test
     public void RotateFilterTest() {
-        // tag::RotateFilter[]
+        // tag::rotateFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new RotateFilter(45))
                 .collect(new BufferedImageCollector());
-        // end::RotateFilter[]
+        // end::rotateFilter[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/RotateFilter.png"));
