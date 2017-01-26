@@ -290,4 +290,13 @@ image::RedChrominanceChanelFilter.png[title="Red Chrominance Chanel Filter", wid
 include::{sourcedir}/filters/RotateFilterTest.java[tags=rotateFilter]
 ----
 image::RotateFilter.png[title="Rotate Filter", width="300", height="300"]
+
+===== Resize
+
+[source,java]
+.code
+----
+include::{sourcedir}\ResizeTest.java[tags=resize]
+----
+image::Resize.png[title="Resize", width="300", height="300"]
 --
