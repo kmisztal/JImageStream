@@ -3,6 +3,7 @@ package pl.edu.uj.JImageStream.api;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -104,5 +105,29 @@ public class ImageStream {
         return collector.collect(imageCopy);
     }
 
+    public ImageStream resize(int x, int y){
+        return resize(x,y,new Pixel(255,255,255,255));
+    }
+
+    public ImageStream resize(int x, int y, Pixel p){
+        WritableRaster output = ColorModel.getRGBdefault().createCompatibleWritableRaster(x,y);
+        WritableRaster input = imageCopy.copyData(null);
+
+        int nx = (x-imageCopy.getWidth())/2;
+        int ny = (y-imageCopy.getHeight())/2;
+        int []pix = {p.getRed(),p.getGreen(),p.getBlue(),p.getAlpha()};
+
+        for(int i=0;i<x;i++){
+            for(int j=0;j<y;j++){
+                if(i < nx || i >= x-nx || j < ny || j >= y-ny){
+                    output.setPixel(i,j,pix);
+                } else{
+                    output.setPixel(i,j,input.getPixel(i-nx,j-ny,(int[]) null));
+                }
+            }
+        }
+        imageCopy = new BufferedImage(imageCopy.getColorModel(),output,imageCopy.getColorModel().isAlphaPremultiplied(),null);
+        return this;
+    }
 
 }
