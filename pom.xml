@@ -24,6 +24,7 @@
         <module>jis-api</module>
         <module>jis-documentation</module>
         <module>jis-plugins</module>
+        <module>jis-performance</module>
     </modules>
 
     <profiles>
