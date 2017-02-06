@@ -29,7 +29,7 @@ public abstract class AbstractImageTransform implements ImageTransform {
 
     protected final Pixel getPixel(int x, int y) {
         int[] colors = image.getPixel(x, y);
-        return new Pixel(x, y, colors[1], colors[2], colors[3], colors[0]);
+        return new Pixel(x, y, colors[0], colors[1], colors[2], colors[3]);
     }
 
     @Override

@@ -36,7 +36,7 @@ public abstract class Filter {
         for (int i = 0; i < sourceColors.length; ++i) {
             sourceColors[i] = Math.min(Math.max(sourceColors[i], 0), 255);
         }
-        unpackedImage.setPixel(x, y, sourceColors[3], sourceColors[0], sourceColors[1], sourceColors[2]);
+        unpackedImage.setPixel(x, y, sourceColors[0], sourceColors[1], sourceColors[2], sourceColors[3]);
     }
 
     protected Pixel getPixel(int x, int y) {

@@ -39,7 +39,7 @@ public class UnpackedImage {
         return bufferedImageRGBA[y * width + x] & 255;
     }
 
-    public void setPixel(int x, int y, int alpha, int red, int green, int blue) {
+    public void setPixel(int x, int y, int red, int green, int blue, int alpha) {
         bufferedImageRGBAWorking[y * width + x] = (alpha << 24) + (red << 16) + (green << 8) + blue;
     }
 
