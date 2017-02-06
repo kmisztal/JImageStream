@@ -2,7 +2,6 @@ package pl.edu.uj.JImageStream.api;
 
 
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -15,14 +14,14 @@ import pl.edu.uj.JImageStream.api.transforms.BoundedImageTransform;
 import pl.edu.uj.JImageStream.api.transforms.ParallelBoundedImageTransform;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
+import pl.edu.uj.JImageStream.model.UnpackedImage;
 
 public class ImageStream {
 
     private static final Predicate<Pixel> TRUE_PREDICATE = pixel -> true;
     private static final ColorChannel[] ALL_CHANNELS = {ColorChannel.RED,
             ColorChannel.GREEN, ColorChannel.BLUE, ColorChannel.ALPHA};
-
-    private BufferedImage imageCopy;
+    private UnpackedImage imageCopy;
     private List<ImageTransform> filters;
     private Predicate<Pixel> predicate;
     private ColorChannel[] colorChannels;
@@ -34,9 +33,7 @@ public class ImageStream {
 
 
     public ImageStream(BufferedImage bufferedImage, boolean isParallel) {
-        ColorModel cm = bufferedImage.getColorModel();
-        boolean isAlpha = cm.isAlphaPremultiplied();
-        imageCopy = new BufferedImage(cm, bufferedImage.copyData(null), isAlpha, null);
+        imageCopy = new UnpackedImage(bufferedImage);
         filters = new LinkedList<>();
         this.isParallel = isParallel;
         if (isParallel) {
@@ -101,7 +98,7 @@ public class ImageStream {
         if (!filters.isEmpty()) {
             filters.forEach(ImageTransform::apply);
         }
-        return collector.collect(imageCopy);
+        return collector.collect(imageCopy.getBufferedImage());
     }
 
 
