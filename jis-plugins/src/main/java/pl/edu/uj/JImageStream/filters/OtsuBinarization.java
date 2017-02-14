@@ -1,6 +1,7 @@
-package pl.edu.uj.JImageStream.api.core;
+package pl.edu.uj.JImageStream.filters;
 
 import java.util.stream.IntStream;
+import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
 public class OtsuBinarization extends Filter {
