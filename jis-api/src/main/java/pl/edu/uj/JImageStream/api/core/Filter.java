@@ -12,20 +12,20 @@ public abstract class Filter {
     protected final Logger logger = LogManager.getLogger(this.getClass());
     private long startTime;
 
-    UnpackedImage unpackedImage;
+    private UnpackedImage unpackedImage;
 
     public void setSource(UnpackedImage image) {
         this.unpackedImage = image;
     }
 
-    public void setRestrictions(ColorChannel[] colorChannels) {
+    public final void setRestrictions(ColorChannel[] colorChannels) {
         this.colorRestrictions = colorChannels;
     }
 
 
     public abstract void apply(int x, int y);
 
-    protected void setPixel(int x, int y, Pixel pixel) {
+    protected final void setPixel(int x, int y, Pixel pixel) {
         int[] sourceColors = getPixel(x, y).getColors();
         int[] outputColors = pixel.getColors();
 
@@ -39,16 +39,16 @@ public abstract class Filter {
         unpackedImage.setPixel(x, y, sourceColors[0], sourceColors[1], sourceColors[2], sourceColors[3]);
     }
 
-    protected Pixel getPixel(int x, int y) {
+    protected final Pixel getPixel(int x, int y) {
         int[] pixel = unpackedImage.getPixel(x, y);
         return new Pixel(x, y, pixel[0], pixel[1], pixel[2], pixel[3]);
     }
 
-    protected int getSourceHeight() {
+    protected final int getSourceHeight() {
         return unpackedImage.getHeight();
     }
 
-    protected int getSourceWidth() {
+    protected final int getSourceWidth() {
         return unpackedImage.getWidth();
     }
 

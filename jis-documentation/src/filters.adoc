@@ -128,6 +128,15 @@ include::{sourcedir}/filters/InvertFilterTest.java[tags=invertFilter]
 image::InvertFilter.png[title="Invert Filter", width="300", height="300"]
 
 
+==== Otsu binarization filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/OtsuBinarizationTest.java[tags=otsuFilter]
+----
+image::OtsuFilter.png[title="Otsu binarization", width="300", height="300"]
+
 === Noise filters
 
 ==== Salt and pepper filter
