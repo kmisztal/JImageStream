@@ -27,7 +27,7 @@ public class OtsuBinarization extends Filter {
 
         for (int i = 0; i < sourceHeight; i++) {
             for (int j = 0; j < sourceWidth; j++) {
-                int k = (int) IntStream.of(getPixel(i, j).getColors()).limit(3).average().getAsDouble();
+                int k = (int) IntStream.of(getPixel(j, i).getColors()).limit(3).average().getAsDouble();
                 histogram[k]++;
             }
         }
