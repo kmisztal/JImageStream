@@ -17,7 +17,7 @@ public class ErosionFilterTest extends AbstractBaseTest {
         // tag::erosionFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
-                .apply(new ErosionFilter())
+                .apply(new ErosionFilter(7))
                 .collect(new BufferedImageCollector());
         // end::erosionFilter[]
 

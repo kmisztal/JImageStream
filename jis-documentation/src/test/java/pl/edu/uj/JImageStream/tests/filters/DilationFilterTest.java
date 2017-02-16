@@ -17,7 +17,7 @@ public class DilationFilterTest extends AbstractBaseTest {
         // tag::dilationFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
-                .apply(new DilationFilter())
+                .apply(new DilationFilter(7))
                 .collect(new BufferedImageCollector());
         // end::dilationFilter[]
 
