@@ -8,12 +8,16 @@ import java.awt.image.WritableRaster;
 
 public class EdgeDetectionFilter extends Filter {
 
-    private WritableRaster imageX;
-    private WritableRaster imageY;
+    protected WritableRaster imageX;
+    protected WritableRaster imageY;
 
     public EdgeDetectionFilter(BufferedImage imageX, BufferedImage imageY) {
         this.imageX = imageX.getRaster();
         this.imageY = imageY.getRaster();
+    }
+
+    protected double dotProduct(double x, double y){
+        return Math.sqrt(x * x + y * y);
     }
 
     @Override
@@ -22,9 +26,9 @@ public class EdgeDetectionFilter extends Filter {
         int[] pixelX = imageX.getPixel(x, y, (int[]) null);
         int[] pixelY = imageY.getPixel(x, y, (int[]) null);
 
-        int red = (int) Math.sqrt(pixelX[0] * pixelX[0] + pixelY[0] * pixelY[0]);
-        int green = (int) Math.sqrt(pixelX[1] * pixelX[1] + pixelY[1] * pixelY[1]);
-        int blue = (int) Math.sqrt(pixelX[2] * pixelX[2] + pixelY[2] * pixelY[2]);
+        int red = (int) this.dotProduct(pixelX[0], pixelY[0]);
+        int green = (int) this.dotProduct(pixelX[1], pixelY[1]);
+        int blue = (int) this.dotProduct(pixelX[2], pixelY[2]);
         int alpha = getPixel(x, y).getAlpha();
 
         setPixel(x, y, new Pixel(red, green, blue, alpha));

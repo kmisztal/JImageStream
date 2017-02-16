@@ -208,7 +208,7 @@ include::{sourcedir}/filters/RobertsCrossFilterTest.java[tags=robertsCrossXFilte
 image::RobertsX.png[title="RobertsX Filter", width="300", height="300"]
 
 
-===== Y Axis
+===== Y axis
 
 [source,java]
 .code
@@ -241,7 +241,7 @@ include::{sourcedir}/filters/SobelFilterTest.java[tags=sobelXFilter]
 image::SobelX.png[title="SobelX Filter", width="300", height="300"]
 
 
-===== Y Axis
+===== Y axis
 
 [source,java]
 .code
@@ -258,6 +258,37 @@ image::SobelY.png[title="SobelY Filter", width="300", height="300"]
 ----
 include::{sourcedir}/filters/SobelFilterTest.java[tags=edgeDetectionSobelFilter]
 ----
---
 image::Sobel.png[title="Sobel Filter", width="300", height="300"]
+
+
+===== 45 degrees
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=sobel45Filter]
+----
+image::Sobel45.png[title="Sobel45 Filter", width="300", height="300"]
+
+
+===== 135 degrees
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=sobel135Filter]
+----
+image::Sobel135.png[title="Sobel135 Filter", width="300", height="300"]
+
+
+
+===== Edge detection filter using four angles
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=edgeDetectionSobel4XFilter]
+----
+--
+image::Sobel4X.png[title="Sobel4X Filter", width="300", height="300"]
 --
