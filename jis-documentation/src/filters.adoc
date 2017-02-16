@@ -137,7 +137,7 @@ include::{sourcedir}/filters/OtsuBinarizationTest.java[tags=otsuFilter]
 ----
 image::OtsuFilter.png[title="Otsu binarization", width="300", height="300"]
 
-==== YCbCr filter
+==== YCbCr filters
 
 ===== Luminance Chanel Filter
 
@@ -322,7 +322,9 @@ include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=edgeDetectionSobel4XFil
 image::Sobel4X.png[title="Sobel4X Filter", width="300", height="300"]
 --
 
-===== Rotate Filter
+=== Morph filters
+
+==== Rotate Filter
 
 [source,java]
 .code
