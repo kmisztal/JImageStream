@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.color;
 
 import java.util.stream.IntStream;
 import pl.edu.uj.JImageStream.api.core.Filter;
