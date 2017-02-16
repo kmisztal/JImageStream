@@ -11,7 +11,11 @@ public class Pixel extends Point {
     }
 
     public Pixel(int red, int green, int blue, int alpha) {
-        colors = new int[]{red, green, blue, alpha};
+        this.colors = new int[]{red, green, blue, alpha};
+    }
+
+    public Pixel(int[] colors) {
+        this.colors = colors;
     }
 
     public Pixel(int x, int y, int red, int green, int blue, int alpha) {
