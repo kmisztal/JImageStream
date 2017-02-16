@@ -322,7 +322,7 @@ include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=edgeDetectionSobel4XFil
 image::Sobel4X.png[title="Sobel4X Filter", width="300", height="300"]
 --
 
-=== Morph filters
+=== Morphology filters
 
 ==== Rotate Filter
 
@@ -332,3 +332,21 @@ image::Sobel4X.png[title="Sobel4X Filter", width="300", height="300"]
 include::{sourcedir}/filters/RotateFilterTest.java[tags=RotateFilter]
 ----
 image::RotateFilter.png[title="Rotate Filter", width="300", height="300"]
+
+==== Dilation Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/DilationFilterTest.java[tags=dilationFilter]
+----
+image::DilationFilter.png[title="Dilation Filter", width="300", height="300"]
+
+==== Erosion Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/ErosionFilterTest.java[tags=erosionFilter]
+----
+image::ErosionFilter.png[title="Erosion Filter", width="300", height="300"]

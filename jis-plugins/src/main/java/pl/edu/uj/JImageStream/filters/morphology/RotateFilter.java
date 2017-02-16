@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters.morph;
+package pl.edu.uj.JImageStream.filters.morphology;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
