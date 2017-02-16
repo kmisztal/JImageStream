@@ -137,6 +137,35 @@ include::{sourcedir}/filters/OtsuBinarizationTest.java[tags=otsuFilter]
 ----
 image::OtsuFilter.png[title="Otsu binarization", width="300", height="300"]
 
+==== YCbCr filters
+
+===== Luminance Chanel Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/LuminanceChanelFilterTest.java[tags=LuminanceChanelFilterTest]
+----
+image::LuminanceChanelFilter.png[title="Luminance Chanel Filter", width="300", height="300"]
+
+===== Blue Chrominance Chanel Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/BlueChrominanceChanelFilterTest.java[tags=BlueChrominanceChanelFilter]
+----
+image::BlueChrominanceChanelFilter.png[title="Blue Chrominance Chanel Filter", width="300", height="300"]
+
+===== Red Chrominance Chanel Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/RedChrominanceChanelFilterTest.java[tags=RedChrominanceChanelFilterTest]
+----
+image::RedChrominanceChanelFilter.png[title="Red Chrominance Chanel Filter", width="300", height="300"]
+
 === Noise filters
 
 ==== Salt and pepper filter
@@ -292,3 +321,14 @@ include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=edgeDetectionSobel4XFil
 --
 image::Sobel4X.png[title="Sobel4X Filter", width="300", height="300"]
 --
+
+=== Morph filters
+
+==== Rotate Filter
+
+[source,java]
+.code
+----
+include::{sourcedir}/filters/RotateFilterTest.java[tags=RotateFilter]
+----
+image::RotateFilter.png[title="Rotate Filter", width="300", height="300"]
