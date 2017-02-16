@@ -464,6 +464,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_blue_filter">Blue filter</a></li>
 <li><a href="#_gray_scale_filter">Gray scale filter</a></li>
 <li><a href="#_sepia_filter">Sepia filter</a></li>
+<li><a href="#_invert_filter">Invert filter</a></li>
+<li><a href="#_otsu_binarization_filter">Otsu binarization filter</a></li>
+<li><a href="#_ycbcr_filters">YCbCr filters</a></li>
 </ul>
 </li>
 <li><a href="#_noise_filters">Noise filters</a>
@@ -483,6 +486,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_roberts_filter">Roberts filter</a></li>
 <li><a href="#_sobel_filter">Sobel filter</a></li>
+</ul>
+</li>
+<li><a href="#_morphology_filters">Morphology filters</a>
+<ul class="sectlevel3">
+<li><a href="#_rotate_filter">Rotate Filter</a></li>
+<li><a href="#_dilation_filter">Dilation Filter</a></li>
+<li><a href="#_erosion_filter">Erosion Filter</a></li>
 </ul>
 </li>
 </ul>
@@ -863,6 +873,94 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="title">Figure 12. Sepia Filter</div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_invert_filter">Invert filter</h4>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new InvertFilter())
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/InvertFilter.png" alt="InvertFilter" width="300" height="300">
+</div>
+<div class="title">Figure 13. Invert Filter</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_otsu_binarization_filter">Otsu binarization filter</h4>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new OtsuBinarization())
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OtsuFilter.png" alt="OtsuFilter" width="300" height="300">
+</div>
+<div class="title">Figure 14. Otsu binarization</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ycbcr_filters">YCbCr filters</h4>
+<div class="sect4">
+<h5 id="_luminance_chanel_filter">Luminance Chanel Filter</h5>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new LuminanceChanelFilter())
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LuminanceChanelFilter.png" alt="LuminanceChanelFilter" width="300" height="300">
+</div>
+<div class="title">Figure 15. Luminance Chanel Filter</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_blue_chrominance_chanel_filter">Blue Chrominance Chanel Filter</h5>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new BlueChrominanceChanelFilter())
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BlueChrominanceChanelFilter.png" alt="BlueChrominanceChanelFilter" width="300" height="300">
+</div>
+<div class="title">Figure 16. Blue Chrominance Chanel Filter</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_red_chrominance_chanel_filter">Red Chrominance Chanel Filter</h5>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new RedChrominanceChanelFilter())
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RedChrominanceChanelFilter.png" alt="RedChrominanceChanelFilter" width="300" height="300">
+</div>
+<div class="title">Figure 17. Red Chrominance Chanel Filter</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_noise_filters">Noise filters</h3>
@@ -880,7 +978,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/SaltAndPepperFilter.png" alt="SaltAndPepperFilter" width="300" height="300">
 </div>
-<div class="title">Figure 13. Salt and pepper Filter</div>
+<div class="title">Figure 18. Salt and pepper Filter</div>
 </div>
 </div>
 </div>
@@ -900,7 +998,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/MeanFilter.png" alt="MeanFilter" width="300" height="300">
 </div>
-<div class="title">Figure 14. Mean Filter</div>
+<div class="title">Figure 19. Mean Filter</div>
 </div>
 </div>
 <div class="sect3">
@@ -917,7 +1015,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/MedianFilter.png" alt="MedianFilter" width="300" height="300">
 </div>
-<div class="title">Figure 15. Median Filter</div>
+<div class="title">Figure 20. Median Filter</div>
 </div>
 </div>
 <div class="sect3">
@@ -934,7 +1032,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/MaxFilter.png" alt="MaxFilter" width="300" height="300">
 </div>
-<div class="title">Figure 16. Max Filter</div>
+<div class="title">Figure 21. Max Filter</div>
 </div>
 </div>
 <div class="sect3">
@@ -951,7 +1049,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/MinFilter.png" alt="MinFilter" width="300" height="300">
 </div>
-<div class="title">Figure 17. Min Filter</div>
+<div class="title">Figure 22. Min Filter</div>
 </div>
 </div>
 </div>
@@ -963,7 +1061,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/GrayScaleFilter.png" alt="GrayScaleFilter" width="300" height="300">
 </div>
-<div class="title">Figure 18. input image</div>
+<div class="title">Figure 23. input image</div>
 </div>
 </div>
 </div>
@@ -984,11 +1082,11 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/RobertsX.png" alt="RobertsX" width="300" height="300">
 </div>
-<div class="title">Figure 19. RobertsX Filter</div>
+<div class="title">Figure 24. RobertsX Filter</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_y_axis">Y Axis</h5>
+<h5 id="_y_axis">Y axis</h5>
 <div class="listingblock">
 <div class="title">code</div>
 <div class="content">
@@ -1002,7 +1100,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/RobertsY.png" alt="RobertsY" width="300" height="300">
 </div>
-<div class="title">Figure 20. RobertsY Filter</div>
+<div class="title">Figure 25. RobertsY Filter</div>
 </div>
 </div>
 <div class="sect4">
@@ -1021,7 +1119,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/Roberts.png" alt="Roberts" width="300" height="300">
 </div>
-<div class="title">Figure 21. Roberts Filter</div>
+<div class="title">Figure 26. Roberts Filter</div>
 </div>
 </div>
 </div>
@@ -1044,11 +1142,11 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/SobelX.png" alt="SobelX" width="300" height="300">
 </div>
-<div class="title">Figure 22. SobelX Filter</div>
+<div class="title">Figure 27. SobelX Filter</div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_y_axis_2">Y Axis</h5>
+<h5 id="_y_axis_2">Y axis</h5>
 <div class="listingblock">
 <div class="title">code</div>
 <div class="content">
@@ -1062,7 +1160,7 @@ using the <code>ColorRangePredicate</code>:</p>
 <div class="content">
 <img src="images/SobelY.png" alt="SobelY" width="300" height="300">
 </div>
-<div class="title">Figure 23. SobelY Filter</div>
+<div class="title">Figure 28. SobelY Filter</div>
 </div>
 </div>
 <div class="sect4">
@@ -1075,16 +1173,125 @@ using the <code>ColorRangePredicate</code>:</p>
                 .collect(new BufferedImageCollector());</code></pre>
 </div>
 </div>
-<div class="openblock">
-<div class="content">
 <div class="imageblock">
 <div class="content">
 <img src="images/Sobel.png" alt="Sobel" width="300" height="300">
 </div>
-<div class="title">Figure 24. Sobel Filter</div>
+<div class="title">Figure 29. Sobel Filter</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_45_degrees">45 degrees</h5>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage45 = streamableImage.parallelStream()
+                .apply(new GrayScaleFilter())
+                .apply(new Sobel45Filter())
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Sobel45.png" alt="Sobel45" width="300" height="300">
+</div>
+<div class="title">Figure 30. Sobel45 Filter</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_135_degrees">135 degrees</h5>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage135 = streamableImage.parallelStream()
+                .apply(new GrayScaleFilter())
+                .apply(new Sobel135Filter())
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Sobel135.png" alt="Sobel135" width="300" height="300">
+</div>
+<div class="title">Figure 31. Sobel135 Filter</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_edge_detection_filter_using_four_angles">Edge detection filter using four angles</h5>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.parallelStream()
+                .apply(new EdgeDetection4XFilter(bufferedImageX, bufferedImageY,bufferedImage45,bufferedImage135))
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="images/Sobel4X.png" alt="Sobel4X" width="300" height="300">
+</div>
+<div class="title">Figure 32. Sobel4X Filter</div>
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_morphology_filters">Morphology filters</h3>
+<div class="sect3">
+<h4 id="_rotate_filter">Rotate Filter</h4>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new RotateFilter(45))
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RotateFilter.png" alt="RotateFilter" width="300" height="300">
+</div>
+<div class="title">Figure 33. Rotate Filter</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dilation_filter">Dilation Filter</h4>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new GrayScaleFilter())
+                .apply(new DilationFilter(7))
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DilationFilter.png" alt="DilationFilter" width="300" height="300">
+</div>
+<div class="title">Figure 34. Dilation Filter</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_erosion_filter">Erosion Filter</h4>
+<div class="listingblock">
+<div class="title">code</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
+                .apply(new GrayScaleFilter())
+                .apply(new ErosionFilter(7))
+                .collect(new BufferedImageCollector());</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ErosionFilter.png" alt="ErosionFilter" width="300" height="300">
+</div>
+<div class="title">Figure 35. Erosion Filter</div>
 </div>
 </div>
 </div>
@@ -1151,7 +1358,7 @@ You can still use logs of level <em>TRACE</em> yet those will not be shown in th
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-11 12:05:46 +01:00
+Last updated 2017-01-06 12:34:19 +01:00
 </div>
 </div>
 </body>
