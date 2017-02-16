@@ -6,17 +6,17 @@ import pl.edu.uj.JImageStream.model.Pixel;
 import java.util.Comparator;
 import java.util.List;
 
-public class Erosion extends MorphologyFilter {
+public class DilationFilter extends MorphologyFilter {
 
-    public Erosion() {
+    public DilationFilter() {
         maskSize = 3;
     }
 
-    public Erosion(int maskSize) {
+    public DilationFilter(int maskSize) {
         this.maskSize = maskSize;
     }
 
-    public Erosion(int maskSize, int kernelShape) {
+    public DilationFilter(int maskSize, int kernelShape) {
         this.maskSize = maskSize;
         this.kernelShape = kernelShape;
     }
@@ -30,5 +30,4 @@ public class Erosion extends MorphologyFilter {
 
         return new Pixel(red, green, blue, alpha);
     }
-
 }
