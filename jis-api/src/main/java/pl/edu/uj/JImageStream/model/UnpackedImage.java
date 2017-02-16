@@ -6,11 +6,11 @@ import pl.edu.uj.JImageStream.utils.ImageUtils;
 
 public class UnpackedImage {
 
-    private int height;
-    private int width;
+    protected int height;
+    protected int width;
 
-    private int[] bufferedImageRGBA;
-    private int[] bufferedImageRGBAWorking;
+    protected int[] bufferedImageRGBA;
+    protected int[] bufferedImageRGBAWorking;
 
     public UnpackedImage(BufferedImage bufferedImage) {
         height = bufferedImage.getHeight();

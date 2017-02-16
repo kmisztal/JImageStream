@@ -18,23 +18,25 @@ import pl.edu.uj.JImageStream.model.UnpackedImage;
 
 public class ImageStream {
 
+    private final Logger LOGGER = LogManager.getLogger(this.getClass());
+
+    protected UnpackedImage image;
+    protected List<ImageTransform> transforms;
+
     private static final Predicate<Pixel> TRUE_PREDICATE = pixel -> true;
     private static final ColorChannel[] ALL_CHANNELS = {ColorChannel.RED,
             ColorChannel.GREEN, ColorChannel.BLUE, ColorChannel.ALPHA};
-    private UnpackedImage imageCopy;
-    private List<ImageTransform> filters;
+
     private Predicate<Pixel> predicate;
     private ColorChannel[] colorChannels;
     private int numberOfThreads;
     private final int defaultNumberOfThreads;
     private final boolean isParallel;
     private int numberOfFilterApplying;
-    private final Logger logger = LogManager.getLogger(this.getClass());
-
 
     public ImageStream(BufferedImage bufferedImage, boolean isParallel) {
-        imageCopy = new UnpackedImage(bufferedImage);
-        filters = new LinkedList<>();
+        image = new UnpackedImage(bufferedImage);
+        transforms = new LinkedList<>();
         this.isParallel = isParallel;
         if (isParallel) {
             defaultNumberOfThreads = Runtime.getRuntime().availableProcessors();
@@ -45,15 +47,15 @@ public class ImageStream {
         numberOfFilterApplying = 1;
     }
 
-    public ImageStream apply(Filter filter) {
+    public final ImageStream apply(Filter filter) {
         if (isParallel) {
             for (int i = 0; i < numberOfFilterApplying; i++) {
-                filters.add(new ParallelBoundedImageTransform(imageCopy, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
+                transforms.add(new ParallelBoundedImageTransform(image, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
                         predicate != null ? predicate : TRUE_PREDICATE, numberOfThreads));
             }
         } else {
             for (int i = 0; i < numberOfFilterApplying; i++) {
-                filters.add(new BoundedImageTransform(imageCopy, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
+                transforms.add(new BoundedImageTransform(image, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
                         predicate != null ? predicate : TRUE_PREDICATE));
             }
         }
@@ -62,31 +64,31 @@ public class ImageStream {
         colorChannels = null;
         numberOfThreads = defaultNumberOfThreads;
         numberOfFilterApplying = 1;
-        logger.info(filter.getClass() + " has been applied");
+        LOGGER.info(filter.getClass() + " has been applied");
         return this;
     }
 
-    public ImageStream bounds(Predicate<Pixel> predicate) {
+    public final ImageStream bounds(Predicate<Pixel> predicate) {
         this.predicate = predicate;
         return this;
     }
 
-    public ImageStream times(int numberOfFilterApplying) {
+    public final ImageStream times(int numberOfFilterApplying) {
         this.numberOfFilterApplying = numberOfFilterApplying;
         return this;
     }
 
-    public ImageStream channel(ColorChannel... colorChannels) {
+    public final ImageStream channel(ColorChannel... colorChannels) {
         this.colorChannels = colorChannels;
         return this;
     }
 
-    public ImageStream setThreads(int numberOfThreads) {
+    public final ImageStream setThreads(int numberOfThreads) {
         if (!isParallel) {
             throw new UnsupportedOperationException("Only parallel streams can use multiple threads");
         }
         if (numberOfThreads < 1) {
-            logger.warn("Wrong number of threads, one thread set instead");
+            LOGGER.warn("Wrong number of threads, one thread set instead");
             this.numberOfThreads = this.defaultNumberOfThreads;
         } else {
             this.numberOfThreads = numberOfThreads;
@@ -94,11 +96,11 @@ public class ImageStream {
         return this;
     }
 
-    public <T> T collect(Collector<T> collector) {
-        if (!filters.isEmpty()) {
-            filters.forEach(ImageTransform::apply);
+    public final <T> T collect(Collector<T> collector) {
+        if (!transforms.isEmpty()) {
+            transforms.forEach(ImageTransform::apply);
         }
-        return collector.collect(imageCopy.getBufferedImage());
+        return collector.collect(image.getBufferedImage());
     }
 
 

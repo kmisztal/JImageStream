@@ -9,7 +9,7 @@ import pl.edu.uj.JImageStream.utils.ImageUtils;
 
 public class StreamableImage {
 
-    private BufferedImage bufferedImage;
+    protected BufferedImage bufferedImage;
 
     public StreamableImage(File file) throws IOException {
         bufferedImage = ImageUtils.convert(ImageIO.read(file), BufferedImage.TYPE_INT_ARGB);
@@ -19,11 +19,11 @@ public class StreamableImage {
         this.bufferedImage = ImageUtils.convert(bufferedImage, BufferedImage.TYPE_INT_ARGB);
     }
 
-    public ImageStream stream() {
+    public final ImageStream stream() {
         return new ImageStream(bufferedImage, false);
     }
 
-    public ImageStream parallelStream() {
+    public final ImageStream parallelStream() {
         return new ImageStream(bufferedImage, true);
     }
 
