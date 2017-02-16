@@ -266,7 +266,7 @@ image::Sobel.png[title="Sobel Filter", width="300", height="300"]
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/SobelFilter4XTest.java[tags=sobel45Filter]
+include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=sobel45Filter]
 ----
 image::Sobel45.png[title="Sobel45 Filter", width="300", height="300"]
 
@@ -276,7 +276,7 @@ image::Sobel45.png[title="Sobel45 Filter", width="300", height="300"]
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/SobelFilter4XTest.java[tags=sobel135Filter]
+include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=sobel135Filter]
 ----
 image::Sobel135.png[title="Sobel135 Filter", width="300", height="300"]
 
@@ -287,7 +287,7 @@ image::Sobel135.png[title="Sobel135 Filter", width="300", height="300"]
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/SobelFilter4XTest.java[tags=edgeDetectionSobel4XFilter]
+include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=edgeDetectionSobel4XFilter]
 ----
 --
 image::Sobel4X.png[title="Sobel4X Filter", width="300", height="300"]
