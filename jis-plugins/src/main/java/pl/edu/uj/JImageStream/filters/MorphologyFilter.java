@@ -20,10 +20,13 @@ public abstract class MorphologyFilter extends Filter {
             createKernel();
         }
         List<Pixel> pixelList = new ArrayList<>();
-        for (int i = -maskSize / 2; i <= maskSize / 2; ++i) {
-            for (int j = -maskSize / 2; j <= maskSize / 2; ++j) {
+        final int v = maskSize / 2;
+        for (int i = -v; i <= v; ++i) {
+            for (int j = -v; j <= v; ++j) {
                 try {
-                    pixelList.add(getPixel(x + i, y + j));
+                    if (kernel[v + i][v + j]) {
+                        pixelList.add(getPixel(x + i, y + j));
+                    }
                 } catch (Exception e) {
                     //corner case, no need to handle
                 }
@@ -46,12 +49,12 @@ public abstract class MorphologyFilter extends Filter {
                 break;
             case VERTICAL_LINE_KERNEL:
                 for (int i = -v; i <= v; ++i) {
-                    this.kernel[v + i][v] = true;
+                    this.kernel[v][v + i] = true;
                 }
                 break;
             case HORIZONTAL_LINE_KERNEL:
                 for (int i = -v; i <= v; ++i) {
-                    this.kernel[v][v + i] = true;
+                    this.kernel[v + i][v] = true;
                 }
                 break;
             case SQUARE_KERNEL:
