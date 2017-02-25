@@ -34,13 +34,13 @@ public class DilationFilterTest extends AbstractBaseTest {
     @Test
     public void dilationFilterTest() {
 
-        // tag::dilationFilter[]
+        // tag::dilationFilterBinary[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new DilationFilter())
                 .collect(new BufferedImageCollector());
-        // end::dilationFilter[]
+        // end::dilationFilterBinary[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/DilationFilter.png"));
@@ -52,13 +52,13 @@ public class DilationFilterTest extends AbstractBaseTest {
     @Test
     public void dilationFilterWithBallKernelTest() {
 
-        // tag::dilationFilter[]
+        // tag::dilationFilterBinaryBall[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new DilationFilter(5, DilationFilter.BALL_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::dilationFilter[]
+        // end::dilationFilterBinaryBall[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/DilationFilterWithBallKernel.png"));
@@ -70,13 +70,13 @@ public class DilationFilterTest extends AbstractBaseTest {
     @Test
     public void dilationFilterWithSquareKernelTest() {
 
-        // tag::dilationFilter[]
+        // tag::dilationFilterBinarySquare[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new DilationFilter(5, DilationFilter.SQUARE_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::dilationFilter[]
+        // end::dilationFilterBinarySquare[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/DilationFilterWithSquareKernel.png"));
@@ -88,13 +88,13 @@ public class DilationFilterTest extends AbstractBaseTest {
     @Test
     public void dilationFilterWithVerticalKernelTest() {
 
-        // tag::dilationFilter[]
+        // tag::dilationFilterBinaryLine[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new DilationFilter(5, DilationFilter.VERTICAL_LINE_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::dilationFilter[]
+        // end::dilationFilterBinaryLine[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/DilationFilterWithVerticalKernel.png"));
@@ -106,13 +106,13 @@ public class DilationFilterTest extends AbstractBaseTest {
     @Test
     public void dilationFilterWithHorizontalKernelTest() {
 
-        // tag::dilationFilter[]
+        // tag::dilationFilterBinaryLine[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new DilationFilter(5, DilationFilter.HORIZONTAL_LINE_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::dilationFilter[]
+        // end::dilationFilterBinaryLine[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/DilationFilterWithHorizontalKernel.png"));

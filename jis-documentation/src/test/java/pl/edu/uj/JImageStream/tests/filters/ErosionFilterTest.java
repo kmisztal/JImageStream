@@ -35,13 +35,13 @@ public class ErosionFilterTest extends AbstractBaseTest {
     @Test
     public void erosionFilterTest() {
 
-        // tag::erosionFilter[]
+        // tag::erosionFilterBinary[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new ErosionFilter())
                 .collect(new BufferedImageCollector());
-        // end::erosionFilter[]
+        // end::erosionFilterBinary[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/ErosionFilter.png"));
@@ -53,13 +53,13 @@ public class ErosionFilterTest extends AbstractBaseTest {
     @Test
     public void erosionFilterWithBallKernelTest() {
 
-        // tag::erosionFilter[]
+        // tag::erosionFilterBinaryBall[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new ErosionFilter(5, ErosionFilter.BALL_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::erosionFilter[]
+        // end::erosionFilterBinaryBall[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/ErosionFilterWithBallKernel.png"));
@@ -71,13 +71,13 @@ public class ErosionFilterTest extends AbstractBaseTest {
     @Test
     public void erosionFilterWithSquareKernelTest() {
 
-        // tag::erosionFilter[]
+        // tag::erosionFilterBinarySquare[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new ErosionFilter(5, ErosionFilter.SQUARE_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::erosionFilter[]
+        // end::erosionFilterBinarySquare[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/ErosionFilterWithSquareKernel.png"));
@@ -89,13 +89,13 @@ public class ErosionFilterTest extends AbstractBaseTest {
     @Test
     public void erosionFilterWithVerticalKernelTest() {
 
-        // tag::erosionFilter[]
+        // tag::erosionFilterBinaryVertical[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new ErosionFilter(5, ErosionFilter.VERTICAL_LINE_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::erosionFilter[]
+        // end::erosionFilterBinaryVertical[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/ErosionFilterWithVerticalKernel.png"));
@@ -107,13 +107,13 @@ public class ErosionFilterTest extends AbstractBaseTest {
     @Test
     public void erosionFilterWithHorizontalKernelTest() {
 
-        // tag::erosionFilter[]
+        // tag::erosionFilterBinaryHorizontal[]
         BufferedImage bufferedImage = streamableImage.stream()
                 .apply(new GrayScaleFilter())
                 .apply(new OtsuBinarization())
                 .apply(new ErosionFilter(5, ErosionFilter.HORIZONTAL_LINE_KERNEL))
                 .collect(new BufferedImageCollector());
-        // end::erosionFilter[]
+        // end::erosionFilterBinaryHorizontal[]
 
         try {
             ImageIO.write(bufferedImage, "png", new File("target/docs/images/ErosionFilterWithHorizontalKernel.png"));
