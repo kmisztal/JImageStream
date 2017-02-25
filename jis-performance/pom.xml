@@ -5,7 +5,7 @@
     <parent>
         <artifactId>JImageStream</artifactId>
         <groupId>pl.edu.uj</groupId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -21,13 +21,13 @@
         <dependency>
             <groupId>pl.edu.uj</groupId>
             <artifactId>jis-api</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>1.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>pl.edu.uj</groupId>
             <artifactId>jis-plugins</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>1.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
