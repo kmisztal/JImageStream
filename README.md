@@ -11,7 +11,7 @@ git clone https://github.com/kmisztal/JImageStream.git
 
 Checkout release branch with 
 ```
-git checkout release/1.0
+git checkout release/1.1
 ```
 
 Run `mvn clean install` to install project to your local maven repository
@@ -27,12 +27,12 @@ Add these dependecies to your pom.xml
     <dependency>
        <groupId>pl.edu.uj</groupId>
        <artifactId>jis-api</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
     </dependency>
     <dependency>
         <groupId>pl.edu.uj</groupId>
         <artifactId>jis-plugins</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
     </dependency>
 
 OR
@@ -50,7 +50,7 @@ Use jitpack to resolve JImageStream dependencies
         <dependency>
             <groupId>com.github.kmisztal</groupId>
             <artifactId>JImageStream</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 

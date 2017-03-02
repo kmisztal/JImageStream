@@ -1,6 +1,5 @@
 package pl.edu.uj.JImageStream.api.transforms;
 
-import java.awt.image.BufferedImage;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -8,13 +7,14 @@ import java.util.function.Predicate;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
+import pl.edu.uj.JImageStream.model.UnpackedImage;
 
 public class ParallelBoundedImageTransform extends BoundedImageTransform {
 
     private int numberOfThreads;
 
-    public ParallelBoundedImageTransform(BufferedImage bufferedImage, Filter filter, ColorChannel[] colorChannels, Predicate<Pixel> predicate, int numberOfThreads) {
-        super(bufferedImage, filter, colorChannels, predicate);
+    public ParallelBoundedImageTransform(UnpackedImage image, Filter filter, ColorChannel[] colorChannels, Predicate<Pixel> predicate, int numberOfThreads) {
+        super(image, filter, colorChannels, predicate);
         this.numberOfThreads = numberOfThreads;
     }
 
