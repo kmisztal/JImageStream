@@ -6,6 +6,8 @@ import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.UnpackedImage;
 
+import java.util.stream.IntStream;
+
 public abstract class Filter {
 
     private ColorChannel[] colorRestrictions;
@@ -58,8 +60,32 @@ public abstract class Filter {
     }
 
     public void tearDown() {
-
         logger.info("filter {} has ended, time {} ms", this.getClass(), System.currentTimeMillis() - startTime);
+    }
+
+    protected int[] getGreyscaleHistogram() {
+        int[] histogram = new int[255];
+
+        for (int i = 0; i < getSourceWidth(); ++i) {
+            for (int j = 0; j < getSourceHeight(); ++j) {
+                ++histogram[(int) IntStream.of(getPixel(i, j).getColors()).limit(3).average().getAsDouble()];
+            }
+        }
+        return histogram;
+    }
+
+    protected int[][] getColorHistogram() {
+        int[][] histogram = new int[3][255];
+
+        for (int i = 0; i < getSourceWidth(); ++i) {
+            for (int j = 0; j < getSourceHeight(); ++j) {
+                Pixel pixel = getPixel(i, j);
+                ++histogram[0][pixel.getRed()];
+                ++histogram[1][pixel.getGreen()];
+                ++histogram[2][pixel.getBlue()];
+            }
+        }
+        return histogram;
     }
 
 }
