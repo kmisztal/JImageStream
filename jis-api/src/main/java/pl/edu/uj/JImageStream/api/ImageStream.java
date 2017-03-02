@@ -1,10 +1,6 @@
 package pl.edu.uj.JImageStream.api;
 
 
-import java.awt.image.BufferedImage;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Predicate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.edu.uj.JImageStream.api.core.Collector;
@@ -15,6 +11,11 @@ import pl.edu.uj.JImageStream.api.transforms.ParallelBoundedImageTransform;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.UnpackedImage;
+
+import java.awt.image.BufferedImage;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class ImageStream {
 
@@ -93,6 +94,11 @@ public class ImageStream {
         } else {
             this.numberOfThreads = numberOfThreads;
         }
+        return this;
+    }
+
+    public final ImageStream resize(int width, int height) {
+        transforms.add(() -> image.resize(width, height));
         return this;
     }
 

@@ -1,8 +1,9 @@
 package pl.edu.uj.JImageStream.model;
 
+import pl.edu.uj.JImageStream.utils.ImageUtils;
+
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
-import pl.edu.uj.JImageStream.utils.ImageUtils;
 
 public class UnpackedImage {
 
@@ -51,6 +52,24 @@ public class UnpackedImage {
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         bufferedImage.setRGB(0, 0, width, height, bufferedImageRGBA, 0, width);
         return bufferedImage;
+    }
+
+    public void resize(int x, int y) {
+        int[] copy = new int[x * y];
+
+        for (int i = 0; i < Math.min(width, x); ++i) {
+            for (int j = 0; j < Math.min(height, y); ++j) {
+                copy[j * (x - 1) + i] = bufferedImageRGBA[j * width + i];
+            }
+        }
+
+        height = y - 1;
+        width = x - 1;
+
+        bufferedImageRGBAWorking = copy;
+        bufferedImageRGBA = Arrays.copyOf(bufferedImageRGBAWorking, bufferedImageRGBAWorking.length);
+
+
     }
 
     public int getHeight() {
