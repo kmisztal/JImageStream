@@ -21,7 +21,7 @@ public class HistogramEqualization extends Filter {
         cdf[0][0] = hist[0][0];
         cdf[1][0] = hist[1][0];
         cdf[2][0] = hist[2][0];
-        for (int i = 1; i < hist.length; i++) {
+        for (int i = 1; i < hist[0].length; i++) {
             for (int k = 0; k < 3; ++k)
                 cdf[k][i] = cdf[k][i - 1] + hist[k][i];
         }

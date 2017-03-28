@@ -10,8 +10,8 @@ import java.util.stream.IntStream;
 
 public abstract class Filter {
 
-    private ColorChannel[] colorRestrictions;
     protected final Logger logger = LogManager.getLogger(this.getClass());
+    private ColorChannel[] colorRestrictions;
     private long startTime;
 
     private UnpackedImage unpackedImage;
@@ -75,7 +75,7 @@ public abstract class Filter {
     }
 
     protected int[][] getColorHistogram() {
-        int[][] histogram = new int[3][255];
+        int[][] histogram = new int[3][256];
 
         for (int i = 0; i < getSourceWidth(); ++i) {
             for (int j = 0; j < getSourceHeight(); ++j) {
