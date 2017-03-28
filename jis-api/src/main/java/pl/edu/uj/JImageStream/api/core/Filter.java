@@ -64,7 +64,7 @@ public abstract class Filter {
     }
 
     protected int[] getGreyscaleHistogram() {
-        int[] histogram = new int[255];
+        int[] histogram = new int[256];
 
         for (int i = 0; i < getSourceWidth(); ++i) {
             for (int j = 0; j < getSourceHeight(); ++j) {
