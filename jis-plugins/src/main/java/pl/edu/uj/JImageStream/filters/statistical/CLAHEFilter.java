@@ -5,14 +5,15 @@ public class CLAHEFilter extends Filter {
 
     public static double SLOPE = 6.0;
     public static int BLOCK_RADIUS = 63;
-    public static final int BINS = 255;
+    public static int BINS = 255;
 
     public CLAHEFilter() {
     }
 
-    public CLAHEFilter(double SLOPE, int BLOCK_RADIUS) {
-        this.SLOPE = SLOPE;
-        this.BLOCK_RADIUS = BLOCK_RADIUS;
+    public CLAHEFilter(double slope, int blockRadius, int bins) {
+        this.SLOPE = slope;
+        this.BLOCK_RADIUS = blockRadius;
+        this.BINS = bins;
     }
 
     public void apply(int i, int i1) {
