@@ -1,11 +1,13 @@
+package pl.edu.uj.JImageStream.filters.statistical;
+
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
 public class CLAHEFilter extends Filter {
 
-    public static double SLOPE = 6.0;
-    public static int BLOCK_RADIUS = 63;
-    public static int BINS = 255;
+    private double SLOPE = 6.0;
+    private int BLOCK_RADIUS = 63;
+    private int BINS = 255;
 
     public CLAHEFilter() {
     }
@@ -19,11 +21,11 @@ public class CLAHEFilter extends Filter {
     public void apply(int i, int i1) {
     }
 
-    public int roundPos(float a) {
+    private int roundPos(float a) {
         return (int) (a + 0.5f);
     }
 
-    public int[] createHistogram(int blockRadius, int bins, int blockXCenter, int blockYCenter, int[][] src, int w, int h) {
+    private int[] createHistogram(int blockRadius, int bins, int blockXCenter, int blockYCenter, int[][] src, int w, int h) {
         int[] hist = new int[bins + 1];
         int xMin = Math.max(0, blockXCenter - blockRadius);
         int yMin = Math.max(0, blockYCenter - blockRadius);
@@ -37,7 +39,7 @@ public class CLAHEFilter extends Filter {
         return hist;
     }
 
-    float[] createTransfer(int[] hist, int limit) {
+    private float[] createTransfer(int[] hist, int limit) {
         int[] cdfs = new int[hist.length];
         clipHistogram(hist, cdfs, limit);
         int hMin = hist.length - 1;
@@ -56,7 +58,7 @@ public class CLAHEFilter extends Filter {
         return transfer;
     }
 
-    public void clipHistogram(int[] hist, int[] clippedHist, int limit) {
+    private void clipHistogram(int[] hist, int[] clippedHist, int limit) {
         System.arraycopy(hist, 0, clippedHist, 0, hist.length);
         int clippedEntries = 0, clippedEntriesBefore;
         do {
