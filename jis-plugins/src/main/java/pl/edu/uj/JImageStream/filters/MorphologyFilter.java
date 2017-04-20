@@ -11,16 +11,19 @@ public abstract class MorphologyFilter extends Filter {
     public static final int BALL_KERNEL = 1;
     public static final int VERTICAL_LINE_KERNEL = 2;
     public static final int HORIZONTAL_LINE_KERNEL = 3;
-    protected int maskSize;
+    protected int kernelRadius;
     protected int kernelShape;
     protected boolean[][] kernel;
 
     protected List<Pixel> getPixelList(int x, int y) {
+        if (kernelRadius < 0) {
+            throw new IllegalArgumentException("kernelRadius cann't be negative");
+        }
         if (kernel == null) {
             createKernel();
         }
         List<Pixel> pixelList = new ArrayList<>();
-        final int v = maskSize / 2;
+        final int v = kernelRadius;
         for (int i = -v; i <= v; ++i) {
             for (int j = -v; j <= v; ++j) {
                 try {
@@ -36,8 +39,8 @@ public abstract class MorphologyFilter extends Filter {
     }
 
     private void createKernel() {
-        this.kernel = new boolean[maskSize][maskSize];
-        final int v = maskSize / 2;
+        this.kernel = new boolean[2 * kernelRadius + 1][2 * kernelRadius + 1];
+        final int v = kernelRadius;
         switch (kernelShape) {
             case BALL_KERNEL:
                 for (int i = -v; i <= v; ++i) {

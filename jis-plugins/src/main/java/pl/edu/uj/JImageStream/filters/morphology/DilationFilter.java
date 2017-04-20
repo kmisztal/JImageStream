@@ -9,15 +9,15 @@ import java.util.List;
 public class DilationFilter extends MorphologyFilter {
 
     public DilationFilter() {
-        maskSize = 3;
+        kernelRadius = 3;
     }
 
-    public DilationFilter(int maskSize) {
-        this.maskSize = maskSize;
+    public DilationFilter(int kernelRadius) {
+        this.kernelRadius = kernelRadius;
     }
 
-    public DilationFilter(int maskSize, int kernelShape) {
-        this.maskSize = maskSize;
+    public DilationFilter(int kernelRadius, int kernelShape) {
+        this.kernelRadius = kernelRadius;
         this.kernelShape = kernelShape;
     }
 

@@ -9,15 +9,15 @@ import java.util.List;
 public class ErosionFilter extends MorphologyFilter {
 
     public ErosionFilter() {
-        maskSize = 3;
+        kernelRadius = 3;
     }
 
-    public ErosionFilter(int maskSize) {
-        this.maskSize = maskSize;
+    public ErosionFilter(int kernelRadius) {
+        this.kernelRadius = kernelRadius;
     }
 
-    public ErosionFilter(int maskSize, int kernelShape) {
-        this.maskSize = maskSize;
+    public ErosionFilter(int kernelRadius, int kernelShape) {
+        this.kernelRadius = kernelRadius;
         this.kernelShape = kernelShape;
     }
 
