@@ -22,7 +22,7 @@ public class BoxBlurFilterTest extends AbstractBaseTest {
 
         // tag::boxBlurFilter7[]
         BufferedImage bufferedImageBlur7 = streamableImage.stream()
-                .apply(new BoxBlurFilter(7))
+                .apply(new BoxBlurFilter(11))
                 .collect(new BufferedImageCollector());
         // end::boxBlurFilter7[]
 

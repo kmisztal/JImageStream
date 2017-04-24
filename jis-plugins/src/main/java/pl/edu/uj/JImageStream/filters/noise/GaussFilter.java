@@ -8,13 +8,12 @@ public class GaussFilter extends ConvolutionFilter {
 
     public GaussFilter(int kernelSize, double theta) {
         this.theta = theta;
-        setKernelSize(kernelSize);
-        createKernel();
+        createKernel(kernelSize);
     }
 
     @Override
-    protected void createKernel() {
-        this.kernel = new float[kernelSize * kernelSize];
+    protected void createKernel(int kernelSize) {
+        this.kernel = new float[kernelSize][kernelSize];
         double[][] gaussian2D = gaussian2D(theta, kernelSize);
 
         double sum = 0;
@@ -28,15 +27,10 @@ public class GaussFilter extends ConvolutionFilter {
         for (int i = 0; i < kernelSize; ++i) {
             for (int j = 0; j < kernelSize; ++j) {
                 gaussian2D[i][j] = gaussian2D[i][j] / sum;
-                this.kernel[i * kernelSize + j] = (float) gaussian2D[i][j];
+                this.kernel[i][j] = (float) gaussian2D[i][j];
             }
 
         }
-    }
-
-    @Override
-    protected void setKernelSize(int s) {
-        this.kernelSize = s;
     }
 
     private double gaussianDiscrete2D(double theta, int x, int y) {

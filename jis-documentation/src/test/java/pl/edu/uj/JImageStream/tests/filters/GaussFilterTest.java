@@ -22,7 +22,7 @@ public class GaussFilterTest extends AbstractBaseTest {
 
         // tag::gaussFilter74[]
         BufferedImage bufferedImageGauss15 = streamableImage.stream()
-                .apply(new GaussFilter(7, 4.0))
+                .apply(new GaussFilter(11, 4.0))
                 .collect(new BufferedImageCollector());
         // end::gaussFilter74[]
 
