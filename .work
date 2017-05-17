@@ -1,0 +1,30 @@
+Collectors class
+Filters.class
+Predicates.class
+
+reformat documentation
+
+Add array collectors
+
+Filters:
+- check if YCbCr works, if not, delete it
+- clean up color package
+- gray -> grey
+- some edge -> convolve
+- rotate != morphology
+- noise -> copy from ImageNoise, should we use JSC?
+- clean up statistical
+- abstract package + clean up
+- add scaling
+
+performance tests:
+- no idea what to think about this module
+
+documentation:
+- get random images from set instead of lena all the time, will make it look more alive
+- update with new filters and proper examples
+
+core:
+- delete channel operation, noone ever uses it and its cpu heavy
+- pack setUp, tearDown methods so they dont have to call super in implementations
+- getHistograms should propably be in UnpackedImage instead of filter, same for setPixel checking
