@@ -1,9 +1,10 @@
 package pl.edu.uj.JImageStream.tests.basic;
 
-import java.awt.image.BufferedImage;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.api.core.Collector;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
+
+import java.awt.image.BufferedImage;
 
 public class CollectImageStream extends AbstractBaseTest {
 

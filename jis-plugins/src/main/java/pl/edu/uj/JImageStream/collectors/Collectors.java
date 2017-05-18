@@ -6,8 +6,8 @@ public class Collectors {
         return new BufferedImageCollector();
     }
 
-    public static FileCollector toFile(String format, String fileName) {
-        return new FileCollector(format, fileName);
+    public static FileCollector toFile(FileCollector.Format format, String fileName) {
+        return new FileCollector(fileName, format);
     }
 
     public static DisplayCollector display() {

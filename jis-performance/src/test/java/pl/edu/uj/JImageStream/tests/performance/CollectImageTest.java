@@ -26,7 +26,7 @@ public class CollectImageTest extends AbstractTest {
 
     @Test
     public void FileCollector() {
-        runCollector(new FileCollector("png", "target/temp.png"));
+        runCollector(new FileCollector("target/temp.png", "png"));
     }
 
     private void runCollector(Collector collector) {
