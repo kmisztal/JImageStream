@@ -15,11 +15,9 @@ public abstract class AbstractImageTransform implements ImageTransform {
     protected int width;
     protected UnpackedImage image;
     protected Filter filter;
-    protected ColorChannel[] colorChannels;
 
-    public AbstractImageTransform(UnpackedImage image, Filter filter, ColorChannel[] colorChannels) {
+    public AbstractImageTransform(UnpackedImage image, Filter filter) {
         this.filter = filter;
-        this.colorChannels = colorChannels;
         this.image = image;
     }
 
@@ -36,7 +34,6 @@ public abstract class AbstractImageTransform implements ImageTransform {
         width = image.getWidth();
 
         filter.setSource(image);
-        filter.setRestrictions(colorChannels);
         filter.setUp();
         applyToPixels();
         image.update();

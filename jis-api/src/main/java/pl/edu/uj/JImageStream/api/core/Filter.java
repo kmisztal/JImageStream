@@ -11,7 +11,6 @@ import java.util.stream.IntStream;
 public abstract class Filter {
 
     protected final Logger logger = LogManager.getLogger(this.getClass());
-    private ColorChannel[] colorRestrictions;
     private long startTime;
 
     private UnpackedImage unpackedImage;
@@ -20,25 +19,15 @@ public abstract class Filter {
         this.unpackedImage = image;
     }
 
-    public final void setRestrictions(ColorChannel[] colorChannels) {
-        this.colorRestrictions = colorChannels;
-    }
-
 
     public abstract void apply(int x, int y);
 
     protected final void setPixel(int x, int y, Pixel pixel) {
-        int[] sourceColors = getPixel(x, y).getColors();
         int[] outputColors = pixel.getColors();
-
-        for (ColorChannel colorRestriction : colorRestrictions) {
-            colorRestriction.process(sourceColors, outputColors);
+        for (int i = 0; i < outputColors.length; ++i) {
+            outputColors[i] = Math.min(Math.max(outputColors[i], 0), 255);
         }
-
-        for (int i = 0; i < sourceColors.length; ++i) {
-            sourceColors[i] = Math.min(Math.max(sourceColors[i], 0), 255);
-        }
-        unpackedImage.setPixel(x, y, sourceColors[0], sourceColors[1], sourceColors[2], sourceColors[3]);
+        unpackedImage.setPixel(x, y, outputColors[0], outputColors[1], outputColors[2], outputColors[3]);
     }
 
     protected final Pixel getPixel(int x, int y) {

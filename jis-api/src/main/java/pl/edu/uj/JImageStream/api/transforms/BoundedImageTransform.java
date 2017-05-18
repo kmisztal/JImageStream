@@ -10,8 +10,8 @@ public class BoundedImageTransform extends AbstractImageTransform {
 
     protected Predicate<Pixel> predicate;
 
-    public BoundedImageTransform(UnpackedImage image, Filter filter, ColorChannel[] colorChannels, Predicate<Pixel> predicate) {
-        super(image, filter, colorChannels);
+    public BoundedImageTransform(UnpackedImage image, Filter filter, Predicate<Pixel> predicate) {
+        super(image, filter);
         this.predicate = predicate;
     }
 
