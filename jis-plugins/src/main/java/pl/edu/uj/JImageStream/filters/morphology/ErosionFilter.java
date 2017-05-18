@@ -1,6 +1,6 @@
 package pl.edu.uj.JImageStream.filters.morphology;
 
-import pl.edu.uj.JImageStream.filters.MorphologyFilter;
+import pl.edu.uj.JImageStream.filters.abstractFilters.MorphologyFilter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
 import java.util.Comparator;

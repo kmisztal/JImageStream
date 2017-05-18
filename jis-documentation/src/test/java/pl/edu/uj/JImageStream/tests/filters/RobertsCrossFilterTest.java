@@ -4,8 +4,8 @@ import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
 import pl.edu.uj.JImageStream.filters.color.GrayScaleFilter;
 import pl.edu.uj.JImageStream.filters.edge.EdgeDetectionFilter;
-import pl.edu.uj.JImageStream.filters.edge.RobertsCrossXFilter;
-import pl.edu.uj.JImageStream.filters.edge.RobertsCrossYFilter;
+import pl.edu.uj.JImageStream.filters.edge.roberts.RobertsCrossXFilter;
+import pl.edu.uj.JImageStream.filters.edge.roberts.RobertsCrossYFilter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

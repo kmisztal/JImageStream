@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.color.RedFilter;
 import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.predicates.ColorRangePredicate;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;

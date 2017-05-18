@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters.statistical;
+package pl.edu.uj.JImageStream.filters.equalization;
 
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;

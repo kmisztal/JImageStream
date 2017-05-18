@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters.statistical;
+package pl.edu.uj.JImageStream.filters.biproduct;
 
 import java.awt.image.BufferedImage;
 import java.util.List;

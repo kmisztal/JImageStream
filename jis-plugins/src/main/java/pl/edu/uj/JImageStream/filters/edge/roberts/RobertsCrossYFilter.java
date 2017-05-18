@@ -1,6 +1,6 @@
-package pl.edu.uj.JImageStream.filters.edge;
+package pl.edu.uj.JImageStream.filters.edge.roberts;
 
-import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+import pl.edu.uj.JImageStream.filters.abstractFilters.ConvolutionFilter;
 
 public class RobertsCrossYFilter extends ConvolutionFilter {
 

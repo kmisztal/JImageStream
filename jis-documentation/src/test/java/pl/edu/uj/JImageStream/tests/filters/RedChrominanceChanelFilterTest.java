@@ -2,7 +2,6 @@ package pl.edu.uj.JImageStream.tests.filters;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.YCbCr.RedChrominanceChanelFilter;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
 import javax.imageio.ImageIO;

@@ -1,8 +1,6 @@
-package pl.edu.uj.JImageStream.filters.edge;
+package pl.edu.uj.JImageStream.filters.edge.sobel;
 
-import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
-
-        import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+import pl.edu.uj.JImageStream.filters.abstractFilters.ConvolutionFilter;
 
 public class Sobel45Filter extends ConvolutionFilter {
 

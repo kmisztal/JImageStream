@@ -3,7 +3,7 @@ package pl.edu.uj.JImageStream.tests.filters;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
 import pl.edu.uj.JImageStream.filters.color.GrayScaleFilter;
-import pl.edu.uj.JImageStream.filters.color.OtsuBinarization;
+import pl.edu.uj.JImageStream.filters.binarization.OtsuBinarization;
 import pl.edu.uj.JImageStream.filters.morphology.ErosionFilter;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 

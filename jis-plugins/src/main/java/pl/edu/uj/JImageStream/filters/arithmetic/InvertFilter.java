@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters.color;
+package pl.edu.uj.JImageStream.filters.arithmetic;
 
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;

@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.color.RedFilter;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.predicates.ColorPredicate;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;

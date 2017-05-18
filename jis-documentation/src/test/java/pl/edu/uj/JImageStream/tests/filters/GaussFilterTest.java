@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
-import pl.edu.uj.JImageStream.filters.noise.GaussFilter;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
 public class GaussFilterTest extends AbstractBaseTest {

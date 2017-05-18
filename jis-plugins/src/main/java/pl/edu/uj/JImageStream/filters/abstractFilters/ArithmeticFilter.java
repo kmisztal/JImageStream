@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.filters;
+package pl.edu.uj.JImageStream.filters.abstractFilters;
 
 import java.awt.image.BufferedImage;
 import pl.edu.uj.JImageStream.api.core.Filter;

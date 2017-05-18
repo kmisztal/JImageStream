@@ -1,6 +1,6 @@
 package pl.edu.uj.JImageStream.filters.statistical;
 
-import pl.edu.uj.JImageStream.filters.StatisticalFilter;
+import pl.edu.uj.JImageStream.filters.abstractFilters.StatisticalFilter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
 import java.util.List;
