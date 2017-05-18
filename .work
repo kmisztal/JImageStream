@@ -1,20 +1,20 @@
-Collectors class
-Filters.class
-Predicates.class
+Collectors class <- done
+Filters.class <- done
+Predicates.class <- on hold
 
 reformat documentation
 
 Add array collectors
 
 Filters:
-- check if YCbCr works, if not, delete it
-- clean up color package
-- gray -> grey
-- some edge -> convolve
-- rotate != morphology
-- noise -> copy from ImageNoise, should we use JSC?
-- clean up statistical
-- abstract package + clean up
+- check if YCbCr works, if not, delete it <- done
+- clean up color package <- done
+- gray -> grey <- wrong
+- some edge -> convolve <- wrong
+- rotate != morphology <- done
+- noise -> copy from ImageNoise, should we use JSC? <- not yet
+- clean up statistical <- done
+- abstract package + clean up <- done
 - add scaling
 
 performance tests:
@@ -25,6 +25,6 @@ documentation:
 - update with new filters and proper examples
 
 core:
-- delete channel operation, noone ever uses it and its cpu heavy
+- delete channel operation, noone ever uses it and its cpu heavy <- done
 - pack setUp, tearDown methods so they dont have to call super in implementations
 - getHistograms should propably be in UnpackedImage instead of filter, same for setPixel checking

@@ -4,6 +4,7 @@ import pl.edu.uj.JImageStream.utils.ImageUtils;
 
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class UnpackedImage {
 
@@ -79,4 +80,31 @@ public class UnpackedImage {
     public int getWidth() {
         return width;
     }
+
+    public int[] getGrayScaleHistogram() {
+        int[] histogram = new int[256];
+
+        for (int i = 0; i < width; ++i) {
+            for (int j = 0; j < height; ++j) {
+                ++histogram[(int) IntStream.of(getPixel(i, j)).limit(3).average().getAsDouble()];
+            }
+        }
+        return histogram;
+    }
+
+    public int[][] getColorHistogram() {
+        int[][] histogram = new int[3][256];
+
+        for (int i = 0; i < width; ++i) {
+            for (int j = 0; j < height; ++j) {
+                int[] pixel = getPixel(i, j);
+                ++histogram[0][pixel[0]];
+                ++histogram[1][pixel[1]];
+                ++histogram[2][pixel[2]];
+            }
+        }
+        return histogram;
+    }
+
+
 }

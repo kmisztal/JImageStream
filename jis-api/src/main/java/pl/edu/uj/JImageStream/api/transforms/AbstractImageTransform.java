@@ -34,9 +34,9 @@ public abstract class AbstractImageTransform implements ImageTransform {
         width = image.getWidth();
 
         filter.setSource(image);
-        filter.setUp();
+        filter.start();
         applyToPixels();
         image.update();
-        filter.tearDown();
+        filter.stop();
     }
 }

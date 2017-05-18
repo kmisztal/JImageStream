@@ -43,38 +43,29 @@ public abstract class Filter {
         return unpackedImage.getWidth();
     }
 
-    public void setUp() {
+    public final void start() {
         startTime = System.currentTimeMillis();
         logger.info(this.getClass() + " starting filter");
+        setUp();
     }
 
-    public void tearDown() {
+    public final void stop() {
+        tearDown();
         logger.info("filter {} has ended, time {} ms", this.getClass(), System.currentTimeMillis() - startTime);
     }
 
-    protected int[] getGreyscaleHistogram() {
-        int[] histogram = new int[256];
-
-        for (int i = 0; i < getSourceWidth(); ++i) {
-            for (int j = 0; j < getSourceHeight(); ++j) {
-                ++histogram[(int) IntStream.of(getPixel(i, j).getColors()).limit(3).average().getAsDouble()];
-            }
-        }
-        return histogram;
+    public void setUp() {
     }
 
-    protected int[][] getColorHistogram() {
-        int[][] histogram = new int[3][256];
+    public void tearDown() {
+    }
 
-        for (int i = 0; i < getSourceWidth(); ++i) {
-            for (int j = 0; j < getSourceHeight(); ++j) {
-                Pixel pixel = getPixel(i, j);
-                ++histogram[0][pixel.getRed()];
-                ++histogram[1][pixel.getGreen()];
-                ++histogram[2][pixel.getBlue()];
-            }
-        }
-        return histogram;
+    protected int[] getGrayScaleHistogram() {
+        return unpackedImage.getGrayScaleHistogram();
+    }
+
+    public int[][] getColorHistogram() {
+        return unpackedImage.getColorHistogram();
     }
 
 }
