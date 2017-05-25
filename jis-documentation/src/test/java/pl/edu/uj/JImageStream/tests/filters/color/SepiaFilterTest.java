@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.color;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.color.SepiaFilter;
 
 import javax.imageio.ImageIO;
@@ -15,15 +17,11 @@ public class SepiaFilterTest extends AbstractBaseTest {
     public void sepiaFilterTest() {
         // tag::sepiaFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new SepiaFilter())
-                .collect(new BufferedImageCollector());
+                .apply(Filters.sepiaFilter())
+                .collect(Collectors.toBufferedImage());
         // end::sepiaFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/SepiaFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "SepiaFilter.png");
     }
 
 }

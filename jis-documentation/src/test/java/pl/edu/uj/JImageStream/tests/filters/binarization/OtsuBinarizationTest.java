@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.binarization;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.binarization.OtsuBinarization;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
@@ -14,16 +16,13 @@ public class OtsuBinarizationTest extends AbstractBaseTest {
 
     @Test
     public void otsuTest() {
+
         // tag::otsuFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
-                .apply(new OtsuBinarization())
-                .collect(new BufferedImageCollector());
+                .apply(Filters.otsuBinarizationFilter())
+                .collect(Collectors.toBufferedImage());
         // end::otsuFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/OtsuFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "OtsuFilter.png");
     }
 }

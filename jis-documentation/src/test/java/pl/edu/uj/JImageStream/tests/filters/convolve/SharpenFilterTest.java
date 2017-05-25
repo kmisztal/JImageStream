@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.convolve;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.convolve.SharpenFilter;
 
 import javax.imageio.ImageIO;
@@ -15,15 +17,12 @@ public class SharpenFilterTest extends AbstractBaseTest {
     public void sharpenFilterTest() {
         // tag::sharpenFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new SharpenFilter())
-                .collect(new BufferedImageCollector());
+                .apply(Filters.sharpenFilter())
+                .collect(Collectors.toBufferedImage());
         // end::sharpenFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/SharpenFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "SharpenFilter.png");
+
     }
 
 }

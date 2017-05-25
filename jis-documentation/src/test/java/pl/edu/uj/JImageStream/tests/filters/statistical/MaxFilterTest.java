@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.statistical;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.statistical.MaxFilter;
 
 import javax.imageio.ImageIO;
@@ -16,15 +18,12 @@ public class MaxFilterTest extends AbstractBaseTest {
     public void maxTest() {
         // tag::maxFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(50).apply(new MaxFilter(9))
-                .collect(new BufferedImageCollector());
+                .setThreads(50)
+                .apply(Filters.maxFilter(9))
+                .collect(Collectors.toBufferedImage());
         // end::maxFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/MaxFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "MaxFilter.png");
     }
 
 }

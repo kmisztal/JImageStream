@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.edge;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.color.GrayScaleFilter;
 import pl.edu.uj.JImageStream.filters.edge.EdgeDetectionFilter;
 import pl.edu.uj.JImageStream.filters.edge.roberts.RobertsCrossXFilter;
@@ -20,39 +22,30 @@ public class RobertsCrossFilterTest extends AbstractBaseTest {
     public void robertsCrossFilterTest() {
         // tag::robertsCrossXFilter[]
         BufferedImage bufferedImageX = streamableImage.parallelStream()
-                .apply(new GrayScaleFilter())
-                .apply(new RobertsCrossXFilter())
-                .collect(new BufferedImageCollector());
+                .apply(Filters.grayScaleFilter())
+                .apply(Filters.robertsCrossXFilter())
+                .collect(Collectors.toBufferedImage());
         // end::robertsCrossXFilter[]
 
-        try {
-            ImageIO.write(bufferedImageX, "png", new File("target/docs/images/RobertsX.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImageX, "RobertsX.png");
+
         // tag::robertsCrossYFilter[]
         BufferedImage bufferedImageY = streamableImage.parallelStream()
-                .apply(new GrayScaleFilter())
-                .apply(new RobertsCrossYFilter())
-                .collect(new BufferedImageCollector());
+                .apply(Filters.grayScaleFilter())
+                .apply(Filters.robertsCrossYFilter())
+                .collect(Collectors.toBufferedImage());
         // end::robertsCrossYFilter[]
 
-        try {
-            ImageIO.write(bufferedImageY, "png", new File("target/docs/images/RobertsY.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImageY, "RobertsY.png");
+
         // tag::edgeDetectionRobertsFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
-                .apply(new EdgeDetectionFilter(bufferedImageX, bufferedImageY))
-                .collect(new BufferedImageCollector());
+                .apply(Filters.edgeDetection(bufferedImageX, bufferedImageY))
+                .collect(Collectors.toBufferedImage());
         // end::edgeDetectionRobertsFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/Roberts.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "Roberts.png");
+
     }
 
 }

@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.statistical;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.statistical.MedianFilter;
 
 import javax.imageio.ImageIO;
@@ -16,15 +18,13 @@ public class MedianFilterTest extends AbstractBaseTest {
     public void medianTest() {
         // tag::medianFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
-                .setThreads(50).apply(new MedianFilter(9))
-                .collect(new BufferedImageCollector());
+                .setThreads(50)
+                .apply(Filters.medianFilter(9))
+                .collect(Collectors.toBufferedImage());
         // end::medianFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/MedianFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "MedianFilter.png");
+
     }
 
 }

@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.noise;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.noise.SaltAndPepperFilter;
 
 import javax.imageio.ImageIO;
@@ -16,15 +18,12 @@ public class SaltAndPepperFilterTest extends AbstractBaseTest {
     public void saltAndPepperFilterTest() {
         // tag::saltAndPepperFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new SaltAndPepperFilter(0.1))
-                .collect(new BufferedImageCollector());
+                .apply(Filters.saltAndPepperFilter())
+                .collect(Collectors.toBufferedImage());
         // end::saltAndPepperFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/SaltAndPepperFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "SaltAndPepperFilter.png");
+
     }
 }
 

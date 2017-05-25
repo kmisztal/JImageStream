@@ -1,4 +1,4 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.convolve;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.convolve.EmbossFilter;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
@@ -15,15 +17,11 @@ public class EmbossFilterTest extends AbstractBaseTest {
 
         // tag::embossFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new EmbossFilter())
-                .collect(new BufferedImageCollector());
+                .apply(Filters.embossFilter())
+                .collect(Collectors.toBufferedImage());
         // end::embossFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/EmbossFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+        save(streamableImage, bufferedImage, "EmbossFilter.png");
 
+    }
 }

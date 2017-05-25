@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.transform;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.transform.RotateFilter;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
@@ -16,14 +18,10 @@ public class RotateFilterTest extends AbstractBaseTest {
     public void RotateFilterTest() {
         // tag::RotateFilter[]
         BufferedImage bufferedImage = streamableImage.stream()
-                .apply(new RotateFilter(45))
-                .collect(new BufferedImageCollector());
+                .apply(Filters.rotateFilter(45))
+                .collect(Collectors.toBufferedImage());
         // end::RotateFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/RotateFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "RotateFilter.png");
     }
 }

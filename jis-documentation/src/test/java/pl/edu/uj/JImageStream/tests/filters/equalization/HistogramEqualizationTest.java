@@ -1,7 +1,9 @@
-package pl.edu.uj.JImageStream.tests.filters;
+package pl.edu.uj.JImageStream.tests.filters.equalization;
 
 import org.junit.Test;
 import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.filters.Filters;
 import pl.edu.uj.JImageStream.filters.equalization.HistogramEqualization;
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
 
@@ -16,14 +18,11 @@ public class HistogramEqualizationTest extends AbstractBaseTest {
     public void histogramEqualizationTest() {
         // tag::histogramEqualizationFilter[]
         BufferedImage bufferedImage = streamableImage.parallelStream()
-                .apply(new HistogramEqualization())
-                .collect(new BufferedImageCollector());
+                .apply(Filters.histogramEqualizationFilter())
+                .collect(Collectors.toBufferedImage());
         // end::histogramEqualizationFilter[]
 
-        try {
-            ImageIO.write(bufferedImage, "png", new File("target/docs/images/HistogramEqualizationFilter.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        save(streamableImage, bufferedImage, "HistogramEqualizationFilter.png");
+
     }
 }
