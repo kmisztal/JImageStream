@@ -423,14 +423,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_usage">Usage</a></li>
-<li><a href="#_sample_predicates">Sample Predicates</a>
-<ul class="sectlevel2">
-<li><a href="#_circlepredicate">CirclePredicate</a></li>
-<li><a href="#_colorpredicate">ColorPredicate</a></li>
-<li><a href="#_colorrangepredicate">ColorRangePredicate</a></li>
-<li><a href="#_thresholdpredicate">ThresholdPredicate</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -441,78 +433,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>We use Predicates to select which pixels of the
 image we want to work on further (f.e. apply a filter).
-They are executed by method<br>
-<code>ImageStream bounds(Predicate&lt;Pixel&gt; predicate)</code><br></p>
-</div>
-<div class="paragraph">
-<p>Exemplary usage of a <code>RedFilter</code> applied to pixels,
-which have their red value between 10 and 200,
-using the <code>ColorRangePredicate</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">        BufferedImage bufferedImage = streamableImage.stream()
-                .bounds(new ColorRangePredicate(10, 200, ColorChannel.RED))
-                .apply(new RedFilter())
-                .collect(new BufferedImageCollector());</code></pre>
-</div>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sample_predicates">Sample Predicates</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_circlepredicate">CirclePredicate</h3>
-<div class="openblock">
-<div class="content">
-<div class="paragraph">
-<p><span class="image"><img src="images/lena.png" alt="lena" width="300" height="300"></span>
-<span class="image"><img src="images/CirclePredicate.png" alt="CirclePredicate" width="300" height="300"></span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_colorpredicate">ColorPredicate</h3>
-<div class="openblock">
-<div class="content">
-<div class="paragraph">
-<p><span class="image"><img src="images/HalfRedLena.png" alt="HalfRedLena" width="300" height="300"></span>
-<span class="image"><img src="images/ColorPredicate.png" alt="ColorPredicate" width="300" height="300"></span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_colorrangepredicate">ColorRangePredicate</h3>
-<div class="openblock">
-<div class="content">
-<div class="paragraph">
-<p><span class="image"><img src="images/lena.png" alt="lena" width="300" height="300"></span>
-<span class="image"><img src="images/ColorRangePredicate.png" alt="ColorRangePredicate" width="300" height="300"></span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_thresholdpredicate">ThresholdPredicate</h3>
-<div class="openblock">
-<div class="content">
-<div class="paragraph">
-<p><span class="image"><img src="images/lena.png" alt="lena" width="300" height="300"></span>
-<span class="image"><img src="images/ThresholdPredicate.png" alt="ThresholdPredicate" width="300" height="300"></span></p>
-</div>
-</div>
-</div>
+They are applied with method <code>ImageStream bounds(Predicate&lt;Pixel&gt; predicate)</code></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-06 12:34:19 +01:00
+Last updated 2017-07-24 14:30:33 +02:00
 </div>
 </div>
 </body>
