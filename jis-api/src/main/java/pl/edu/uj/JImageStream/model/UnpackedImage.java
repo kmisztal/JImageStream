@@ -4,6 +4,7 @@ import pl.edu.uj.JImageStream.utils.ImageUtils;
 
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class UnpackedImage {
 
@@ -48,6 +49,10 @@ public class UnpackedImage {
         return new int[]{getRed(x, y), getGreen(x, y), getBlue(x, y), getAlpha(x, y)};
     }
 
+    private int getRawPixel(int x, int y) {
+        return bufferedImageRGBA[y * width + x];
+    }
+
     public BufferedImage getBufferedImage() {
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         bufferedImage.setRGB(0, 0, width, height, bufferedImageRGBA, 0, width);
@@ -59,7 +64,7 @@ public class UnpackedImage {
 
         for (int i = 0; i < Math.min(width, x); ++i) {
             for (int j = 0; j < Math.min(height, y); ++j) {
-                copy[j * (x - 1) + i] = bufferedImageRGBA[j * width + i];
+                copy[j * (x - 1) + i] = getRawPixel(i, j);
             }
         }
 
@@ -72,6 +77,32 @@ public class UnpackedImage {
 
     }
 
+    public void resize(int x, int y, boolean scale) {
+
+        if (scale) {
+
+            double xScale = (1. * width) / (x);
+            double yScale = (1. * height) / (y);
+
+            int[] copy = new int[x * y];
+
+            for (int i = 0; i < x; ++i) {
+                for (int j = 0; j < y; ++j) {
+                    copy[j * (x - 1) + i] = getRawPixel((int) (i * xScale), (int) (j * yScale));
+                }
+            }
+
+            height = y - 1;
+            width = x - 1;
+
+            bufferedImageRGBAWorking = copy;
+            bufferedImageRGBA = Arrays.copyOf(bufferedImageRGBAWorking, bufferedImageRGBAWorking.length);
+
+        } else {
+            resize(x, y);
+        }
+    }
+
     public int getHeight() {
         return height;
     }
@@ -79,4 +110,31 @@ public class UnpackedImage {
     public int getWidth() {
         return width;
     }
+
+    public int[] getGrayScaleHistogram() {
+        int[] histogram = new int[256];
+
+        for (int i = 0; i < width; ++i) {
+            for (int j = 0; j < height; ++j) {
+                ++histogram[(int) IntStream.of(getPixel(i, j)).limit(3).average().getAsDouble()];
+            }
+        }
+        return histogram;
+    }
+
+    public int[][] getColorHistogram() {
+        int[][] histogram = new int[3][256];
+
+        for (int i = 0; i < width; ++i) {
+            for (int j = 0; j < height; ++j) {
+                int[] pixel = getPixel(i, j);
+                ++histogram[0][pixel[0]];
+                ++histogram[1][pixel[1]];
+                ++histogram[2][pixel[2]];
+            }
+        }
+        return histogram;
+    }
+
+
 }

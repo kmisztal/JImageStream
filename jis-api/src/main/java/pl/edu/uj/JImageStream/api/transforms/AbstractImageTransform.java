@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.api.core.ImageTransform;
-import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.UnpackedImage;
 
@@ -15,11 +14,9 @@ public abstract class AbstractImageTransform implements ImageTransform {
     protected int width;
     protected UnpackedImage image;
     protected Filter filter;
-    protected ColorChannel[] colorChannels;
 
-    public AbstractImageTransform(UnpackedImage image, Filter filter, ColorChannel[] colorChannels) {
+    public AbstractImageTransform(UnpackedImage image, Filter filter) {
         this.filter = filter;
-        this.colorChannels = colorChannels;
         this.image = image;
     }
 
@@ -36,10 +33,9 @@ public abstract class AbstractImageTransform implements ImageTransform {
         width = image.getWidth();
 
         filter.setSource(image);
-        filter.setRestrictions(colorChannels);
-        filter.setUp();
+        filter.start();
         applyToPixels();
         image.update();
-        filter.tearDown();
+        filter.stop();
     }
 }

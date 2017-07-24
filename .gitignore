@@ -10,5 +10,3 @@ buildNumber.properties
 .idea
 .idea/*
 *.iml
-*.jpg
-*.png

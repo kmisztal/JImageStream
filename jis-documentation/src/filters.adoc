@@ -3,350 +3,267 @@
 
 = Filters
 
-== Usage
-[.lead]
---
-The way of applying filters is (on `SaltAndPepperFilter` example):
+=== Arithmetic filters
 
+==== Invert filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
+include::{sourcedir}/filters/arithmetic/InvertFilterTest.java[tags=invertFilter]
 ----
---
-== Filters
 
 --
-image::lena.png[title="original", width="300", height="300"]
+image:before_InvertFilter.png[width="300", height="300"]
+image:after_InvertFilter.png[width="300", height="300"]
 --
 
-=== Blurring filters
+=== Binarization filters
+
+==== Otsu filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/binarization/OtsuBinarizationTest.java[tags=otsuFilter]
+----
+
+--
+image:before_OtsuFilter.png[width="300", height="300"]
+image:after_OtsuFilter.png[width="300", height="300"]
+--
+
+=== Color filters
+
+==== Grayscale filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/color/GrayScaleFilterTest.java[tags=grayscaleFilter]
+----
+
+--
+image:before_GrayScaleFilter.png[width="300", height="300"]
+image:after_GrayScaleFilter.png[width="300", height="300"]
+--
+
+==== Sepia filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/color/SepiaFilterTest.java[tags=sepiaFilter]
+----
+
+--
+image:before_SepiaFilter.png[width="300", height="300"]
+image:after_SepiaFilter.png[width="300", height="300"]
+--
+
+=== Convolve filters
+
 ==== Box blur filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/BoxBlurFilterTest.java[tags=boxBlurFilter5]
+include::{sourcedir}/filters/convolve/BoxBlurFilterTest.java[tags=boxBlurFilter5]
 ----
-image::BoxBlurFilter5.png[title="mask 5x5", width="300", height="300"]
+
+--
+image:before_BoxBlurFilter5.png[width="300", height="300"]
+image:after_BoxBlurFilter5.png[width="300", height="300"]
+--
+
+==== Emboss filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/convolve/EmbossFilterTest.java[tags=embossFilter]
+----
+
+--
+image:before_EmbossFilter.png[width="300", height="300"]
+image:after_EmbossFilter.png[width="300", height="300"]
+--
+
+==== Sharpen filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/convolve/SharpenFilterTest.java[tags=sharpenFilter]
+----
+
+--
+image:before_SharpenFilter.png[width="300", height="300"]
+image:after_SharpenFilter.png[width="300", height="300"]
+--
+
+=== Edge detection filters
+
+==== Roberts filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/edge/RobertsCrossFilterTest.java[tags=robertsCrossXFilter]
+----
+
+--
+image:before_RobertsX.png[width="300", height="300"]
+image:after_RobertsX.png[width="300", height="300"]
+--
 
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/BoxBlurFilterTest.java[tags=boxBlurFilter7]
+include::{sourcedir}/filters/edge/RobertsCrossFilterTest.java[tags=robertsCrossYFilter]
 ----
-image::BoxBlurFilter7.png[title="mask 7x7", width="300", height="300"]
 
-==== Gauss filter
+--
+image:before_RobertsY.png[width="300", height="300"]
+image:after_RobertsY.png[width="300", height="300"]
+--
 
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/GaussFilterTest.java[tags=gaussFilter51]
+include::{sourcedir}/filters/edge/RobertsCrossFilterTest.java[tags=edgeDetectionRobertsFilter]
 ----
-image::GaussFilter5.png[title="mask 5x5 &#963;=1.0", width="300", height="300"]
+
+--
+image:after_Roberts.png[width="300", height="300"]
+--
+
+==== Sobel filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/edge/SobelFilterTest.java[tags=sobelXFilter]
+----
+
+--
+image:before_SobelX.png[width="300", height="300"]
+image:after_SobelX.png[width="300", height="300"]
+--
 
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/GaussFilterTest.java[tags=gaussFilter74]
+include::{sourcedir}/filters/edge/SobelFilterTest.java[tags=sobelYFilter]
 ----
-image::GaussFilter7.png[title="mask 7x7 &#963;=4.0", width="300", height="300"]
 
-=== Emboss filter
+--
+image:before_SobelY.png[width="300", height="300"]
+image:after_SobelY.png[width="300", height="300"]
+--
 
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/EmbossFilterTest.java[tags=embossFilter]
+include::{sourcedir}/filters/edge/SobelFilterTest.java[tags=edgeDetectionSobelFilter]
 ----
-image::EmbossFilter.png[title="Emboss Filter", width="300", height="300"]
 
-=== Sharpen filter
+--
+image:after_Sobel.png[width="300", height="300"]
+--
 
+=== Equalization filters
+
+==== Histogram equalization filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/SharpenFilterTest.java[tags=sharpenFilter]
+include::{sourcedir}/filters/equalization/HistogramEqualizationTest.java[tags=histogramEqualizationFilter]
 ----
-image::SharpenFilter.png[title="Sharpen Filter", width="300", height="300"]
+
+--
+image:before_HistogramEqualizationFilter.png[width="300", height="300"]
+image:after_HistogramEqualizationFilter.png[width="300", height="300"]
+--
 
 
-=== Color filters
+=== Morphology filters
 
-==== Red filter
-
+==== Dilatation filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/RedFilterTest.java[tags=redFilter]
+include::{sourcedir}/filters/morphology/DilationFilterTest.java[tags=dilationFilter]
 ----
-image::RedFilter.png[title="Red Filter", width="300", height="300"]
 
-==== Green filter
+--
+image:before_dilatationFilter.png[width="300", height="300"]
+image:after_dilatationFilter.png[width="300", height="300"]
+--
 
+==== Erosion filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/GreenFilterTest.java[tags=greenFilter]
+include::{sourcedir}/filters/morphology/ErosionFilterTest.java[tags=erosionFilter]
 ----
-image::GreenFilter.png[title="Green Filter", width="300", height="300"]
 
-==== Blue filter
+--
+image:before_erosionFilter.png[width="300", height="300"]
+image:after_erosionFilter.png[width="300", height="300"]
+--
 
+=== Noise generators
+
+==== Salt and pepper generator
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/BlueFilterTest.java[tags=blueFilter]
+include::{sourcedir}/filters/noise/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
 ----
-image::BlueFilter.png[title="Blue Filter", width="300", height="300"]
 
-==== Gray scale filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/GrayScaleFilterTest.java[tags=grayscaleFilter]
-----
-image::GrayScaleFilter.png[title="Grayscale Filter", width="300", height="300"]
-
-==== Sepia filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/SepiaFilterTest.java[tags=sepiaFilter]
-----
-image::SepiaFilter.png[title="Sepia Filter", width="300", height="300"]
-
-==== Invert filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/InvertFilterTest.java[tags=invertFilter]
-----
-image::InvertFilter.png[title="Invert Filter", width="300", height="300"]
-
-
-==== Otsu binarization filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/OtsuBinarizationTest.java[tags=otsuFilter]
-----
-image::OtsuFilter.png[title="Otsu binarization", width="300", height="300"]
-
-==== YCbCr filters
-
-===== Luminance Chanel Filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/LuminanceChanelFilterTest.java[tags=LuminanceChanelFilterTest]
-----
-image::LuminanceChanelFilter.png[title="Luminance Chanel Filter", width="300", height="300"]
-
-===== Blue Chrominance Chanel Filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/BlueChrominanceChanelFilterTest.java[tags=BlueChrominanceChanelFilter]
-----
-image::BlueChrominanceChanelFilter.png[title="Blue Chrominance Chanel Filter", width="300", height="300"]
-
-===== Red Chrominance Chanel Filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/RedChrominanceChanelFilterTest.java[tags=RedChrominanceChanelFilterTest]
-----
-image::RedChrominanceChanelFilter.png[title="Red Chrominance Chanel Filter", width="300", height="300"]
-
-=== Noise filters
-
-==== Salt and pepper filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
-----
-image::SaltAndPepperFilter.png[title="Salt and pepper Filter", width="300", height="300"]
-
+--
+image:before_saltAndPepperFilter.png[width="300", height="300"]
+image:after_saltAndPepperFilter.png[width="300", height="300"]
+--
 
 === Statistical filters
 
-==== Mean filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/MeanFilterTest.java[tags=meanFilter]
-----
-image::MeanFilter.png[title="Mean Filter", width="300", height="300"]
-
-
-==== Median filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/MedianFilterTest.java[tags=medianFilter]
-----
-image::MedianFilter.png[title="Median Filter", width="300", height="300"]
-
-
 ==== Max filter
-
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/MaxFilterTest.java[tags=maxFilter]
+include::{sourcedir}/filters/statistical/MaxFilterTest.java[tags=maxFilter]
 ----
-image::MaxFilter.png[title="Max Filter", width="300", height="300"]
 
+--
+image:before_maxFilter.png[width="300", height="300"]
+image:after_maxFilter.png[width="300", height="300"]
+--
 
 ==== Min filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/MinFilterTest.java[tags=minFilter]
+include::{sourcedir}/filters/statistical/MinFilterTest.java[tags=minFilter]
 ----
-image::MinFilter.png[title="Min Filter", width="300", height="300"]
-
-
-=== Edge detection filters
 
 --
-image::GrayScaleFilter.png[width="300", height="300", title="input image"]
+image:before_minFilter.png[width="300", height="300"]
+image:after_minFilter.png[width="300", height="300"]
 --
 
-==== Roberts filter
-
-===== X axis
-
+==== Mean filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/RobertsCrossFilterTest.java[tags=robertsCrossXFilter]
+include::{sourcedir}/filters/statistical/MeanFilterTest.java[tags=meanFilter]
 ----
-image::RobertsX.png[title="RobertsX Filter", width="300", height="300"]
 
-
-===== Y axis
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/RobertsCrossFilterTest.java[tags=robertsCrossYFilter]
-----
-image::RobertsY.png[title="RobertsY Filter", width="300", height="300"]
-
-
-===== Edge detection filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/RobertsCrossFilterTest.java[tags=edgeDetectionRobertsFilter]
-----
 --
-image::Roberts.png[title="Roberts Filter", width="300", height="300"]
+image:before_meanFilter.png[width="300", height="300"]
+image:after_meanFilter.png[width="300", height="300"]
 --
 
-==== Sobel filter
-
-===== X axis
-
+==== Median filter
 [source,java]
 .code
 ----
-include::{sourcedir}/filters/SobelFilterTest.java[tags=sobelXFilter]
+include::{sourcedir}/filters/statistical/MedianFilterTest.java[tags=medianFilter]
 ----
-image::SobelX.png[title="SobelX Filter", width="300", height="300"]
 
-
-===== Y axis
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/SobelFilterTest.java[tags=sobelYFilter]
-----
-image::SobelY.png[title="SobelY Filter", width="300", height="300"]
-
-
-===== Edge detection filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/SobelFilterTest.java[tags=edgeDetectionSobelFilter]
-----
-image::Sobel.png[title="Sobel Filter", width="300", height="300"]
-
-
-===== 45 degrees
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=sobel45Filter]
-----
-image::Sobel45.png[title="Sobel45 Filter", width="300", height="300"]
-
-
-===== 135 degrees
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=sobel135Filter]
-----
-image::Sobel135.png[title="Sobel135 Filter", width="300", height="300"]
-
-
-
-===== Edge detection filter using four angles
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/Sobel4XFilterTest.java[tags=edgeDetectionSobel4XFilter]
-----
 --
-image::Sobel4X.png[title="Sobel4X Filter", width="300", height="300"]
+image:before_medianFilter.png[width="300", height="300"]
+image:after_medianFilter.png[width="300", height="300"]
 --
-
-=== Morphology filters
-
-==== Rotate Filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/RotateFilterTest.java[tags=RotateFilter]
-----
-image::RotateFilter.png[title="Rotate Filter", width="300", height="300"]
-
-==== Dilation Filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/DilationFilterTest.java[tags=dilationFilter]
-----
-image::DilationFilter.png[title="Dilation Filter", width="300", height="300"]
-
-==== Erosion Filter
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/ErosionFilterTest.java[tags=erosionFilter]
-----
-image::ErosionFilter.png[title="Erosion Filter", width="300", height="300"]

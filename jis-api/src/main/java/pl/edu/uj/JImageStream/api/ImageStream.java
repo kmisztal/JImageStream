@@ -8,7 +8,6 @@ import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.api.core.ImageTransform;
 import pl.edu.uj.JImageStream.api.transforms.BoundedImageTransform;
 import pl.edu.uj.JImageStream.api.transforms.ParallelBoundedImageTransform;
-import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.UnpackedImage;
 
@@ -25,11 +24,8 @@ public class ImageStream {
     protected List<ImageTransform> transforms;
 
     private static final Predicate<Pixel> TRUE_PREDICATE = pixel -> true;
-    private static final ColorChannel[] ALL_CHANNELS = {ColorChannel.RED,
-            ColorChannel.GREEN, ColorChannel.BLUE, ColorChannel.ALPHA};
 
     private Predicate<Pixel> predicate;
-    private ColorChannel[] colorChannels;
     private int numberOfThreads;
     private final int defaultNumberOfThreads;
     private final boolean isParallel;
@@ -51,18 +47,17 @@ public class ImageStream {
     public final ImageStream apply(Filter filter) {
         if (isParallel) {
             for (int i = 0; i < numberOfFilterApplying; i++) {
-                transforms.add(new ParallelBoundedImageTransform(image, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
+                transforms.add(new ParallelBoundedImageTransform(image, filter,
                         predicate != null ? predicate : TRUE_PREDICATE, numberOfThreads));
             }
         } else {
             for (int i = 0; i < numberOfFilterApplying; i++) {
-                transforms.add(new BoundedImageTransform(image, filter, colorChannels != null ? colorChannels : ALL_CHANNELS,
+                transforms.add(new BoundedImageTransform(image, filter,
                         predicate != null ? predicate : TRUE_PREDICATE));
             }
         }
 
         predicate = null;
-        colorChannels = null;
         numberOfThreads = defaultNumberOfThreads;
         numberOfFilterApplying = 1;
         LOGGER.info(filter.getClass() + " has been applied");
@@ -76,11 +71,6 @@ public class ImageStream {
 
     public final ImageStream times(int numberOfFilterApplying) {
         this.numberOfFilterApplying = numberOfFilterApplying;
-        return this;
-    }
-
-    public final ImageStream channel(ColorChannel... colorChannels) {
-        this.colorChannels = colorChannels;
         return this;
     }
 
@@ -99,6 +89,11 @@ public class ImageStream {
 
     public final ImageStream resize(int width, int height) {
         transforms.add(() -> image.resize(width, height));
+        return this;
+    }
+
+    public final ImageStream resize(int width, int height, boolean scale) {
+        transforms.add(() -> image.resize(width, height, scale));
         return this;
     }
 

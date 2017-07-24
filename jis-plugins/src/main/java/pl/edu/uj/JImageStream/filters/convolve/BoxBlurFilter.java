@@ -1,6 +1,6 @@
 package pl.edu.uj.JImageStream.filters.convolve;
 
-import pl.edu.uj.JImageStream.filters.ConvolutionFilter;
+import pl.edu.uj.JImageStream.filters.abstractFilters.ConvolutionFilter;
 
 public class BoxBlurFilter extends ConvolutionFilter {
 

@@ -1,17 +1,17 @@
 package pl.edu.uj.JImageStream.api.transforms;
 
-import java.util.function.Predicate;
 import pl.edu.uj.JImageStream.api.core.Filter;
-import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.UnpackedImage;
+
+import java.util.function.Predicate;
 
 public class BoundedImageTransform extends AbstractImageTransform {
 
     protected Predicate<Pixel> predicate;
 
-    public BoundedImageTransform(UnpackedImage image, Filter filter, ColorChannel[] colorChannels, Predicate<Pixel> predicate) {
-        super(image, filter, colorChannels);
+    public BoundedImageTransform(UnpackedImage image, Filter filter, Predicate<Pixel> predicate) {
+        super(image, filter);
         this.predicate = predicate;
     }
 

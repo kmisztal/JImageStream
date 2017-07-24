@@ -9,10 +9,21 @@ import pl.edu.uj.JImageStream.api.core.Collector;
 
 public class DisplayCollector implements Collector<BufferedImage> {
 
+    private String title;
+
+    public DisplayCollector() {
+        title = "";
+    }
+
+    public DisplayCollector(String title) {
+        this.title = title;
+    }
+
     @Override
     public BufferedImage collect(BufferedImage bufferedImage) {
         new Thread(() -> {
             JFrame frame = new JFrame();
+            frame.setTitle(title);
             frame.getContentPane().setLayout(new FlowLayout());
             frame.getContentPane().add(new JLabel(new ImageIcon(bufferedImage)));
             frame.pack();
