@@ -7,7 +7,7 @@
     <groupId>pl.edu.uj</groupId>
     <artifactId>JImageStream</artifactId>
     <packaging>pom</packaging>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <build>
         <plugins>
             <plugin>
