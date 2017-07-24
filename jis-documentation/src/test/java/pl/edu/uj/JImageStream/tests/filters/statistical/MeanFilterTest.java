@@ -22,7 +22,7 @@ public class MeanFilterTest extends AbstractBaseTest {
                 .collect(Collectors.toBufferedImage());
         // end::meanFilter[]
 
-        save(streamableImage, bufferedImage, "MeanFilter.png");
+        save(streamableImage, bufferedImage, "meanFilter.png");
 
     }
 

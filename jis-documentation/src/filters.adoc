@@ -3,19 +3,6 @@
 
 = Filters
 
-== Usage
-[.lead]
---
-The way of applying filters is (on `SaltAndPepperFilter` example):
-
-[source,java]
-.code
-----
-include::{sourcedir}/filters/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
-----
---
-== Filters
-
 === Arithmetic filters
 
 ==== Invert filter
@@ -176,6 +163,107 @@ include::{sourcedir}/filters/edge/SobelFilterTest.java[tags=edgeDetectionSobelFi
 image:after_Sobel.png[width="300", height="300"]
 --
 
+=== Equalization filters
+
+==== Histogram equalization filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/equalization/HistogramEqualizationTest.java[tags=histogramEqualizationFilter]
+----
+
+--
+image:before_HistogramEqualizationFilter.png[width="300", height="300"]
+image:after_HistogramEqualizationFilter.png[width="300", height="300"]
+--
 
 
+=== Morphology filters
 
+==== Dilatation filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/morphology/DilationFilterTest.java[tags=dilationFilter]
+----
+
+--
+image:before_dilatationFilter.png[width="300", height="300"]
+image:after_dilatationFilter.png[width="300", height="300"]
+--
+
+==== Erosion filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/morphology/ErosionFilterTest.java[tags=erosionFilter]
+----
+
+--
+image:before_erosionFilter.png[width="300", height="300"]
+image:after_erosionFilter.png[width="300", height="300"]
+--
+
+=== Noise generators
+
+==== Salt and pepper generator
+[source,java]
+.code
+----
+include::{sourcedir}/filters/noise/SaltAndPepperFilterTest.java[tags=saltAndPepperFilter]
+----
+
+--
+image:before_saltAndPepperFilter.png[width="300", height="300"]
+image:after_saltAndPepperFilter.png[width="300", height="300"]
+--
+
+=== Statistical filters
+
+==== Max filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/statistical/MaxFilterTest.java[tags=maxFilter]
+----
+
+--
+image:before_maxFilter.png[width="300", height="300"]
+image:after_maxFilter.png[width="300", height="300"]
+--
+
+==== Min filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/statistical/MinFilterTest.java[tags=minFilter]
+----
+
+--
+image:before_minFilter.png[width="300", height="300"]
+image:after_minFilter.png[width="300", height="300"]
+--
+
+==== Mean filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/statistical/MeanFilterTest.java[tags=meanFilter]
+----
+
+--
+image:before_meanFilter.png[width="300", height="300"]
+image:after_meanFilter.png[width="300", height="300"]
+--
+
+==== Median filter
+[source,java]
+.code
+----
+include::{sourcedir}/filters/statistical/MedianFilterTest.java[tags=medianFilter]
+----
+
+--
+image:before_medianFilter.png[width="300", height="300"]
+image:after_medianFilter.png[width="300", height="300"]
+--

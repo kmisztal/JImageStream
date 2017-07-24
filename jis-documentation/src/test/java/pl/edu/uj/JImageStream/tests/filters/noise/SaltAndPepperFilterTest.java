@@ -22,7 +22,7 @@ public class SaltAndPepperFilterTest extends AbstractBaseTest {
                 .collect(Collectors.toBufferedImage());
         // end::saltAndPepperFilter[]
 
-        save(streamableImage, bufferedImage, "SaltAndPepperFilter.png");
+        save(streamableImage, bufferedImage, "saltAndPepperFilter.png");
 
     }
 }

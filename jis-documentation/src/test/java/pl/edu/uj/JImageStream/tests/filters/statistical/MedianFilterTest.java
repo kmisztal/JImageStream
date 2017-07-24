@@ -23,7 +23,7 @@ public class MedianFilterTest extends AbstractBaseTest {
                 .collect(Collectors.toBufferedImage());
         // end::medianFilter[]
 
-        save(streamableImage, bufferedImage, "MedianFilter.png");
+        save(streamableImage, bufferedImage, "medianFilter.png");
 
     }
 

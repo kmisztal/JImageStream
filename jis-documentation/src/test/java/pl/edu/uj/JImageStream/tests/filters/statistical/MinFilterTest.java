@@ -24,7 +24,7 @@ public class MinFilterTest extends AbstractBaseTest {
                 .collect(Collectors.toBufferedImage());
         // end::minFilter[]
 
-        save(streamableImage, bufferedImage, "MinFilter.png");
+        save(streamableImage, bufferedImage, "minFilter.png");
     }
 
 }

@@ -23,7 +23,7 @@ public class MaxFilterTest extends AbstractBaseTest {
                 .collect(Collectors.toBufferedImage());
         // end::maxFilter[]
 
-        save(streamableImage, bufferedImage, "MaxFilter.png");
+        save(streamableImage, bufferedImage, "maxFilter.png");
     }
 
 }

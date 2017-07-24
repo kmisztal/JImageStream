@@ -6,43 +6,5 @@
 == Usage
 We use Predicates to select which pixels of the
 image we want to work on further (f.e. apply a filter).
-They are executed by method +
-`ImageStream bounds(Predicate<Pixel> predicate)` +
-
-Exemplary usage of a `RedFilter` applied to pixels,
-which have their red value between 10 and 200,
-using the `ColorRangePredicate`:
-
-[source,java]
---
-include::{sourcedir}/predicates/ColorRangePredicateTest.java[tags=ColorRangePredicate]
---
-
----
-== Sample Predicates
-
-=== CirclePredicate
---
-image:lena.png[width="300", height="300"]
-image:CirclePredicate.png[width="300", height="300"]
---
-
-=== ColorPredicate
---
-image:HalfRedLena.png[width="300", height="300"]
-image:ColorPredicate.png[width="300", height="300"]
---
-
-=== ColorRangePredicate
---
-image:lena.png[width="300", height="300"]
-image:ColorRangePredicate.png[width="300", height="300"]
---
-
-=== ThresholdPredicate
---
-image:lena.png[width="300", height="300"]
-image:ThresholdPredicate.png[width="300", height="300"]
---
-
+They are applied with method `ImageStream bounds(Predicate<Pixel> predicate)`
 
