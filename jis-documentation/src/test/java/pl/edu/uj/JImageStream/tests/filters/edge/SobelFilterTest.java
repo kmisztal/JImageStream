@@ -1,20 +1,11 @@
 package pl.edu.uj.JImageStream.tests.filters.edge;
 
 import org.junit.Test;
-import pl.edu.uj.JImageStream.collectors.BufferedImageCollector;
 import pl.edu.uj.JImageStream.collectors.Collectors;
 import pl.edu.uj.JImageStream.filters.Filters;
-import pl.edu.uj.JImageStream.filters.color.GrayScaleFilter;
-import pl.edu.uj.JImageStream.filters.edge.EdgeDetectionFilter;
-import pl.edu.uj.JImageStream.filters.edge.sobel.SobelXFilter;
-import pl.edu.uj.JImageStream.filters.edge.sobel.SobelYFilter;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 import pl.edu.uj.JImageStream.tests.AbstractBaseTest;
+
+import java.awt.image.BufferedImage;
 
 public class SobelFilterTest extends AbstractBaseTest {
 

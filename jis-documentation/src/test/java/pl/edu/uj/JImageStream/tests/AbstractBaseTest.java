@@ -1,16 +1,16 @@
 package pl.edu.uj.JImageStream.tests;
 
+import org.junit.Before;
+import pl.edu.uj.JImageStream.collectors.Collectors;
+import pl.edu.uj.JImageStream.collectors.FileCollector;
+import pl.edu.uj.JImageStream.model.StreamableImage;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Random;
-
-import org.junit.Before;
-import pl.edu.uj.JImageStream.collectors.Collectors;
-import pl.edu.uj.JImageStream.collectors.FileCollector;
-import pl.edu.uj.JImageStream.model.StreamableImage;
 
 public abstract class AbstractBaseTest {
 
@@ -31,7 +31,7 @@ public abstract class AbstractBaseTest {
 
         File[] files = file.listFiles();
 
-        streamableImage = new StreamableImage(files[new Random().nextInt(files.length)]);
+        streamableImage = new StreamableImage(files[new Random().nextInt(files.length)]).stream().resize(500, 500, true).collect(Collectors.toStreamableImage());
 
 //        streamableImage.stream().collect(new FileCollector("target/docs/images/0.png", FileCollector.Format.PNG));
     }

@@ -1,10 +1,10 @@
 package pl.edu.uj.JImageStream.api.transforms;
 
-import java.util.function.Predicate;
 import pl.edu.uj.JImageStream.api.core.Filter;
-import pl.edu.uj.JImageStream.model.ColorChannel;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.UnpackedImage;
+
+import java.util.function.Predicate;
 
 public class BoundedImageTransform extends AbstractImageTransform {
 
