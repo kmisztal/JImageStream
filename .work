@@ -14,8 +14,8 @@ performance tests:
 - no idea what to think about this module
 
 documentation:
-- get random images from set instead of lena all the time, will make it look more alive
-- update with new filters and proper examples
+- get random images from set instead of lena all the time, will make it look more alive - done
+- update with new filters and proper examples - 50/50
 
 core:
 - pack setUp, tearDown methods so they dont have to call super in implementations

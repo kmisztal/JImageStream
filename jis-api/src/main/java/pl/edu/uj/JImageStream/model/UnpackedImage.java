@@ -49,6 +49,10 @@ public class UnpackedImage {
         return new int[]{getRed(x, y), getGreen(x, y), getBlue(x, y), getAlpha(x, y)};
     }
 
+    private int getRawPixel(int x, int y) {
+        return bufferedImageRGBA[y * width + x];
+    }
+
     public BufferedImage getBufferedImage() {
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         bufferedImage.setRGB(0, 0, width, height, bufferedImageRGBA, 0, width);
@@ -60,7 +64,7 @@ public class UnpackedImage {
 
         for (int i = 0; i < Math.min(width, x); ++i) {
             for (int j = 0; j < Math.min(height, y); ++j) {
-                copy[j * (x - 1) + i] = bufferedImageRGBA[j * width + i];
+                copy[j * (x - 1) + i] = getRawPixel(i, j);
             }
         }
 
@@ -71,6 +75,32 @@ public class UnpackedImage {
         bufferedImageRGBA = Arrays.copyOf(bufferedImageRGBAWorking, bufferedImageRGBAWorking.length);
 
 
+    }
+
+    public void resize(int x, int y, boolean scale) {
+
+        if (scale) {
+
+            double xScale = (1. * width) / (x);
+            double yScale = (1. * height) / (y);
+
+            int[] copy = new int[x * y];
+
+            for (int i = 0; i < x; ++i) {
+                for (int j = 0; j < y; ++j) {
+                    copy[j * (x - 1) + i] = getRawPixel((int) (i * xScale), (int) (j * yScale));
+                }
+            }
+
+            height = y - 1;
+            width = x - 1;
+
+            bufferedImageRGBAWorking = copy;
+            bufferedImageRGBA = Arrays.copyOf(bufferedImageRGBAWorking, bufferedImageRGBAWorking.length);
+
+        } else {
+            resize(x, y);
+        }
     }
 
     public int getHeight() {

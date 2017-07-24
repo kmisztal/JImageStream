@@ -93,6 +93,11 @@ public class ImageStream {
         return this;
     }
 
+    public final ImageStream resize(int width, int height, boolean scale) {
+        transforms.add(() -> image.resize(width, height, scale));
+        return this;
+    }
+
     public final <T> T collect(Collector<T> collector) {
         if (!transforms.isEmpty()) {
             transforms.forEach(ImageTransform::apply);
