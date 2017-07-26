@@ -1,9 +1,10 @@
 package pl.edu.uj.JImageStream.filters.abstractFilters;
 
-import java.awt.image.BufferedImage;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 import pl.edu.uj.JImageStream.model.UnpackedImage;
+
+import java.awt.image.BufferedImage;
 
 public abstract class ArithmeticFilter extends Filter {
 
@@ -15,7 +16,8 @@ public abstract class ArithmeticFilter extends Filter {
 
     @Override
     public final void apply(int x, int y) {
-        calculate(getPixel(x, y), new Pixel(image.getPixel(x, y)));
+        Pixel calculate = calculate(getPixel(x, y), new Pixel(image.getPixel(x, y)));
+        setPixel(x, y, calculate);
     }
 
     protected abstract Pixel calculate(Pixel x, Pixel y);

@@ -1,6 +1,5 @@
 package pl.edu.uj.JImageStream.filters.morphology;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
@@ -8,7 +7,7 @@ public class HitOrMissFilter extends Filter {
 
     private int[][] hitOrMissMatrix;
 
-    public HitOrMissFilter(int[][] hitOrMissMatrix) throws InvalidArgumentException {
+    public HitOrMissFilter(int[][] hitOrMissMatrix) {
         if (hitOrMissMatrix == null) {
             throw new RuntimeException("Hit or miss matrix can't be null");
         }
@@ -18,8 +17,8 @@ public class HitOrMissFilter extends Filter {
     @Override
     public void apply(int x, int y) {
 
-        int widthMiddle = hitOrMissMatrix[0].length / 2 + 1;
-        int heightMiddle = hitOrMissMatrix.length / 2 + 1;
+        int widthMiddle = hitOrMissMatrix[0].length / 2;
+        int heightMiddle = hitOrMissMatrix.length / 2;
 
         boolean hit = true;
         for (int i = x - widthMiddle; i <= x + widthMiddle; ++i) {
