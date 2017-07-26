@@ -25,20 +25,20 @@ public class UnpackedImage {
         bufferedImageRGBA = Arrays.copyOf(bufferedImageRGBAWorking, bufferedImageRGBAWorking.length);
     }
 
-    private int getAlpha(int x, int y) {
-        return (bufferedImageRGBA[y * width + x] & -16777216) >>> 24;
+    private int getAlpha(int pixel) {
+        return (bufferedImageRGBA[pixel] & -16777216) >>> 24;
     }
 
-    private int getRed(int x, int y) {
-        return (bufferedImageRGBA[y * width + x] & 16711680) >>> 16;
+    private int getRed(int pixel) {
+        return (bufferedImageRGBA[pixel] & 16711680) >>> 16;
     }
 
-    private int getGreen(int x, int y) {
-        return (bufferedImageRGBA[y * width + x] & '\uff00') >>> 8;
+    private int getGreen(int pixel) {
+        return (bufferedImageRGBA[pixel] & '\uff00') >>> 8;
     }
 
-    private int getBlue(int x, int y) {
-        return bufferedImageRGBA[y * width + x] & 255;
+    private int getBlue(int pixel) {
+        return bufferedImageRGBA[pixel] & 255;
     }
 
     public void setPixel(int x, int y, int red, int green, int blue, int alpha) {
@@ -46,7 +46,8 @@ public class UnpackedImage {
     }
 
     public int[] getPixel(int x, int y) {
-        return new int[]{getRed(x, y), getGreen(x, y), getBlue(x, y), getAlpha(x, y)};
+        int pixel = y * width + x;
+        return new int[]{getRed(pixel), getGreen(pixel), getBlue(pixel), getAlpha(pixel)};
     }
 
     private int getRawPixel(int x, int y) {
