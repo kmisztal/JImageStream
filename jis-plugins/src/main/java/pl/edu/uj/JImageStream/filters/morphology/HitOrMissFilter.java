@@ -38,7 +38,7 @@ public class HitOrMissFilter extends Filter {
                         default:
                     }
                 } catch (ArrayIndexOutOfBoundsException ex) {
-                    // expected on corners
+                    hit = false;
                 }
             }
         }
