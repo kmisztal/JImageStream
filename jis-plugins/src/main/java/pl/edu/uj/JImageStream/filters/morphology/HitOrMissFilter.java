@@ -1,6 +1,5 @@
 package pl.edu.uj.JImageStream.filters.morphology;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import pl.edu.uj.JImageStream.api.core.Filter;
 import pl.edu.uj.JImageStream.model.Pixel;
 
@@ -8,7 +7,7 @@ public class HitOrMissFilter extends Filter {
 
     private int[][] hitOrMissMatrix;
 
-    public HitOrMissFilter(int[][] hitOrMissMatrix) throws InvalidArgumentException {
+    public HitOrMissFilter(int[][] hitOrMissMatrix) {
         if (hitOrMissMatrix == null) {
             throw new RuntimeException("Hit or miss matrix can't be null");
         }
